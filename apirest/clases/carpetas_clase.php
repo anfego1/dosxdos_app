@@ -505,7 +505,7 @@ class Carpetas extends conexion
                             $carpeta = [];
                             $carpeta['id'] = $row['id'];
                             $carpeta['nombre'] = $row['nombre'];
-                            $carpeta['link'] = 'https://dosxdos.app.iidos.com/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $carpeta['link'] = 'http://localhost/dosxdos_app/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $carpeta['nombre'] = $row['nombre'];
                             $carpeta['ruta'] = $row['ruta'];
                             $carpeta['linea'] = $row['linea'];
@@ -704,7 +704,7 @@ class Carpetas extends conexion
                             $carpeta = [];
                             $carpeta['id'] = $row['id'];
                             $carpeta['nombre'] = $row['nombre'];
-                            $carpeta['link'] = 'https://dosxdos.app.iidos.com/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $carpeta['link'] = 'http://localhost/dosxdos_app/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $carpeta['nombre'] = $row['nombre'];
                             $carpeta['ruta'] = $row['ruta'];
                             $carpeta['linea'] = $row['linea'];

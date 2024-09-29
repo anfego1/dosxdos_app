@@ -9,10 +9,10 @@ if (!isset($_COOKIE['login'])) {
     <nav id="opcionesMenu2" class="displayOn">
 
         <div class="opcionMenu displayOn" id="crearUsuario">
-            <a href="https://dosxdos.app.iidos.com/dosxdos.php?modulo=crearUsuario" class="enlaceBoton">
+            <a href="http://localhost/dosxdos_app/dosxdos.php?modulo=crearUsuario" class="enlaceBoton">
                 <div class="opcionMenu" id="lineasIcono">
                     <button class="botonIcono" type="button" id="rutasIconoBoton">
-                        <img src="https://dosxdos.app.iidos.com/img/usuarioWhite.png">
+                        <img src="http://localhost/dosxdos_app/img/usuarioWhite.png">
                     </button>
                 </div>
             </a>

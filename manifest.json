@@ -6,57 +6,57 @@
   "theme_color": "#000000",
   "orientation": "any",
   "display": "standalone",
-  "start_url": "https://dosxdos.app.iidos.com/index.html?utm_source=web_app_manifest",
-  "scope": "https://dosxdos.app.iidos.com/",
+  "start_url": "http://localhost/dosxdos_app/index.html?utm_source=web_app_manifest",
+  "scope": "http://localhost/dosxdos_app/",
   "lang": "es",
   "icons": [
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa1024.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa1024.png",
       "sizes": "1024x1024",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa512.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa512.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa384.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa384.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa256.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa256.png",
       "sizes": "256x256",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa192.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa128.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa96.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa96.png",
       "sizes": "96x96",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa64.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa32.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa32.png",
       "sizes": "32x32",
       "type": "image/png"
     },
     {
-      "src": "https://dosxdos.app.iidos.com/img/logoPwa16.png",
+      "src": "http://localhost/dosxdos_app/img/logoPwa16.png",
       "sizes": "16x16",
       "type": "image/png"
     }

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <link rel="icon" type="image/png" href="http://localhost/dosxdos_app/img/logoPwa256.png">
     <meta name="description" content="DOS.DOS GRUPO IMAGEN - Aplicación Web Progresiva (PWA)">
     <style>
         * {
@@ -43,17 +43,17 @@
         /* FUENTES */
         @font-face {
             font-family: 'FuturaBold';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
         }
 
         @font-face {
             font-family: 'FuturaLight';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Light.otf") format("truetype");
         }
 
         @font-face {
             font-family: 'FuturaMedium';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
         }
 
         .displayOn {
@@ -421,10 +421,10 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="https://dosxdos.app.iidos.com/img/dosxdos.png">
-    <link rel="apple-touch-startup-image" href="https://dosxdos.app.iidos.com/img/dosxdos.png">
-    <link rel="manifest" href="https://dosxdos.app.iidos.com/manifest.json">
-    <script src="https://dosxdos.app.iidos.com/js/index_db.js"></script>
+    <link rel="apple-touch-icon" href="http://localhost/dosxdos_app/img/dosxdos.png">
+    <link rel="apple-touch-startup-image" href="http://localhost/dosxdos_app/img/dosxdos.png">
+    <link rel="manifest" href="http://localhost/dosxdos_app/manifest.json">
+    <script src="http://localhost/dosxdos_app/js/index_db.js"></script>
     <!-- INICIO BASE DE DATOS DEL CLIENTE - INDEXDB -->
     <script>
         const stores = [
@@ -446,8 +446,8 @@
             })
     </script>
     <!-- SERVICEWORKER -->
-    <script src="https://dosxdos.app.iidos.com/serviceworker.js"></script>
-    <script src="https://dosxdos.app.iidos.com//sw.js"></script>
+    <script src="http://localhost/dosxdos_app/serviceworker.js"></script>
+    <script src="http://localhost/dosxdos_app//sw.js"></script>
     <?php
 
     if (isset($_GET['id']) && isset($_GET['usuario']) && isset($_GET['cod']) && isset($_GET['clave'])) {
@@ -487,12 +487,12 @@
 <body>
 
     <div id="mensaje" class="displayOff">
-        <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+        <img id="alerta" src="http://localhost/dosxdos_app/img/alerta.png">
         <p id="mensajeTexto"></p>
     </div>
 
     <div class="puntoFondo displayOn" id="punto">
-        <img src="https://dosxdos.app.iidos.com/img/saludo.png" class="saludo displayOn" id="saludo">
+        <img src="http://localhost/dosxdos_app/img/saludo.png" class="saludo displayOn" id="saludo">
         <form action="restablecer_contrasena.php" method="post" id="formularioReestablecer" class="displayOff formulario noVisible">
             <input type="hidden" name="reestablecer" value="1">
             <input type="hidden" name="id" value="<?php print $id ?>">
@@ -508,9 +508,9 @@
         </form>
     </div>
 
-    <img src="https://dosxdos.app.iidos.com/img/logo2930.png" class="logo displayOn" id="logo">
+    <img src="http://localhost/dosxdos_app/img/logo2930.png" class="logo displayOn" id="logo">
 
-    <img src="https://dosxdos.app.iidos.com/img/logo_clientes.png" id="logo2" class="logo2">
+    <img src="http://localhost/dosxdos_app/img/logo_clientes.png" id="logo2" class="logo2">
 
     <div id="idiomas" class="idiomas displayOn">
         <p id="espanol">ESP</p>
@@ -519,7 +519,7 @@
     </div>
 
     <div id="instalar" class="instalar displayOn">
-        <img src="https://dosxdos.app.iidos.com/img/instalar.png" id="instalarImg">
+        <img src="http://localhost/dosxdos_app/img/instalar.png" id="instalarImg">
         <p id="tipInstalar" class="displayOff"></p>
     </div>
 
@@ -545,7 +545,7 @@ if (isset($_POST['reestablecer'])) {
         $contrasena = $_POST['contrasena'];
         $contrasena2 = $_POST['contrasena2'];
         $idioma = $_POST['idioma'];
-        $link = 'https://dosxdos.app.iidos.com/restablecer_contrasena.php?id=' . $id . '&usuario=' .  $usuario . '&cod=' . $cod . '&clave=1987082120200804';
+        $link = 'http://localhost/dosxdos_app/restablecer_contrasena.php?id=' . $id . '&usuario=' .  $usuario . '&cod=' . $cod . '&clave=1987082120200804';
         if ($clave != 2020080419870821) {
 ?>
             <script>
@@ -619,7 +619,7 @@ if (isset($_POST['reestablecer'])) {
                     mensaj = 'Your password has been successfully reset';
                 }
                 localStorage.setItem('mensaje', mensaj);
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             </script>
         <?php
         }
@@ -658,7 +658,7 @@ if (isset($_POST['reestablecer'])) {
 
     function espanol() {
         return new Promise((resolve, reject) => {
-            fetch('https://dosxdos.app.iidos.com/espanol.json')
+            fetch('http://localhost/dosxdos_app/espanol.json')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`Error en la solicitud del json en español: ${res.status}`);
@@ -678,7 +678,7 @@ if (isset($_POST['reestablecer'])) {
 
     function english() {
         return new Promise((resolve, reject) => {
-            fetch('https://dosxdos.app.iidos.com/english.json')
+            fetch('http://localhost/dosxdos_app/english.json')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`Error in the json request in English: ${res.status}`);
@@ -773,7 +773,7 @@ if (isset($_POST['reestablecer'])) {
             } else if (e.target.id == 'english') {
                 cargarIdioma('en');
             } else if (e.target.id == 'logo2') {
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             }
         })
         const $instalar = document.getElementById('instalar');

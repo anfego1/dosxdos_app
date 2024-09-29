@@ -41,7 +41,7 @@ class Reciclaje extends conexion
                     $reciclado = [];
                     $reciclado['id'] = $row['id'];
                     $reciclado['nombre'] = $row['nombre'];
-                    $reciclado['link'] = 'https://dosxdos.app.iidos.com/reciclaje/' . $row['nombre'];
+                    $reciclado['link'] = 'http://localhost/dosxdos_app/reciclaje/' . $row['nombre'];
                     $reciclado['nombre'] = $row['nombre'];
                     $reciclado['ruta'] = $row['ruta'];
                     $reciclado['linea'] = $row['linea'];

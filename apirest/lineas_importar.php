@@ -237,7 +237,7 @@ if (isset($_POST['codOt']) && (isset($_FILES['archivo_csv']) && $_FILES['archivo
         // Cierra el archivo CSV
         fclose($csvFile);
 ?>
-        <a href="https://dosxdos.app.iidos.com/apirest/datos_lineas/datos_lineas_crm.csv" download="datos_lineas_crm.csv">DESCARGAR ARCHIVO</a>
+        <a href="http://localhost/dosxdos_app/apirest/datos_lineas/datos_lineas_crm.csv" download="datos_lineas_crm.csv">DESCARGAR ARCHIVO</a>
     <?php
         /*
         print 'LINEAS_CRM = ';

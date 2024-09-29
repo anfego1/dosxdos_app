@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
-    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <link rel="icon" type="image/png" href="http://localhost/dosxdos_app/img/logoPwa256.png">
     <meta name="description" content="DOS.DOS GRUPO IMAGEN - Aplicación Web Progresiva (PWA)">
     <style>
         * {
@@ -43,17 +43,17 @@
         /* FUENTES */
         @font-face {
             font-family: 'FuturaBold';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
         }
 
         @font-face {
             font-family: 'FuturaLight';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Light.otf") format("truetype");
         }
 
         @font-face {
             font-family: 'FuturaMedium';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
         }
 
         .displayOn {
@@ -386,10 +386,10 @@
     <meta name="HandheldFriendly" content="true">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
-    <link rel="apple-touch-startup-image" href="https://dosxdos.app.iidos.com/img/dosxdos.png">
-    <link rel="manifest" href="https://dosxdos.app.iidos.com/manifest.json">
-    <script src="https://dosxdos.app.iidos.com/js/index_db.js"></script>
+    <link rel="apple-touch-icon" href="http://localhost/dosxdos_app/img/logoPwa256.png">
+    <link rel="apple-touch-startup-image" href="http://localhost/dosxdos_app/img/dosxdos.png">
+    <link rel="manifest" href="http://localhost/dosxdos_app/manifest.json">
+    <script src="http://localhost/dosxdos_app/js/index_db.js"></script>
     <!-- INICIO BASE DE DATOS DEL CLIENTE - INDEXDB -->
     <script>
 
@@ -414,20 +414,20 @@
 
     </script>
     <!-- SERVICEWORKER -->
-    <script src="https://dosxdos.app.iidos.com/serviceworker.js"></script>
-    <script src="https://dosxdos.app.iidos.com//sw.js"></script>
+    <script src="http://localhost/dosxdos_app/serviceworker.js"></script>
+    <script src="http://localhost/dosxdos_app//sw.js"></script>
 
 </head>
 
 <body>
 
     <div id="mensaje" class="displayOff">
-        <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+        <img id="alerta" src="http://localhost/dosxdos_app/img/alerta.png">
         <p id="mensajeTexto"></p>
     </div>
 
     <div class="puntoFondo displayOn" id="punto">
-        <img src="https://dosxdos.app.iidos.com/img/saludo.png" class="saludo displayOn" id="saludo">
+        <img src="http://localhost/dosxdos_app/img/saludo.png" class="saludo displayOn" id="saludo">
         <form action="index.html" method="post" id="formularioLogin" class="displayOff formulario noVisible">
             <label for="usuario" id="labelUsuario"></label>
             <input type="text" name="usuario" id="usuario" maxlength="8">
@@ -444,9 +444,9 @@
         </form>
     </div>
 
-    <img src="https://dosxdos.app.iidos.com/img/logo2930.png" class="logo displayOn" id="logo">
+    <img src="http://localhost/dosxdos_app/img/logo2930.png" class="logo displayOn" id="logo">
 
-    <img src="https://dosxdos.app.iidos.com/img/logo_clientes.png" id="logo2" class="logo2">
+    <img src="http://localhost/dosxdos_app/img/logo_clientes.png" id="logo2" class="logo2">
 
     <div id="idiomas" class="idiomas displayOn">
         <p id="espanol">ESP</p>
@@ -455,7 +455,7 @@
     </div>
 
     <div id="instalar" class="instalar displayOn">
-        <img src="https://dosxdos.app.iidos.com/img/instalar.png" id="instalarImg">
+        <img src="http://localhost/dosxdos_app/img/instalar.png" id="instalarImg">
         <p id="tipInstalar" class="displayOff"></p>
     </div>
 
@@ -484,7 +484,7 @@
 
     function espanol() {
         return new Promise((resolve, reject) => {
-            fetch('https://dosxdos.app.iidos.com/espanol.json')
+            fetch('http://localhost/dosxdos_app/espanol.json')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`Error en la solicitud del json en español: ${res.status}`);
@@ -504,7 +504,7 @@
 
     function english() {
         return new Promise((resolve, reject) => {
-            fetch('https://dosxdos.app.iidos.com/english.json')
+            fetch('http://localhost/dosxdos_app/english.json')
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`Error in the json request in English: ${res.status}`);
@@ -751,7 +751,7 @@
                 localStorage.removeItem('ot');
                 eliminarCookie('login');
                 eliminarCookie('usuario');
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             } catch (error) {
                 mensaj = 'ERROR: ' + error.message;
                 console.error(error);
@@ -769,7 +769,7 @@
         let login = localStorage.getItem('login');
         if (login && login !== null) {
             let usuario = localStorage.getItem('usuario');
-            url = 'https://dosxdos.app.iidos.com/apirest/usuarios.php?id=' + usuario;
+            url = 'http://localhost/dosxdos_app/apirest/usuarios.php?id=' + usuario;
             fetch(url)
                 .then(res => {
                     if (!res.ok) {
@@ -806,11 +806,11 @@
                 if (login) {
                     if (login.length != 0) {
                         if (login.clase == 'montador') {
-                            window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                            window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
                         } else if (login.clase == 'cliente') {
-                            window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+                            window.location.href = "http://localhost/dosxdos_app/clientes.html";
                         } else {
-                            window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+                            window.location.href = "http://localhost/dosxdos_app/ot.html";
                         }
                     } else {
                         console.log('Usuario no reconocido');
@@ -936,7 +936,7 @@
                         usuario,
                         contrasena
                     };
-                    fetch('https://dosxdos.app.iidos.com/apirest/usuarios.php',
+                    fetch('http://localhost/dosxdos_app/apirest/usuarios.php',
                         {
                             method: "POST",
                             headers: {
@@ -985,7 +985,7 @@
                                                         localStorage.setItem('loginMontador', loginMontador);
                                                         setCookie("login", login, 365);
                                                         setCookie("usuario", usuario, 365);
-                                                        window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                                                        window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
                                                     } else if (data.clase == 'cliente') {
                                                         const login = true;
                                                         const usuario = data.id;
@@ -993,7 +993,7 @@
                                                         localStorage.setItem('usuario', usuario);
                                                         setCookie("login", login, 365);
                                                         setCookie("usuario", usuario, 365);
-                                                        window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+                                                        window.location.href = "http://localhost/dosxdos_app/clientes.html";
                                                     } else {
                                                         const login = true;
                                                         const usuario = data.id;
@@ -1001,7 +1001,7 @@
                                                         localStorage.setItem('usuario', usuario);
                                                         setCookie("login", login, 365);
                                                         setCookie("usuario", usuario, 365);
-                                                        window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+                                                        window.location.href = "http://localhost/dosxdos_app/ot.html";
                                                     }
                                                 } else {
                                                     mensaj = 'Tu usuario está inactivo, comunícate por favor con nosotros'
@@ -1076,7 +1076,7 @@
                     idioma: idioma,
                 };
                 console.log(body);
-                fetch('https://dosxdos.app.iidos.com/apirest/correos.php',
+                fetch('http://localhost/dosxdos_app/apirest/correos.php',
                     {
                         method: "POST",
                         headers: {

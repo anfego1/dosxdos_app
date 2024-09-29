@@ -206,18 +206,18 @@ if ($idUsuario == $id && $usuarioEditado) {
                     const mensajeActualizado = mensaje;
                     localStorage.setItem('mensaje', mensajeActualizado);
                     if (nuevoUsuario.clase == 'montador') {
-                        window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                        window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
                     } else {
-                        window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+                        window.location.href = "http://localhost/dosxdos_app/ot.html";
                     }
                 }
             } catch (error) {
                 const mensajeActualizado = 'El usuario ha sido editado exitosamente, pero no ha sido actualizado en la base de datos local, es necesario que cierres la sesión y vuelvas a realizar login para efectuar los cambios: ' + error.message;
                 localStorage.setItem('mensaje', mensajeActualizado);
                 if (nuevoUsuario.clase == 'montador') {
-                    window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                    window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
                 } else {
-                    window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+                    window.location.href = "http://localhost/dosxdos_app/ot.html";
                 }
             }
         }
@@ -237,10 +237,10 @@ if ($idUsuario == $id && $usuarioEditado) {
         if ($clase == 'admon') {
         ?>
             <div class="opcionMenu displayOn" id="crearUsuario">
-                <a href="https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios" class="enlaceBoton">
+                <a href="http://localhost/dosxdos_app/dosxdos.php?modulo=usuarios" class="enlaceBoton">
                     <div class="opcionMenu" id="lineasIcono">
                         <button class="botonIcono" type="button" id="rutasIconoBoton">
-                            <img src="https://dosxdos.app.iidos.com/img/back.png">
+                            <img src="http://localhost/dosxdos_app/img/back.png">
                         </button>
                     </div>
                 </a>
@@ -251,10 +251,10 @@ if ($idUsuario == $id && $usuarioEditado) {
         if ($clase == 'montador') {
         ?>
             <div class="opcionMenu displayOn" id="crearUsuario">
-                <a href="https://dosxdos.app.iidos.com/rutas_montador.html" class="enlaceBoton">
+                <a href="http://localhost/dosxdos_app/rutas_montador.html" class="enlaceBoton">
                     <div class="opcionMenu" id="lineasIcono">
                         <button class="botonIcono" type="button" id="rutasIconoBoton">
-                            <img src="https://dosxdos.app.iidos.com/img/back.png">
+                            <img src="http://localhost/dosxdos_app/img/back.png">
                         </button>
                     </div>
                 </a>
@@ -265,10 +265,10 @@ if ($idUsuario == $id && $usuarioEditado) {
         if ($clase != 'montador' && $clase != 'admon') {
             ?>
                 <div class="opcionMenu displayOn" id="crearUsuario">
-                    <a href="https://dosxdos.app.iidos.com/ot.html" class="enlaceBoton">
+                    <a href="http://localhost/dosxdos_app/ot.html" class="enlaceBoton">
                         <div class="opcionMenu" id="lineasIcono">
                             <button class="botonIcono" type="button" id="rutasIconoBoton">
-                                <img src="https://dosxdos.app.iidos.com/img/back.png">
+                                <img src="http://localhost/dosxdos_app/img/back.png">
                             </button>
                         </div>
                     </a>
@@ -372,9 +372,9 @@ if ($idUsuario == $id && $usuarioEditado) {
         </div>
 
         <div id="CajaimagenPerfil"><img src="<?php if ($imagenE) {
-                                                    echo ('https://dosxdos.app.iidos.com/' . $imagenE);
+                                                    echo ('http://localhost/dosxdos_app/' . $imagenE);
                                                 } else {
-                                                    echo 'https://dosxdos.app.iidos.com/img/usuario.png';
+                                                    echo 'http://localhost/dosxdos_app/img/usuario.png';
                                                 }  ?>" id="imagenPerfil"></div>
 
         <input type="hidden" name="editarUsuario" value="1">
@@ -406,22 +406,22 @@ if ($idUsuario == $id && $usuarioEditado) {
         <?php
         if ($clase == 'admon') {
         ?>
-            <a href="https://dosxdos.app.iidos.com/editar_usuario.php?eliminar=1&id=<?php echo $id ?>" class="eliminar"><button type="button" id="eliminarUsuario" class="ruta">ELIMINAR USUARIO</button></a>
+            <a href="http://localhost/dosxdos_app/editar_usuario.php?eliminar=1&id=<?php echo $id ?>" class="eliminar"><button type="button" id="eliminarUsuario" class="ruta">ELIMINAR USUARIO</button></a>
         <?php
         }
         if ($clase == 'admon') {
         ?>
-            <a href="https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
+            <a href="http://localhost/dosxdos_app/dosxdos.php?modulo=usuarios" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
         <?php
         }
         if ($clase == 'montador') {
             ?>
-                <a href="https://dosxdos.app.iidos.com/rutas_montador.html" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
+                <a href="http://localhost/dosxdos_app/rutas_montador.html" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
             <?php
             }
         if ($clase != 'montador' && $clase != 'admon') {
             ?>
-                <a href="https://dosxdos.app.iidos.com/ot.html" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
+                <a href="http://localhost/dosxdos_app/ot.html" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
             <?php
             }
         ?>

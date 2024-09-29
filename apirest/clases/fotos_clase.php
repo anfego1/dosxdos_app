@@ -297,7 +297,7 @@ class Fotos extends conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];
@@ -498,7 +498,7 @@ class Fotos extends conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <link rel="icon" type="image/png" href="http://localhost/dosxdos_app/img/logoPwa256.png">
     <title>SINCRONIZADOR OTS Y LÍNEAS DE OT - dosxdos.app.iidos.com</title>
     <style>
         * {

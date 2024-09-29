@@ -53,10 +53,10 @@ if ((isset($_REQUEST["crearUsuario"]))) {
     <nav id="opcionesMenu2" class="displayOn">
 
         <div class="opcionMenu displayOn" id="crearUsuario">
-            <a href="https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios" class="enlaceBoton">
+            <a href="http://localhost/dosxdos_app/dosxdos.php?modulo=usuarios" class="enlaceBoton">
                 <div class="opcionMenu" id="lineasIcono">
                     <button class="botonIcono" type="button" id="rutasIconoBoton">
-                        <img src="https://dosxdos.app.iidos.com/img/back.png">
+                        <img src="http://localhost/dosxdos_app/img/back.png">
                     </button>
                 </div>
             </a>
@@ -134,13 +134,13 @@ if ((isset($_REQUEST["crearUsuario"]))) {
             <input type="file" name="imagen[]" accept="image/*" id="imagen">
         </div>
 
-        <div id="CajaimagenPerfil"><img src="https://dosxdos.app.iidos.com/img/usuario.png" id="imagenPerfil"></div>
+        <div id="CajaimagenPerfil"><img src="http://localhost/dosxdos_app/img/usuario.png" id="imagenPerfil"></div>
 
         <input type="hidden" name="crearUsuario" value="1">
 
         <button type="button" id="enviar" class="ruta">CREAR USUARIO</button>
         
-        <a href="https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
+        <a href="http://localhost/dosxdos_app/dosxdos.php?modulo=usuarios" id="cancelar"><button type="button" class="ruta">CANCELAR</button></a>
 
     </form>
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title></title>
-  <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+  <link rel="icon" type="image/png" href="http://localhost/dosxdos_app/img/logoPwa256.png">
   <style>
     * {
       padding: 0;
@@ -168,17 +168,17 @@
     /* FUENTES */
     @font-face {
       font-family: 'FuturaBold';
-      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+      src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
     }
 
     @font-face {
       font-family: 'FuturaLight';
-      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+      src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Light.otf") format("truetype");
     }
 
     @font-face {
       font-family: 'FuturaMedium';
-      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+      src: url("http://localhost/dosxdos_app/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
     }
 
     .displayOn {
@@ -679,18 +679,18 @@
     </div>
   </div>
   <div id="opciones" class="opciones displayOn">
-    <!-- <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario2">
-    <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario3">
-    <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario4"> -->
-    <img src="https://dosxdos.app.iidos.com/img/usuarioClientes.png" id="imagenUsuario">
+    <!-- <img src="http://localhost/dosxdos_app/img/paisaje.jpg" id="imagenUsuario2">
+    <img src="http://localhost/dosxdos_app/img/paisaje.jpg" id="imagenUsuario3">
+    <img src="http://localhost/dosxdos_app/img/paisaje.jpg" id="imagenUsuario4"> -->
+    <img src="http://localhost/dosxdos_app/img/usuarioClientes.png" id="imagenUsuario">
   </div>
   <div id="opcionesUsuario" class="displayOff">
     <button id="editarUsuarioB">Editar Usuario</button>
     <button id="cerrarSesionB">Cerrar Sesión</button>
   </div>
   <div id="mensaje" class="displayOff">
-    <img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
-    <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+    <img id="imgCerrar" src="http://localhost/dosxdos_app/img/cerrar.png">
+    <img id="alerta" src="http://localhost/dosxdos_app/img/alerta.png">
     <p id="textoMensaje"></p>
   </div>
   <div class="container">
@@ -705,7 +705,7 @@
       <div id="listaTiposOt"></div>
     </div>
   </div>
-  <img src="https://dosxdos.app.iidos.com/img/logo_clientes.png" id="logo2" class="logo2">
+  <img src="http://localhost/dosxdos_app/img/logo_clientes.png" id="logo2" class="logo2">
 </body>
 
 <script>
@@ -737,7 +737,7 @@
 
   function fetchUsuario(idUsuario) {
     return new Promise((resolve, reject) => {
-      url = 'https://dosxdos.app.iidos.com/apirest/usuarios.php?id=' + idUsuario;
+      url = 'http://localhost/dosxdos_app/apirest/usuarios.php?id=' + idUsuario;
       fetch(url)
         .then((res) => {
           if (res.ok) {
@@ -779,17 +779,17 @@
           if (!usuario) {
             mensaje = 'No se ha podido consultar los datos del usuario en nuestra base de datos, por favor inténtalo nuevamente. Si el error persiste por favor comunícate con nosotros'
             localStorage.setItem('mensaje', mensaje);
-            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            window.location.href = "http://localhost/dosxdos_app/index.html";
           } else {
             if (usuario.eliminado == '1') {
               mensaje = 'El usuario ha sido eliminado, por favor comunícate con nosotros'
               localStorage.setItem('mensaje', mensaje);
-              window.location.href = "https://dosxdos.app.iidos.com/index.html";
+              window.location.href = "http://localhost/dosxdos_app/index.html";
             }
             if (usuario.activo == '0') {
               mensaje = 'El usuario ha sido inactivado, por favor comunícate con nosotros'
               localStorage.setItem('mensaje', mensaje);
-              window.location.href = "https://dosxdos.app.iidos.com/index.html";
+              window.location.href = "http://localhost/dosxdos_app/index.html";
             }
           }
         } else {
@@ -869,7 +869,7 @@
       localStorage.removeItem('usuario');
       eliminarCookie('login');
       eliminarCookie('usuario');
-      window.location.href = "https://dosxdos.app.iidos.com/index.html";
+      window.location.href = "http://localhost/dosxdos_app/index.html";
     } catch (error) {
       mensaje = 'ERROR: ' + error.message;
       console.error(error);
@@ -890,9 +890,9 @@
       }
 
       if (e.target.matches('#editarUsuarioB')) {
-        const pAnterior = "https://dosxdos.app.iidos.com/clientes.html";
+        const pAnterior = "http://localhost/dosxdos_app/clientes.html";
         localStorage.setItem('pAnterior', pAnterior);
-        window.location.href = "https://dosxdos.app.iidos.com/editar_usuario_cliente.html";
+        window.location.href = "http://localhost/dosxdos_app/editar_usuario_cliente.html";
       }
 
       if (e.target.matches('#cerrarSesionB')) {
@@ -904,7 +904,7 @@
         localStorage.setItem('codigoDeOtsCliente', codigo);
         const descripcion = e.target.getAttribute('data-descripcion');
         localStorage.setItem('DescripcionCodigoDeOtsCliente', descripcion);
-        window.location.href = "https://dosxdos.app.iidos.com/clientes_ots.html";
+        window.location.href = "http://localhost/dosxdos_app/clientes_ots.html";
       }
 
     })
@@ -914,7 +914,7 @@
 
   function fetchTiposOt(idCliente) {
     return new Promise((resolve, reject) => {
-      url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&tiposOt';
+      url = 'http://localhost/dosxdos_app/apirest/clientes.php?idCliente=' + idCliente + '&tiposOt';
       fetch(url)
         .then((res) => {
           if (res.ok) {
@@ -981,7 +981,7 @@
       const login = await vLogin();
       document.title = `${usuario.nombre} ${usuario.apellido} - dosxdos`;
       if (usuario.imagen != '0') {
-        $imagenUsuario.src = 'https://dosxdos.app.iidos.com/' + usuario.imagen
+        $imagenUsuario.src = 'http://localhost/dosxdos_app/' + usuario.imagen
       }
       tiposOt = await fetchTiposOt(usuario.id);
       //console.log(tiposOt);

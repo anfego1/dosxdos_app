@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RUTA</title>
     <!-- Favicons -->
-    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <link rel="icon" type="image/png" href="http://localhost/dosxdos_app/img/logoPwa256.png">
     <style>
         @charset "UTF-8";
 
@@ -65,32 +65,32 @@
         /* FUENTES */
         @font-face {
             font-family: 'Roboto';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Roboto/Roboto-Light.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Roboto/Roboto-Light.ttf") format("truetype");
         }
 
         @font-face {
             font-family: 'Merriweather';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Light.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Merriweather/Merriweather-Light.ttf") format("truetype");
         }
 
         @font-face {
             font-family: 'Merriweather-Bold';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Bold.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Merriweather/Merriweather-Bold.ttf") format("truetype");
         }
 
         @font-face {
             font-family: 'Lora';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Regular.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Regular.ttf") format("truetype");
         }
 
         @font-face {
             font-family: 'Lora-Medium';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Medium.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Medium.ttf") format("truetype");
         }
 
         @font-face {
             font-family: 'Lora-Bold';
-            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Bold.ttf") format("truetype");
+            src: url("http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Bold.ttf") format("truetype");
         }
 
         /* LOADER */
@@ -603,23 +603,23 @@
     <section id="encabezado">
 
         <div id="logo">
-            <img src="https://dosxdos.app.iidos.com/img/logo300.png">
+            <img src="http://localhost/dosxdos_app/img/logo300.png">
         </div>
 
         <nav id="menu">
 
             <div id="usuario">
                 <div id="iconoUsuario">
-                    <img src="https://dosxdos.app.iidos.com/img/usuario.png" id="imagenUsuario">
+                    <img src="http://localhost/dosxdos_app/img/usuario.png" id="imagenUsuario">
                 </div>
                 <p id="nombreUsuario"></p>
                 <div id="flechaUsuario">
-                    <img src="https://dosxdos.app.iidos.com/img/flechaAbajo.png">
+                    <img src="http://localhost/dosxdos_app/img/flechaAbajo.png">
                 </div>
             </div>
 
             <button id="casa" class="botonIcono">
-                <img src="https://dosxdos.app.iidos.com/img/casaWhite.png">
+                <img src="http://localhost/dosxdos_app/img/casaWhite.png">
             </button>
 
         </nav>
@@ -628,21 +628,21 @@
 
             <div class="opcionMenu" id="horarios">
                 <button class="botonIcono" type="button" id="horarios">
-                    <img src="https://dosxdos.app.iidos.com/img/relojWhite.png">
+                    <img src="http://localhost/dosxdos_app/img/relojWhite.png">
                 </button>
                 <p>Horarios</p>
             </div>
 
             <div class="opcionMenu" id="rutasIcono">
                 <button class="botonIcono" type="button" id="rutasIconoBoton">
-                    <img src="https://dosxdos.app.iidos.com/img/rutasWhite.png">
+                    <img src="http://localhost/dosxdos_app/img/rutasWhite.png">
                 </button>
                 <p>Rutas</p>
             </div>
 
             <div class="opcionMenu" id="lineasIcono">
                 <button class="botonIcono" type="button" id="rutasIconoBoton">
-                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                    <img src="http://localhost/dosxdos_app/img/task.png">
                 </button>
                 <p>Líneas</p>
             </div>
@@ -657,13 +657,13 @@
         </nav>
 
         <div id="mensaje" class="displayOff">
-            <p id="textoMensaje"></p><img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+            <p id="textoMensaje"></p><img id="imgCerrar" src="http://localhost/dosxdos_app/img/cerrar.png">
         </div>
 
         <div id="cajaBuscador">
 
             <div id="iconoBuscador">
-                <img src="https://dosxdos.app.iidos.com/img/lupa.png">
+                <img src="http://localhost/dosxdos_app/img/lupa.png">
             </div>
             <input type="text" id="buscador">
 
@@ -688,7 +688,7 @@
         console.log(ruta);
     }
     else {
-        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+        window.location.href = 'http://localhost/dosxdos_app/rutas_montador.html';
     }
     const nombreRuta = localStorage.getItem('nombreRuta');
     console.log(nombreRuta);
@@ -901,56 +901,56 @@
     /* MANEJO DE RECURSOS ESTÁTICOS */
 
     const urls = [
-        'https://dosxdos.app.iidos.com/index.html?utm_source=web_app_manifest',
-        'https://dosxdos.app.iidos.com/index.html',
-        'https://dosxdos.app.iidos.com/manifest.json',
-        'https://dosxdos.app.iidos.com/serviceworker.js',
-        'https://dosxdos.app.iidos.com/sw.js',
-        'https://dosxdos.app.iidos.com/css/index.css',
-        'https://dosxdos.app.iidos.com/rutas_montador.html',
-        'https://dosxdos.app.iidos.com/css/rutas_montador.css',
-        'https://dosxdos.app.iidos.com/ruta_montador.html',
-        'https://dosxdos.app.iidos.com/css/ruta_montador.css',
-        'https://dosxdos.app.iidos.com/linea_montador.html',
-        'https://dosxdos.app.iidos.com/css/linea_montador.css',
-        'https://dosxdos.app.iidos.com/fotos_y_firmas.html',
-        'https://dosxdos.app.iidos.com/css/fotos_y_firmas.css',
-        'https://dosxdos.app.iidos.com/css/fuentes/Roboto/Roboto-Light.ttf',
-        'https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Light.ttf',
-        'https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Bold.ttf',
-        'https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Regular.ttf',
-        'https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Medium.ttf',
-        'https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Bold.ttf',
-        'https://dosxdos.app.iidos.com/img/candado.png',
-        'https://dosxdos.app.iidos.com/img/casa.png',
-        'https://dosxdos.app.iidos.com/img/casaWhite.png',
-        'https://dosxdos.app.iidos.com/img/dosxdos.png',
-        'https://dosxdos.app.iidos.com/img/email.png',
-        'https://dosxdos.app.iidos.com/img/flechaAbajo.png',
-        'https://dosxdos.app.iidos.com/img/fondo.jpg',
-        'https://dosxdos.app.iidos.com/img/logoPwa1024.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa512.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa384.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa256.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa192.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa128.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa96.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa64.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa32.png',
-        'https://dosxdos.app.iidos.com/img/logoPwa16.png',
-        'https://dosxdos.app.iidos.com/img/logo300.png',
-        'https://dosxdos.app.iidos.com/img/lupa.png',
-        'https://dosxdos.app.iidos.com/img/reloj.png',
-        'https://dosxdos.app.iidos.com/img/relojWhite.png',
-        'https://dosxdos.app.iidos.com/img/usuario.png',
-        'https://dosxdos.app.iidos.com/img/rutasWhite.png',
-        'https://dosxdos.app.iidos.com/img/cerrar.png',
-        'https://dosxdos.app.iidos.com/img/usuarios.png',
-        'https://dosxdos.app.iidos.com/img/trash.png',
-        'https://dosxdos.app.iidos.com/img/folder.png',
-        'https://dosxdos.app.iidos.com/img/comprimido.png',
-        'https://dosxdos.app.iidos.com/img/task.png',
-        'https://dosxdos.app.iidos.com/css/dosxdos.css',
+        'http://localhost/dosxdos_app/index.html?utm_source=web_app_manifest',
+        'http://localhost/dosxdos_app/index.html',
+        'http://localhost/dosxdos_app/manifest.json',
+        'http://localhost/dosxdos_app/serviceworker.js',
+        'http://localhost/dosxdos_app/sw.js',
+        'http://localhost/dosxdos_app/css/index.css',
+        'http://localhost/dosxdos_app/rutas_montador.html',
+        'http://localhost/dosxdos_app/css/rutas_montador.css',
+        'http://localhost/dosxdos_app/ruta_montador.html',
+        'http://localhost/dosxdos_app/css/ruta_montador.css',
+        'http://localhost/dosxdos_app/linea_montador.html',
+        'http://localhost/dosxdos_app/css/linea_montador.css',
+        'http://localhost/dosxdos_app/fotos_y_firmas.html',
+        'http://localhost/dosxdos_app/css/fotos_y_firmas.css',
+        'http://localhost/dosxdos_app/css/fuentes/Roboto/Roboto-Light.ttf',
+        'http://localhost/dosxdos_app/css/fuentes/Merriweather/Merriweather-Light.ttf',
+        'http://localhost/dosxdos_app/css/fuentes/Merriweather/Merriweather-Bold.ttf',
+        'http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Regular.ttf',
+        'http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Medium.ttf',
+        'http://localhost/dosxdos_app/css/fuentes/Lora/Lora-Bold.ttf',
+        'http://localhost/dosxdos_app/img/candado.png',
+        'http://localhost/dosxdos_app/img/casa.png',
+        'http://localhost/dosxdos_app/img/casaWhite.png',
+        'http://localhost/dosxdos_app/img/dosxdos.png',
+        'http://localhost/dosxdos_app/img/email.png',
+        'http://localhost/dosxdos_app/img/flechaAbajo.png',
+        'http://localhost/dosxdos_app/img/fondo.jpg',
+        'http://localhost/dosxdos_app/img/logoPwa1024.png',
+        'http://localhost/dosxdos_app/img/logoPwa512.png',
+        'http://localhost/dosxdos_app/img/logoPwa384.png',
+        'http://localhost/dosxdos_app/img/logoPwa256.png',
+        'http://localhost/dosxdos_app/img/logoPwa192.png',
+        'http://localhost/dosxdos_app/img/logoPwa128.png',
+        'http://localhost/dosxdos_app/img/logoPwa96.png',
+        'http://localhost/dosxdos_app/img/logoPwa64.png',
+        'http://localhost/dosxdos_app/img/logoPwa32.png',
+        'http://localhost/dosxdos_app/img/logoPwa16.png',
+        'http://localhost/dosxdos_app/img/logo300.png',
+        'http://localhost/dosxdos_app/img/lupa.png',
+        'http://localhost/dosxdos_app/img/reloj.png',
+        'http://localhost/dosxdos_app/img/relojWhite.png',
+        'http://localhost/dosxdos_app/img/usuario.png',
+        'http://localhost/dosxdos_app/img/rutasWhite.png',
+        'http://localhost/dosxdos_app/img/cerrar.png',
+        'http://localhost/dosxdos_app/img/usuarios.png',
+        'http://localhost/dosxdos_app/img/trash.png',
+        'http://localhost/dosxdos_app/img/folder.png',
+        'http://localhost/dosxdos_app/img/comprimido.png',
+        'http://localhost/dosxdos_app/img/task.png',
+        'http://localhost/dosxdos_app/css/dosxdos.css',
 
     ]
 
@@ -1059,7 +1059,7 @@
                 localStorage.removeItem('ot');
                 eliminarCookie('login');
                 eliminarCookie('usuario');
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             } catch (error) {
                 mensaje = 'ERROR: ' + error.message;
                 console.error(error);
@@ -1077,7 +1077,7 @@
 
     function fetchRutas() {
         return new Promise((resolve, reject) => {
-            url = 'https://dosxdos.app.iidos.com/apirest/rutas.php?montador=' + montador;
+            url = 'http://localhost/dosxdos_app/apirest/rutas.php?montador=' + montador;
             fetch(url)
                 .then((res) => {
                     if (res.ok) {
@@ -1135,7 +1135,7 @@
         return new Promise(async (resolve, reject) => {
             try {
                 const promises = vectorRutas.map(async (objeto) => {
-                    const url = 'https://dosxdos.app.iidos.com/apirest/lineas.php?ruta=' + objeto.cod;
+                    const url = 'http://localhost/dosxdos_app/apirest/lineas.php?ruta=' + objeto.cod;
                     const res = await fetch(url);
 
                     if (!res.ok) {
@@ -1198,7 +1198,7 @@
                 if (lineas) {
                     const mensaje = 'Se ha sincronizado la base de datos exitosamente';
                     localStorage.setItem('mensaje', mensaje);
-                    window.location.href = "https://dosxdos.app.iidos.com/ruta_montador.html";
+                    window.location.href = "http://localhost/dosxdos_app/ruta_montador.html";
                 }
                 else {
                     alerta('Error al cargar las líneas de las rutas del servidor, se han sincronizado las rutas pero no las líneas')
@@ -1208,7 +1208,7 @@
         } catch (error) {
             const mensaje = 'No se ha sincronizado la base de datos: ' + error.message;
             localStorage.setItem('mensaje', mensaje);
-            window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+            window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
         }
     }
 
@@ -1289,14 +1289,14 @@
         try {
             const login = await vLogin();
             if (!login) {
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             }
             else {
                 const Arrayusuario = await leerDatos('dosxdos', 'usuario');
                 usuario = Arrayusuario[0];
                 let loginMontador = localStorage.getItem('loginMontador');
                 if (!loginMontador || loginMontador === null) {
-                    window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?id=" + usuario.id + "&rol=" + usuario.clase;
+                    window.location.href = "http://localhost/dosxdos_app/dosxdos.php?id=" + usuario.id + "&rol=" + usuario.clase;
                 }
                 montador = usuario.cod;
                 $nombreUsuario.innerHTML = usuario.nombre;
@@ -1354,7 +1354,7 @@
                             localStorage.setItem('ot', otStorage);
                             localStorage.setItem('cliente', clienteStorage);
                             localStorage.setItem('nombreCliente', nombreClienteStorage);
-                            window.location.href = "https://dosxdos.app.iidos.com/linea_montador.html";
+                            window.location.href = "http://localhost/dosxdos_app/linea_montador.html";
                         });
                         fragmento.appendChild(button);
                     });
@@ -1363,7 +1363,7 @@
                     const editarUsuario = document.getElementById('editarUsuario');
                     editarUsuario.addEventListener('click', e => {
                         if (navigator.onLine) {
-                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                            window.location.href = "http://localhost/dosxdos_app/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
                         } else {
                             mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
                             alerta(mensaje);
@@ -1378,7 +1378,7 @@
                     const editarUsuario = document.getElementById('editarUsuario');
                     editarUsuario.addEventListener('click', e => {
                         if (navigator.onLine) {
-                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                            window.location.href = "http://localhost/dosxdos_app/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
                         } else {
                             mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
                             alerta(mensaje);
@@ -1402,7 +1402,7 @@
         try {
             const login = await vLogin();
             if (!login) {
-                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                window.location.href = "http://localhost/dosxdos_app/index.html";
             }
             else {
                 const Arrayusuario = await leerDatos('dosxdos', 'usuario');
@@ -1454,7 +1454,7 @@
                             localStorage.setItem('linea', lineaStorage);
                             localStorage.setItem('lineaActividad', LineaActividadStorage);
                             localStorage.setItem('ot', otStorage);
-                            window.location.href = "https://dosxdos.app.iidos.com/linea_montador.html";
+                            window.location.href = "http://localhost/dosxdos_app/linea_montador.html";
                         });
                         fragmento.appendChild(button);
                     });
@@ -1463,7 +1463,7 @@
                     const editarUsuario = document.getElementById('editarUsuario');
                     editarUsuario.addEventListener('click', e => {
                         if (navigator.onLine) {
-                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                            window.location.href = "http://localhost/dosxdos_app/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
                         } else {
                             mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
                             alerta(mensaje);
@@ -1477,7 +1477,7 @@
                     const editarUsuario = document.getElementById('editarUsuario');
                     editarUsuario.addEventListener('click', e => {
                         if (navigator.onLine) {
-                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                            window.location.href = "http://localhost/dosxdos_app/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
                         } else {
                             mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
                             alerta(mensaje);
@@ -1520,12 +1520,12 @@
     })
 
     $botonRutas.addEventListener('click', () => {
-        window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+        window.location.href = "http://localhost/dosxdos_app/rutas_montador.html";
     })
 
     const lineasIcono = document.getElementById('lineasIcono');
     lineasIcono.addEventListener('click', () => {
-        window.location.href = "https://dosxdos.app.iidos.com/ruta_montador.html";
+        window.location.href = "http://localhost/dosxdos_app/ruta_montador.html";
     })
 
 
@@ -1566,7 +1566,7 @@
     function actualizarLinea(json) {
         return new Promise((resolve, reject) => {
             console.log(json);
-            fetch("https://dosxdos.app.iidos.com/apirest/lineas.php",
+            fetch("http://localhost/dosxdos_app/apirest/lineas.php",
                 {
                     method: "PUT",
                     headers: {
@@ -1592,7 +1592,7 @@
 
     function subirFotos(json) {
         return new Promise((resolve, reject) => {
-            fetch("https://dosxdos.app.iidos.com/apirest/fotos.php",
+            fetch("http://localhost/dosxdos_app/apirest/fotos.php",
                 {
                     method: "POST",
                     headers: {
@@ -1623,7 +1623,7 @@
 
     function subirFirmas(json) {
         return new Promise((resolve, reject) => {
-            fetch("https://dosxdos.app.iidos.com/apirest/firmas.php",
+            fetch("http://localhost/dosxdos_app/apirest/firmas.php",
                 {
                     method: "POST",
                     headers: {
@@ -1654,7 +1654,7 @@
 
     function subirNota(json) {
         return new Promise((resolve, reject) => {
-            fetch("https://dosxdos.app.iidos.com/apirest/notas.php",
+            fetch("http://localhost/dosxdos_app/apirest/notas.php",
                 {
                     method: "POST",
                     headers: {
@@ -1905,7 +1905,7 @@
         }
         let login = localStorage.getItem('login');
         if (!login || login === null) {
-            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            window.location.href = "http://localhost/dosxdos_app/index.html";
         }
     })
 

@@ -787,7 +787,7 @@ class Clientes extends Conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/fotos/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];
@@ -877,7 +877,7 @@ class Clientes extends Conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/firmas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/firmas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];
@@ -967,7 +967,7 @@ class Clientes extends Conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];
@@ -1055,7 +1055,7 @@ class Clientes extends Conexion
                             $foto = [];
                             $foto['id'] = $row['id'];
                             $foto['nombre'] = $row['nombre'];
-                            $foto['link'] = 'https://dosxdos.app.iidos.com/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
+                            $foto['link'] = 'http://localhost/dosxdos_app/carpetas/' . $row['ano'] . '/' . $row['ot'] . '/' . $row['nombre'];
                             $foto['nombre'] = $row['nombre'];
                             $foto['ruta'] = $row['ruta'];
                             $foto['linea'] = $row['linea'];
