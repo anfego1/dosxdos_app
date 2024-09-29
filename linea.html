@@ -1,0 +1,3121 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LÍNEA</title>
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <style>
+        @charset "UTF-8";
+
+        /* $variables - 40% */
+        :root {
+            --x1_7: 0.41vw;
+            --x60: 14.56vw;
+            --x10: 2.43vw;
+            --x300: 72.82vw;
+            --x15: 3.64vw;
+            --x5: 1.21vw;
+            --x70: 16.99vw;
+            --x25: 6.07vw;
+            --x3: 0.73vw;
+            --x1: 0.24vw;
+            --x20: 4.85vw;
+            --x250: 60.68vw;
+            --x30: 7.28vw;
+            --x22: 5.34vw;
+            --x28: 6.8vw;
+            --x1_5: 0.36vw;
+            --x2: 0.49vw;
+            --x18: 4.37vw;
+            --x2_5: 0.61vw;
+            --x220: 53.4vw;
+            --x50: 12.14vw;
+            --x380: 92.23vw;
+            --x150: 36.41vw;
+        }
+
+        /* INICIO */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            letter-spacing: var(--x1_7);
+        }
+
+        .displayOff {
+            display: none;
+        }
+
+        .displayOn {
+            display: flex;
+        }
+
+        .borde {
+            border: var(--x1) solid black;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .oyh {
+            overflow-y: hidden;
+        }
+
+        /* FUENTES */
+        @font-face {
+            font-family: 'Roboto';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Roboto/Roboto-Light.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Merriweather';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Light.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Merriweather-Bold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Bold.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora-Medium';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Medium.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora-Bold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Bold.ttf") format("truetype");
+        }
+
+        /* LOADER */
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            z-index: 2000;
+            background-color: rgba(0, 0, 0, 0.886);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            transform: rotateZ(45deg);
+            perspective: 1000px;
+            border-radius: 50%;
+            width: var(--x60);
+            height: var(--x60);
+            color: #fff;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            transform: rotateX(70deg);
+            animation: 1s spin linear infinite;
+        }
+
+        .loader:after {
+            color: #b20b15;
+            transform: rotateY(70deg);
+            animation-delay: .4s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(360deg);
+            }
+        }
+
+        @keyframes rotateccw {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        @keyframes spin {
+
+            0%,
+            100% {
+                box-shadow: .2em 0px 0 0px currentcolor;
+            }
+
+            12% {
+                box-shadow: .2em .2em 0 0 currentcolor;
+            }
+
+            25% {
+                box-shadow: 0 .2em 0 0px currentcolor;
+            }
+
+            37% {
+                box-shadow: -.2em .2em 0 0 currentcolor;
+            }
+
+            50% {
+                box-shadow: -.2em 0 0 0 currentcolor;
+            }
+
+            62% {
+                box-shadow: -.2em -.2em 0 0 currentcolor;
+            }
+
+            75% {
+                box-shadow: 0px -.2em 0 0 currentcolor;
+            }
+
+            87% {
+                box-shadow: .2em -.2em 0 0 currentcolor;
+            }
+        }
+
+        /* NAVEGACIÓN */
+        #encabezado {
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        #logo {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: var(--x10);
+        }
+
+        #logo>img {
+            width: var(--x300);
+        }
+
+        #menu {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: var(--x10);
+            justify-content: space-between;
+            margin-top: var(--x10);
+        }
+
+        #usuario {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #usuario:hover {
+            cursor: pointer;
+        }
+
+        #iconoUsuario {
+            display: flex;
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 50%;
+        }
+
+        #iconoUsuario>img {
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 50%;
+        }
+
+        #nombreUsuario {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--x25);
+            margin-left: var(--x5);
+            font-family: "Merriweather-Bold", "Merriweather-Bold";
+        }
+
+        #flechaUsuario {
+            display: flex;
+            width: var(--x25);
+            height: var(--x25);
+            margin-left: var(--x3);
+        }
+
+        #flechaUsuario>img {
+            width: var(--x25);
+            height: var(--x25);
+        }
+
+        .botonIcono {
+            border: var(--x1) solid gray;
+            display: flex;
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 20%;
+            background-color: #d31216;
+        }
+
+        .botonIcono:hover {
+            cursor: pointer;
+        }
+
+        .botonIcono:active {
+            background-color: #b20b15;
+        }
+
+        .botonIcono>img {
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 20%;
+            padding: var(--x10);
+        }
+
+        #opcionesMenu {
+            width: 100%;
+            padding: var(--x15);
+            justify-content: space-evenly;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        #opcionesMenu2 {
+            width: 100%;
+            padding: var(--x15);
+            justify-content: space-evenly;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        .opcionMenu {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .opcionMenu p {
+            display: flex;
+            width: var(--x150);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            font-size: var(--x20);
+            font-family: "Merriweather-Bold", "Merriweather-Bold";
+        }
+
+        #opcionesUsuario {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--x15);
+        }
+
+        .boton {
+            width: var(--x250);
+            border-radius: var(--x30);
+            font-family: 'Merriweather-Bold', 'Merriweather-Bold';
+            font-size: var(--x22);
+            height: var(--x60);
+            padding: var(--x10);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+        }
+
+        .boton2 {
+            width: var(--x250);
+            border-radius: var(--x30);
+            font-family: 'Merriweather-Bold', 'Merriweather-Bold';
+            font-size: var(--x22);
+            height: var(--x60);
+            padding: var(--x10);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+            margin-top: var(--x15);
+        }
+
+        .boton:hover {
+            cursor: pointer;
+        }
+
+        .boton:active {
+            background-color: #b20b15;
+        }
+
+        .boton2:hover {
+            cursor: pointer;
+        }
+
+        .boton2:active {
+            background-color: #b20b15;
+        }
+
+        .titulo {
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            width: 100%;
+            font-size: var(--x28);
+            padding: var(--x5);
+            text-align: center;
+            margin-top: var(--x20);
+            position: relative;
+        }
+
+        .tituloFijo {
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            width: 100%;
+            font-size: var(--x28);
+            padding: var(--x5);
+            text-align: center;
+            position: fixed;
+            top: 0;
+            margin-top: 0;
+            z-index: 10000;
+            background-color: #f4f4f4;
+        }
+
+        #mensaje {
+            position: relative;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x18);
+            letter-spacing: var(--x2_5);
+            background-color: rgba(0, 0, 0, 0.573);
+            color: white;
+            padding: var(--x10);
+            font-family: 'Roboto', 'Roboto-Light';
+            width: 100%;
+            justify-content: center;
+        }
+
+        #mensaje>p {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: var(--x20);
+            margin-bottom: var(--x20);
+        }
+
+        #imgCerrar {
+            position: absolute;
+            width: var(--x28);
+            top: var(--x2);
+            right: var(--x2);
+        }
+
+        #imgCerrar:hover {
+            cursor: pointer;
+        }
+
+        #contenido {
+            width: 100%;
+            flex-direction: column;
+            padding: var(--x15);
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        .ruta {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .ruta:hover {
+            cursor: pointer;
+        }
+
+        .ruta:active {
+            background-color: #b20b15;
+        }
+
+        .ruta2 {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: black;
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .ruta2:hover {
+            cursor: pointer;
+        }
+
+        .ruta2:active {
+            background-color: #b20b15;
+        }
+
+        .resaltado {
+            background-color: rgba(0, 0, 0, 0.573);
+        }
+
+        #opcionesMenu2 {
+            width: 100%;
+            padding: var(--x15);
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        /* LINEA_MONTADOR */
+        #datosBoton {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x20);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        #datosBoton:hover {
+            cursor: pointer;
+        }
+
+        #datosBoton:active {
+            background-color: black;
+        }
+
+        #cajaCanvasFirma {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        #borrarFirma {
+            margin-top: var(--x60);
+            margin-bottom: var(--x20);
+        }
+
+        .bDark {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .bDark:hover {
+            cursor: pointer;
+        }
+
+        .bDark:active {
+            background-color: black;
+        }
+
+        #fotos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x20);
+            padding: var(--x15);
+            margin-top: var(--x30);
+            margin-bottom: var(--x20);
+        }
+
+        #fotos:hover {
+            cursor: pointer;
+        }
+
+        #fotos:active {
+            background-color: black;
+        }
+
+        #datosLinea {
+            width: 100%;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: var(--x20);
+            padding-bottom: var(--x30);
+            border: var(--x1) solid black;
+        }
+
+        .tituloDatos {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+            font-weight: normal;
+        }
+
+        .pDatos {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x20);
+            color: #d31216;
+        }
+
+        label {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+        }
+
+        input {
+            display: flex;
+            width: var(--x220);
+            height: var(--x50);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        input:focus {
+            outline-color: #b20b15;
+        }
+
+        #fotosGaleria {
+            font-size: var(--x28);
+            width: var(--x380);
+            height: var(--x60);
+            padding: 0;
+            border: none;
+        }
+
+        #fotosGaleria:hover {
+            cursor: pointer;
+        }
+
+        select {
+            display: flex;
+            width: var(--x300);
+            height: var(--x50);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        select:focus {
+            outline-color: #b20b15;
+        }
+
+        textarea {
+            width: var(--x380);
+            height: var(--x150);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        #appNotas {
+            width: var(--x380);
+            height: 400px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        textarea:focus {
+            outline-color: #b20b15;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cajaEstado {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cajaForm {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #listaCamaras {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--x20);
+        }
+
+        #camara {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        #video {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video:active {
+            background-color: rgba(0, 0, 0, 0.573);
+        }
+
+        #imgCerrarCamara {
+            position: absolute;
+            width: var(--x30);
+            top: var(--x10);
+            right: var(--x10);
+            z-index: 2000;
+        }
+
+        #imgCerrarFirma {
+            position: absolute;
+            width: var(--x30);
+            top: var(--x10);
+            right: var(--x10);
+            z-index: 2000;
+        }
+
+        #imgCerrarCamara:hover {
+            cursor: pointer;
+        }
+
+        #imgCerrarFirma:hover {
+            cursor: pointer;
+        }
+
+        #photosContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #firmasContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #firmar {
+            margin-top: var(--x30);
+        }
+
+        .cajaFoto {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cajaFirma {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #photosContainer>img {
+            width: 90%;
+            margin-top: var(--x10);
+        }
+
+        .imgCamara {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .imgFirma {
+            max-width: 100%;
+            height: auto;
+            background-color: white;
+            border: var(--x1) solid black;
+        }
+
+        #tituloFirma {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+            font-weight: normal;
+            margin-bottom: var(--x10);
+        }
+
+        #enviar {
+            margin-top: var(--x60);
+        }
+
+        /* MOVILES GRANDES */
+        @media screen and (min-width: 412px) and (max-width: 767px) {
+            :root {
+                --x1_7: 1.7px;
+                --x60: 60px;
+                --x10: 10px;
+                --x300: 300px;
+                --x15: 15px;
+                --x5: 5px;
+                --x70: 70px;
+                --x25: 25px;
+                --x3: 3px;
+                --x1: 1px;
+                --x20: 20px;
+                --x250: 250px;
+                --x30: 30px;
+                --x22: 22px;
+                --x28: 28px;
+                --x1_5: 1.5px;
+                --x2: 2px;
+                --x18: 18px;
+                --x2_5: 2.5px;
+                --x220: 220px;
+                --x50: 50px;
+                --x380: 380px;
+                --x150: 150px;
+            }
+        }
+
+        /* TABLETS */
+        @media screen and (min-width: 768px) and (max-width: 1199px) {
+            :root {
+                --x1_7: 0.09vw;
+                --x60: 3vw;
+                --x10: 0.5vw;
+                --x300: 15vw;
+                --x15: 0.75vw;
+                --x5: 0.25vw;
+                --x70: 3.5vw;
+                --x25: 1.25vw;
+                --x3: 0.15vw;
+                --x1: 0.05vw;
+                --x20: 1vw;
+                --x250: 12.5vw;
+                --x30: 1.5vw;
+                --x22: 1.1vw;
+                --x28: 1.4vw;
+                --x1_5: 0.08vw;
+                --x2: 0.1vw;
+                --x18: 0.9vw;
+                --x2_5: 0.13vw;
+                --x220: 11vw;
+                --x50: 2.5vw;
+                --x380: 19vw;
+                --x150: 7.5vw;
+            }
+
+            #menu {
+                justify-content: space-evenly;
+            }
+
+            .imgCamara {
+                max-width: 80%;
+            }
+
+            .imgFirma {
+                max-width: 80%;
+            }
+        }
+
+        /* ESCRITORIOS */
+        @media screen and (min-width: 1200px) {
+            :root {
+                --x1_7: 1.02px;
+                --x60: 36px;
+                --x10: 6px;
+                --x300: 180px;
+                --x15: 9px;
+                --x5: 3px;
+                --x70: 42px;
+                --x25: 15px;
+                --x3: 1.8px;
+                --x1: 0.6px;
+                --x20: 12px;
+                --x250: 150px;
+                --x30: 18px;
+                --x22: 13.2px;
+                --x28: 16.8px;
+                --x1_5: 0.9px;
+                --x2: 1.2px;
+                --x18: 10.8px;
+                --x2_5: 1.5px;
+                --x220: 132px;
+                --x50: 30px;
+                --x380: 228px;
+                --x150: 90px;
+            }
+
+            #menu {
+                justify-content: space-evenly;
+            }
+
+            .imgCamara {
+                max-width: 70%;
+            }
+
+            .imgFirma {
+                max-width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body id="body" class="">
+
+    <div id="loader" class="displayOn">
+        <span class="loader"></span>
+    </div>
+
+    <div id="camara" class="displayOff">
+        <img src="https://dosxdos.app.iidos.com/img/cerrar.png" id="imgCerrarCamara">
+        <video id="video" autoplay></video>
+    </div>
+
+    <div id="cajaCanvasFirma" class="displayOff">
+        <canvas id="canvasFirma" style="border: 1px solid black; background-color: white;"></canvas>
+        <img src="https://dosxdos.app.iidos.com/img/cerrar.png" id="imgCerrarFirma">
+        <button type="button" onclick="clearcanvasFirma()" class="bDark" id="borrarFirma">Borrar firma</button>
+        <button type="button" onclick="saveSignature()" class="ruta" id="guardarFirma">Guardar Firma</button>
+    </div>
+
+
+    <section id="encabezado" class="displayOn">
+
+        <div id="logo">
+            <img src="https://dosxdos.app.iidos.com/img/logo300.png">
+        </div>
+
+        <nav id="menu">
+
+            <div id="usuario">
+                <div id="iconoUsuario">
+                    <img src="https://dosxdos.app.iidos.com/img/usuario.png" id="imagenUsuario">
+                </div>
+                <p id="nombreUsuario"></p>
+                <div id="flechaUsuario">
+                    <img src="https://dosxdos.app.iidos.com/img/flechaAbajo.png">
+                </div>
+            </div>
+
+            <button id="casa" class="botonIcono">
+                <img src="https://dosxdos.app.iidos.com/img/casaWhite.png">
+            </button>
+
+        </nav>
+
+        <nav id="opcionesMenu" class="displayOff">
+
+            <div class="opcionMenu displayOff" id="horarios">
+                <button class="botonIcono" type="button" id="horariosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/relojWhite.png">
+                </button>
+                <p>Horarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="archivos">
+                <button class="botonIcono" type="button" id="archivosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/work.png">
+                </button>
+                <p>OT</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="icLineasOt">
+                <button class="botonIcono" type="button" id="icLineasOtBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas OT</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="pv">
+                <button class="botonIcono" type="button" id="pvBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/tienda.png">
+                </button>
+                <p>PV</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="rutasIcono">
+                <button class="botonIcono" type="button" id="rutasIconoBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/rutasWhite.png">
+                </button>
+                <p>Rutas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="lineasIcono">
+                <button class="botonIcono" type="button" id="lineasIconoBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas Ruta</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="usuarios">
+                <button class="botonIcono" type="button" id="usuariosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/usuarios.png">
+                </button>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="usuariosOficina">
+                <button class="botonIcono" type="button" id="usuariosOficinaBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/usuarios.png">
+                </button>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="rutasMontador">
+                <button class="botonIcono" type="button" id="rutasMontadorBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/rutasWhite.png">
+                </button>
+                <p>Rutas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="lineasMontador">
+                <button class="botonIcono" type="button" id="lineasMontadorBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="dm">
+                <button class="botonIcono" type="button" id="dmBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/dm.png">
+                </button>
+                <p>DM</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="reciclar">
+                <button class="botonIcono" type="button" id="reciclarBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/papelera.png">
+                </button>
+                <p>Reciclar</p>
+            </div>
+
+        </nav>
+
+        <nav id="opcionesUsuario" class="displayOff">
+
+            <button type="button" id="editarUsuario" class="boton">Editar usuario</button>
+            <button type="button" id="cerrarSesion" class="boton2">Cerrar sesión</button>
+
+        </nav>
+
+        <div id="mensaje" class="displayOff">
+            <p id="textoMensaje"></p><img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+        </div>
+
+        <div id="tituloVisible"></div>
+
+        <h1 id="titulo" class="displayOn titulo"></h1>
+
+    </section>
+
+
+    <section id="contenido" class="displayOn">
+
+        <nav id="opcionesMenu2" class="displayOn">
+
+            <div class="opcionMenu displayOn" id="volver">
+                <button class="botonIcono" type="button" id="volverBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/back.png">
+                </button>
+                <p>Volver</p>
+            </div>
+
+        </nav>
+
+        <button id="datosBoton" type="button">DATOS DE LA LÍNEA</button>
+        <div id="datosLinea" class="displayOff">
+            <h2 class="tituloDatos">CLIENTE:</h2>
+            <p id="cliente" class="pDatos"></p>
+            <h2 class="tituloDatos">OT:</h2>
+            <p id="ot" class="pDatos"></p>
+            <h2 class="tituloDatos">TIPO DE OT:</h2>
+            <p id="tipoOt" class="pDatos"></p>
+            <h2 class="tituloDatos">DESCRIPCIÓN OT:</h2>
+            <p id="descripcionOt" class="pDatos"></p>
+            <h2 class="tituloDatos">LÍNEA:</h2>
+            <p id="lineaOt" class="pDatos"></p>
+            <h2 class="tituloDatos">PUNTO DE VENTA:</h2>
+            <p id="puntoDeVenta" class="pDatos"></p>
+            <p id="puntoDeVenta2" class="pDatos"></p>
+            <h2 class="tituloDatos">ZONA:</h2>
+            <p id="zona" class="pDatos"></p>
+            <h2 class="tituloDatos">SECTOR:</h2>
+            <p id="sector" class="pDatos"></p>
+            <h2 class="tituloDatos">DIRECCIÓN:</h2>
+            <p id="direccion" class="pDatos"></p>
+            <h2 class="tituloDatos">TIPO DE TRABAJO:</h2>
+            <p id="tipoDeTrabajo" class="pDatos"></p>
+            <p id="tipoDeTrabajo2" class="pDatos"></p>
+            <h2 class="tituloDatos">OBSERVACIONES:</h2>
+            <p id="observaciones" class="pDatos"></p>
+            <h2 class="tituloDatos">PONER:</h2>
+            <p id="poner" class="pDatos"></p>
+            <h2 class="tituloDatos">QUITAR:</h2>
+            <p id="quitar" class="pDatos"></p>
+            <h2 class="tituloDatos">ALTO:</h2>
+            <p id="alto" class="pDatos"></p>
+            <h2 class="tituloDatos">ANCHO:</h2>
+            <p id="ancho" class="pDatos"></p>
+            <h2 class="tituloDatos">FIRMA:</h2>
+            <p id="firmaDatos" class="pDatos"></p>
+            <h2 class="tituloDatos">REVISADO:</h2>
+            <p id="revisado" class="pDatos"></p>
+
+
+        </div>
+
+        <form action="linea.html" method="post" enctype="multipart/form-data" id="formLinea" novalidate>
+            <div id="cajaEstado">
+                <label for="estado">ESTADO:</label>
+                <select name="estado" id="estado" class="" required>
+                    <option value="Pendiente">Pendiente</option>
+                    <option value="Realizado">Realizado</option>
+                </select>
+            </div>
+
+            <div id="cajaForm" class="displayOn">
+
+                <label for="incidencia">INCIDENCIA:</label>
+                <select name="incidencia" id="incidencia" required>
+                    <option value="" selected>Ninguna</option>
+                    <option value="01">01 - Mal de medidas</option>
+                    <option value="02">02 - No tiene espacio</option>
+                    <option value="03">03 - Punto de venta cerrado</option>
+                    <option value="04">04 - Otros</option>
+                    <option value="05">05 - Error de material</option>
+                    <option value="06">06 - Falta material</option>
+                </select>
+
+                <label for="fecha">FECHA DE ACTUACIÓN:</label>
+                <input type="date" id="fecha" name="fecha" required>
+
+                <label for="dias">DÍAS DE ACTUACIÓN:</label>
+                <input type="number" id="dias" name="dias" min="0" required>
+
+                <label for="horas">HORAS DE ACTUACIÓN:</label>
+                <input type="number" id="horas" name="horas" min="0" required>
+
+                <label for="horas">MINUTOS DE ACTUACIÓN:</label>
+                <input type="number" id="minutos" name="minutos" min="0" required>
+
+                <label for="observacionesTecnico">OBSERVACIONES:</label>
+                <textarea id="observacionesTecnico" name="observacionesTecnico" rows="5" cols="40"></textarea>
+
+                <label for="appNotas">APP NOTAS:</label>
+                <textarea id="appNotas" name="appNotas" rows="5" cols="40"></textarea>
+
+                <button type="button" class="displayOn" id="fotos">SUBIR FOTOS Y VÍDEOS</button>
+                <div id="listaCamaras" class="displayOff"></div>
+
+                <input type="file" name="fotosGaleria[]" id="fotosGaleria" class="displayOff" multiple>
+
+                <div id="photosContainer"></div>
+
+                <button type="button" class="displayOn bDark" id="firmar">SUBIR FIRMAS</button>
+
+                <div id="firmasContainer"></div>
+
+                <button type="submit" id="enviar" class="ruta">GUARDAR TODO</button>
+                <button type="button" id="cancelar" class="ruta">CANCELAR</button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</body>
+
+<script>
+
+    let lineaObj;
+    const tituloElement = document.getElementById('titulo');
+    const tituloVisible = document.getElementById('tituloVisible');
+
+    /* COMPORTAMIENTO DEL TÍTULO */
+    function checkVisibility() {
+        const tituloVisiblePosition = tituloVisible.getBoundingClientRect();
+        const isVisible = tituloVisiblePosition.top > 0;
+        const tieneClaseTitulo = tituloElement.classList.contains('tituloFijo');
+        if (isVisible && tieneClaseTitulo) {
+            tituloElement.classList.remove('tituloFijo');
+            tituloElement.classList.add('titulo');
+        } else if (!isVisible && !tieneClaseTitulo) {
+            tituloElement.classList.remove('titulo');
+            tituloElement.classList.add('tituloFijo');
+        }
+    }
+    const anchoWin = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (anchoWin > 1200) {
+        // Llama a checkVisibility al cargar la página y al cambiar el tamaño de la ventana
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('resize', checkVisibility);
+        // Llama a checkVisibility al hacer scroll, utilizando requestAnimationFrame
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(checkVisibility);
+        });
+    }
+
+    /* LISTENERS */
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const casaButton = document.getElementById('casa');
+        casaButton.addEventListener('click', () => {
+            toggleElemento('opcionesMenu');
+        });
+
+        const usuarioButton = document.getElementById('usuario');
+        usuarioButton.addEventListener('click', () => {
+            toggleElemento('opcionesUsuario');
+        });
+
+        const rutasIconoBoton = document.getElementById('rutasIconoBoton');
+        rutasIconoBoton.addEventListener('click', () => {
+            redirectToRutas();
+        });
+
+        const cerrarSesion = document.getElementById('cerrarSesion');
+        cerrarSesion.addEventListener('click', () => {
+            cerrarSesions();
+        });
+
+        const datosBoton = document.getElementById('datosBoton');
+        datosBoton.addEventListener('click', () => {
+            toggleElemento('datosLinea');
+        });
+
+        const fotos = document.getElementById('fotos');
+        fotos.addEventListener('click', () => {
+            toggleElemento('listaCamaras');
+            toggleElemento('fotosGaleria');
+        });
+
+        const video = document.getElementById('video');
+        video.addEventListener('click', () => {
+            capturePhoto(video);
+        });
+
+        const cerrarCamara = document.getElementById('imgCerrarCamara');
+        cerrarCamara.addEventListener('click', () => {
+            toggleElemento('camara');
+            toggleElemento('encabezado');
+            toggleElemento('contenido');
+            fotos.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        const imgCerrar = document.getElementById('imgCerrar');
+        imgCerrar.addEventListener('click', () => {
+            mensajeOff();
+        });
+
+        const estado = document.getElementById('estado');
+        const cajaForm = document.getElementById('cajaForm');
+
+        navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                const cameraList = document.getElementById('listaCamaras');
+
+                videoDevices.forEach(device => {
+                    const button = document.createElement('button');
+                    button.textContent = device.label || `Cámara ${cameraList.childNodes.length + 1}`;
+                    button.type = 'button';
+                    button.className = 'ruta';
+                    button.addEventListener('click', () => startCamera(device.deviceId));
+                    cameraList.appendChild(button);
+                });
+            })
+            .catch(err => console.error('Error al enumerar dispositivos:', err));
+
+        const canvasFirma = document.getElementById('canvasFirma');
+        const anchoVentana = window.innerWidth;
+        if (anchoVentana >= 400) {
+            canvasFirma.width = 400;
+            canvasFirma.height = 250;
+        }
+        else {
+            canvasFirma.width = anchoVentana - 20;
+            canvasFirma.height = 250;
+        }
+        window.addEventListener('resize', () => {
+            const anchoVentana = window.innerWidth;
+            if (anchoVentana >= 412) {
+                canvasFirma.width = 400;
+                canvasFirma.height = 250;
+            }
+            else {
+                canvasFirma.width = anchoVentana - 20;
+                canvasFirma.height = 250;
+            }
+        });
+        canvasFirma.addEventListener('mousedown', startPosition);
+        canvasFirma.addEventListener('mouseup', endPosition);
+        canvasFirma.addEventListener('mousemove', draw);
+        canvasFirma.addEventListener('touchstart', startPosition);
+        canvasFirma.addEventListener('touchend', endPosition);
+        canvasFirma.addEventListener('touchmove', draw);
+
+        const firmar = document.getElementById('firmar');
+        firmar.addEventListener('click', () => {
+            toggleElemento('encabezado');
+            toggleElemento('contenido');
+            toggleElemento('cajaCanvasFirma');
+        });
+
+        const cerrarFirma = document.getElementById('imgCerrarFirma');
+        cerrarFirma.addEventListener('click', () => {
+            toggleElemento('cajaCanvasFirma');
+            toggleElemento('encabezado');
+            toggleElemento('contenido');
+        });
+
+        const fileInput = document.getElementById('fotosGaleria');
+        fileInput.addEventListener('change', (e) => {
+            handleFileUpload(e);
+            fotos.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        const cancelar = document.getElementById('cancelar');
+        cancelar.addEventListener('click', e => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas.html";
+        })
+
+        const lineasIcono = document.getElementById('lineasIcono');
+        lineasIcono.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas.html";
+        })
+
+        //SUBMIT
+        const formulario = document.getElementById('formLinea');
+        formulario.addEventListener('submit', (e) => {
+            //console.log('entra al evento submit');
+            e.preventDefault();
+            loaderOn();
+            let aviso = '',
+                caracteres = true,
+                fecha,
+                validarFecha,
+                vJsonFirmas = true,
+                vJsonFotos = true;
+            const estado = document.getElementById('estado').value;
+            //console.log(estado);
+            const incidencia = document.getElementById('incidencia').value;
+            //console.log(incidencia);
+            //console.log(fecha);
+            const dias = document.getElementById('dias').value;
+            //console.log(dias);
+            const horas = document.getElementById('horas').value;
+            //console.log(horas);
+            const minutos = document.getElementById('minutos').value;
+            //console.log(minutos);
+            let observaciones = document.getElementById('observacionesTecnico').value;
+            //observaciones = escaparHTML(observaciones);
+
+            //console.log(observaciones);
+            const numeroFotos = Object.keys(photos).length;
+            //console.log(numeroFotos);
+            const numeroFirmas = Object.keys(firmas).length;
+            //console.log(numeroFirmas);
+            const caracteresObs = observaciones.length;
+
+            if (estado == 'Pendiente') {
+                fecha = '';
+                validarFecha = true;
+            }
+            else {
+                fecha = document.getElementById('fecha').value;
+                if (fecha) {
+                    validarFecha = true;
+                } else {
+                    validarFecha = false;
+                    aviso += 'Es necesario ingresar la fecha de actuación'
+                }
+            }
+
+            if (caracteresObs > 250) {
+                aviso += 'El campo de observaciones sólo permite un máximo de 250 caracteres'
+                caracteres = false;
+            }
+
+            let vNota;
+            const nota = $nota.value;
+            if (nota) {
+                vNota = true;
+            } else {
+                vNota = false;
+            }
+            const notaObj = {};
+            notaObj.ot = ot;
+            notaObj.linea = lineaActividad;
+            notaObj.nota = nota;
+            const notaJson = JSON.stringify(notaObj);
+
+            if (!caracteres || !validarFecha) {
+                alerta(aviso);
+                aviso = '';
+                loaderOff();
+            }
+            else {
+
+                const bodyNavision = {
+                    CodigoRuta: ruta,
+                    LineaRuta: linea,
+                    DescripcionIncidencia: '',
+                    DiasActuacion: dias,
+                    Estado: estado,
+                    FechaActuacion: fecha,
+                    FirmaCliente: `https://dosxdos.app.iidos.com/fotos_y_firmas.php?ruta=${ruta}&linea=${linea}&ot=${ot}&lineaActividad=${lineaActividad}`,
+                    FotosSubidas: numeroFotos,
+                    HorasActuacion: horas,
+                    Incidencia: incidencia,
+                    MinutosActuacion: minutos,
+                    ObservacionesTecnico: observaciones,
+                    LinkWeb: `https://dosxdos.app.iidos.com/fotos_y_firmas.php?ruta=${ruta}&linea=${linea}&ot=${ot}&lineaActividad=${lineaActividad}`
+                };
+
+                //console.log(bodyNavision);
+                const bodyNavisionJson = JSON.stringify(bodyNavision);
+                //console.log(bodyNavisionJson);
+
+                const valoresFotos = Object.values(photos);
+                const valoresFirmas = Object.values(firmas);
+
+                if (valoresFotos.length == 0) {
+                    vJsonFotos = false;
+                }
+
+                if (valoresFirmas.length == 0) {
+                    vJsonFirmas = false;
+                }
+
+                const totalFotos = {};
+                const totalFirmas = {};
+
+                totalFotos.ruta = ruta;
+                totalFotos.linea = linea;
+                totalFotos.ot = ot;
+                totalFotos.lineaActividad = lineaActividad;
+                totalFotos.fecha = fecha;
+                totalFotos.cliente = cliente;
+                totalFotos.nombreCliente = lineaObj.NombreCliente;
+                totalFotos.pv = lineaObj.PuntoVenta;
+                totalFotos.pvNombre = lineaObj.NombrePuntoVenta;
+                totalFotos.usuario = usuarioId;
+
+                totalFirmas.ruta = ruta;
+                totalFirmas.linea = linea;
+                totalFirmas.ot = ot;
+                totalFirmas.lineaActividad = lineaActividad;
+                totalFirmas.fecha = fecha;
+                totalFirmas.cliente = cliente;
+                totalFirmas.nombreCliente = lineaObj.NombreCliente;
+                totalFirmas.pv = lineaObj.PuntoVenta;
+                totalFirmas.pvNombre = lineaObj.NombrePuntoVenta;
+                totalFirmas.usuario = usuarioId;
+
+                totalFotos.fotos = [];
+                totalFotos.fotos = valoresFotos;
+                totalFirmas.firmas = [];
+                totalFirmas.firmas = valoresFirmas;
+
+                //console.log(totalFotos);
+                //console.log(totalFirmas);
+
+                const fotosJson = JSON.stringify(totalFotos);
+                const firmasJson = JSON.stringify(totalFirmas);
+
+                //console.log(fotosJson);
+                //console.log(firmasJson);
+
+                if (navigator.onLine) {
+                    procesarFormulario(bodyNavisionJson, vJsonFotos, fotosJson, vJsonFirmas, firmasJson, vNota, notaJson)
+                } else {
+                    procesarFormularioOff(bodyNavision, vJsonFotos, totalFotos, vJsonFirmas, totalFirmas, vNota, notaObj)
+                }
+            }
+        })
+
+        const rutasIcono = document.getElementById('rutasIcono');
+        rutasIcono.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/rutas.html";
+        });
+
+        const pvBoton = document.getElementById('pv');
+        pvBoton.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/pv.html";
+        });
+
+        lineasIcono.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas.html";
+        })
+
+        const usuarios = document.getElementById('usuarios');
+        usuarios.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios";
+        })
+
+        const horariosClick = document.getElementById('horarios');
+        horariosClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/horarios.html";
+        })
+
+        const icLineasOtClick = document.getElementById('icLineasOt');
+        icLineasOtClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas_ot.html";
+        })
+
+        const pvClick = document.getElementById('pv');
+        pvClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/pv.html";
+        })
+
+        const archivosClick = document.getElementById('archivos');
+        archivosClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+        })
+
+        const usuariosOficina = document.getElementById('usuariosOficina');
+        usuariosOficina.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/usuarios_oficina.html";
+        })
+
+        const rutasMontador = document.getElementById('rutasMontador');
+        rutasMontador.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+        })
+
+        const lineasMontador = document.getElementById('lineasMontador');
+        lineasMontador.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/ruta_montador.html";
+        })
+
+        const volver = document.getElementById('volver');
+        volver.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas.html";
+        })
+
+        $dm.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/dm.html";
+        })
+
+        $reciclar.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/reciclar.html";
+        })
+
+    });
+
+    function toggleElemento(elementId) {
+        const elemento = document.getElementById(elementId);
+        elemento.classList.toggle('displayOn');
+        elemento.classList.toggle('displayOff');
+    }
+
+    function redirectToRutas() {
+        window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+    }
+
+    /* CONSTANTES Y VARIABLES */
+
+    const $opcionesMenu = document.getElementById('opcionesMenu'),
+        $opcionesUsuario = document.getElementById('opcionesUsuario'),
+        $casa = document.getElementById('casa'),
+        $usuario = document.getElementById('usuario'),
+        $contenido = document.getElementById('contenido'),
+        $loader = document.getElementById('loader'),
+        $body = document.getElementById('body'),
+        $mensaje = document.getElementById('mensaje'),
+        $imgCerrar = document.getElementById('imgCerrar'),
+        $textoMensaje = document.getElementById('textoMensaje'),
+        $nombreUsuario = document.getElementById('nombreUsuario'),
+        $imagenUsuario = document.getElementById('imagenUsuario'),
+        $botonRutas = document.getElementById('rutasIconoBoton'),
+        $datosLinea = document.getElementById('datosLinea'),
+        $datos = document.getElementById('datos'),
+        photos = {},
+        firmas = {},
+        camara = document.getElementById('camara'),
+        video = document.getElementById('video'),
+        fotos = document.getElementById('fotos'),
+        photosContainer = document.getElementById('photosContainer'),
+        cerrarCamara = document.getElementById('imgCerrarCamara'),
+        encabezado = document.getElementById('encabezado'),
+        contenido = document.getElementById('contenido'),
+        estado = document.getElementById('estado'),
+        cajaForm = document.getElementById('cajaForm'),
+        $horarios = document.getElementById('horarios'),
+        $archivos = document.getElementById('archivos'),
+        $usuarios = document.getElementById('usuarios'),
+        $rutasIcono = document.getElementById('rutasIcono'),
+        $lineasIcono = document.getElementById('lineasIcono'),
+        $pv = document.getElementById('pv'),
+        $icLineasOt = document.getElementById('icLineasOt'),
+        $dm = document.getElementById('dm'),
+        $reciclar = document.getElementById('reciclar'),
+        $nota = document.getElementById('appNotas');
+    let montador,
+        rutas;
+
+    /*CAMARA*/
+
+    function listCameras() {
+        navigator.mediaDevices.enumerateDevices()
+            .then(devices => {
+                const videoDevices = devices.filter(device => device.kind === 'videoinput');
+                const cameraList = document.getElementById('listaCamaras');
+
+                videoDevices.forEach(device => {
+                    const button = document.createElement('button');
+                    button.textContent = device.label || `Cámara ${cameraList.childNodes.length + 1}`;
+                    button.type = 'button';
+                    button.className = 'ruta';
+                    button.addEventListener('click', () => startCamera(device.deviceId));
+                    cameraList.appendChild(button);
+                });
+            })
+            .catch(err => console.error('Error al enumerar dispositivos:', err));
+    }
+
+    function startCamera(device) {
+        const video = document.getElementById('video');
+        const camara = document.getElementById('camara');
+        const encabezado = document.getElementById('encabezado');
+        const contendio = document.getElementById('contenido');
+        const constraints = {
+            video: {
+                deviceId: device
+            }
+        };
+
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(stream => {
+                camara.classList.replace('displayOff', 'displayOn')
+                encabezado.classList.replace('displayOn', 'displayOff')
+                contendio.classList.replace('displayOn', 'displayOff')
+                video.srcObject = stream;
+            })
+            .catch(err => console.error('Error al acceder a la cámara seleccionada:', err));
+    }
+
+    function capturePhoto(video) {
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+
+        // Establecer el tamaño del canvas igual al tamaño del video
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        // Dibujar el fotograma actual del video en el canvas
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        // Obtener la imagen en base64 del canvas
+        const base64Image = canvas.toDataURL('image/png');
+
+        // Generar un identificador único para la imagen
+        const photoId = generateUniqueId();
+
+        // Almacenar la imagen en el objeto photos usando el ID como clave
+        photos[photoId] = base64Image;
+
+        // Puedes mostrar la imagen capturada si lo deseas
+        const imgElement = document.createElement('img');
+        imgElement.className = 'imgCamara';
+        imgElement.src = base64Image;
+        imgElement.id = photoId; // Usar el ID único como ID de la imagen
+
+        // Crear un botón para eliminar la foto
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'ruta2';
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.onclick = function () {
+            deletePhoto(photoId);
+        };
+
+        // Crear un contenedor para la imagen y el botón
+        const container = document.createElement('div');
+        container.className = 'cajaFoto';
+        container.appendChild(imgElement);
+        container.appendChild(deleteButton);
+
+        document.getElementById('photosContainer').appendChild(container);
+        //console.log(photos);
+    }
+
+    function deletePhoto(photoId) {
+        // Eliminar la imagen del objeto photos usando el ID
+        delete photos[photoId];
+
+        // Eliminar la imagen del DOM usando el ID
+        const imgElement = document.getElementById(photoId);
+        if (imgElement) {
+            imgElement.parentElement.remove(); // Remove the parent container (image + button)
+        }
+        //console.log(photos);
+    }
+
+    function generateUniqueId() {
+        // Implementa tu lógica para generar IDs únicos aquí
+        // Por ejemplo, podrías usar un timestamp único o un generador de UUID
+        // Devolver un ID único (en este caso, usaremos un timestamp)
+        return Date.now().toString();
+    }
+
+    function generarIdNumerico() {
+        const id = Math.floor(Math.random() * 77);
+        return id;
+    }
+
+    // Función para convertir un archivo a base64
+    function convertirABase64(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result.split(',')[1]);
+            reader.onerror = error => reject(error);
+            reader.readAsDataURL(file);
+        });
+    }
+
+    /* FOTOS DE GALERÍA */
+
+    // Función para manejar el evento de cambio en el input de tipo archivo
+    async function handleFileUpload(event) {
+        const files = event.target.files;
+        for (const file of files) {
+            const base64String = await convertirABase64(file);
+            const base64Image = `data:${file.type};base64,${base64String}`;
+            const id1 = generateUniqueId();
+            const id2 = generarIdNumerico();
+            const idUnico = id1 + id2;
+            photos[idUnico] = base64Image;
+            const imgElement = document.createElement('img');
+            imgElement.className = 'imgCamara';
+            imgElement.src = base64Image;
+            imgElement.id = idUnico;
+            // Crear un botón para eliminar la foto
+            const deleteButton = document.createElement('button');
+            deleteButton.className = 'ruta2';
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.onclick = function () {
+                deletePhoto(idUnico);
+            };
+            // Crear un contenedor para la imagen y el botón
+            const container = document.createElement('div');
+            container.className = 'cajaFoto';
+            container.appendChild(imgElement);
+            container.appendChild(deleteButton);
+            document.getElementById('photosContainer').appendChild(container);
+            //console.log(photos);
+        }
+    }
+
+    /* EVITAR REENVÍO DE FORMULARIOS */
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    function scrollToTop() {
+        // Para navegadores modernos
+        document.documentElement.scrollTop = 0;
+        // Para navegadores antiguos
+        document.body.scrollTop = 0;
+    }
+
+    /* LOADER */
+    function loaderOn() {
+        scrollToTop();
+        $loader.classList.remove('displayOff');
+        $loader.classList.add('displayOn');
+        $body.classList.add('oyh');
+    }
+
+    function loaderOff() {
+        setTimeout(() => {
+            $loader.classList.remove('displayOn');
+            $loader.classList.add('displayOff')
+            $body.classList.remove('oyh');
+        }, 1000)
+    }
+
+    /* MENSAJE */
+
+    function mensajeOn() {
+        $mensaje.classList.remove('displayOff');
+        $mensaje.classList.add('displayOn');
+    }
+
+    function mensajeOff() {
+        $mensaje.classList.remove('displayOn');
+        $mensaje.classList.add('displayOff');
+    }
+
+    function alerta(men) {
+        $textoMensaje.innerHTML = men;
+        mensajeOn();
+        loaderOff();
+    }
+
+    /* FIRMA */
+    const canvasFirma = document.getElementById('canvasFirma');
+    let anchoVentana = window.innerWidth;
+
+    const ctx = canvasFirma.getContext('2d');
+    let drawing = false;
+
+    function startPosition(e) {
+        drawing = true;
+        draw(e);
+    }
+
+    function endPosition() {
+        drawing = false;
+        ctx.beginPath();
+    }
+
+    function draw(e) {
+        if (!drawing) return;
+
+        const rect = canvasFirma.getBoundingClientRect();
+        let clientX, clientY;
+
+        if (e.type === 'mousemove') {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        } else if (e.type === 'touchmove') {
+            clientX = e.touches[0].clientX;
+            clientY = e.touches[0].clientY;
+        }
+
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
+
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#000';
+
+        ctx.lineTo(x, y);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
+
+    function clearcanvasFirma() {
+        const canvasFirma = document.getElementById('canvasFirma');
+        const ctx = canvasFirma.getContext('2d');
+        ctx.clearRect(0, 0, canvasFirma.width, canvasFirma.height);
+    }
+
+    function saveSignature() {
+        const canvasFirma = document.getElementById('canvasFirma');
+        const cajaCanvasFirma = document.getElementById('cajaCanvasFirma');
+        const encabezado = document.getElementById('encabezado');
+        const contenido = document.getElementById('contenido');
+
+        const image = canvasFirma.toDataURL('image/png');
+        const firmaId = generateUniqueId();
+
+        firmas[firmaId] = image;
+
+        const imgElement = document.createElement('img');
+        imgElement.className = 'imgFirma';
+        imgElement.src = image;
+        imgElement.id = firmaId;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'ruta2';
+        deleteButton.textContent = 'Eliminar';
+        deleteButton.onclick = function () {
+            deleteFirma(firmaId);
+        };
+
+        const container = document.createElement('div');
+        container.className = 'cajaFirma';
+        container.appendChild(imgElement);
+        container.appendChild(deleteButton);
+
+        document.getElementById('firmasContainer').appendChild(container);
+
+        cajaCanvasFirma.classList.replace('displayOn', 'displayOff');
+        encabezado.classList.replace('displayOff', 'displayOn');
+        contenido.classList.replace('displayOff', 'displayOn');
+
+        const firmar = document.getElementById('firmar');
+        firmar.scrollIntoView({ behavior: 'smooth' });
+
+        //console.log(firmas);
+    }
+
+    function deleteFirma(firmaId) {
+        delete firmas[firmaId];
+        const imgElement = document.getElementById(firmaId);
+        if (imgElement) {
+            imgElement.parentElement.remove();
+        }
+        //console.log(firmas);
+    }
+
+    /* FUNCIONALIDADES ASÍNCRONAS DE LA APP */
+
+    /* LOCALSTORAGE */
+    const linea = localStorage.getItem('linea');
+    if (linea && linea !== null) {
+        console.log('Linea: ' + linea);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/ruta_montador.html';
+    }
+    const ruta = localStorage.getItem('ruta');
+    if (ruta && ruta !== null) {
+        console.log('Ruta: ' + ruta);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const cliente = localStorage.getItem('cliente');
+    if (cliente && cliente !== null) {
+        console.log('Cliente: ' + cliente);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const nombreCliente = localStorage.getItem('nombreCliente');
+    if (nombreCliente && nombreCliente !== null) {
+        console.log('nombreCliente: ' + nombreCliente);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const nombreRuta = localStorage.getItem('nombreRuta');
+    if (nombreRuta && nombreRuta !== null) {
+        console.log('nombreRuta: ' + nombreRuta);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const lineaActividad = localStorage.getItem('lineaActividad');
+    if (lineaActividad && lineaActividad !== null) {
+        console.log('LineaActividad: ' + lineaActividad);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const ot = localStorage.getItem('ot');
+    if (ot && ot !== null) {
+        console.log('ot: ' + ot);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/rutas_montador.html';
+    }
+    const usuarioId = localStorage.getItem('usuario');
+    if (usuarioId && usuarioId !== null) {
+        console.log('usuario: ' + usuarioId);
+    }
+    else {
+        window.location.href = 'https://dosxdos.app.iidos.com/index.html';
+    }
+
+    /* FUNCIONES DE INDEXDB */
+
+    function db(database, stores) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(database, 1);
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                stores.forEach(element => {
+                    db.createObjectStore(element, { keyPath: 'id', autoIncrement: true });
+                });
+            };
+            request.onsuccess = (event) => {
+                resolve(true);
+            }
+            request.onerror = (event) => {
+                console.error(`Error en la función db al tratar de abrir o crear la base de datos ${database}: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function existDb(dataBase) {
+        return new Promise((resolve, reject) => {
+            const dbNameToCheck = dataBase;
+            indexedDB.databases().then((databases) => {
+                const databaseExists = databases.some((db) => db.name === dbNameToCheck);
+                if (databaseExists) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            }).catch((error) => {
+                console.error(`Error en la función existDb al verificar la existencia de la base de datos ${dataBase}: ${error.message}`);
+                reject(error);
+            });
+        })
+    }
+
+    function existStore(db, almacen) {
+        return new Promise((resolve, reject) => {
+            const dbName = db;
+            const storeName = almacen;
+            const request = indexedDB.open(dbName);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                if (db.objectStoreNames.contains(storeName)) {
+                    resolve(true);
+                } else {
+                    resolve(false);
+                }
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función existStore al abrir la base de datos ${db} para verificar si el almacen ${almacen} existe: ${event.target.error}`);
+                reject(event.target.error);
+            };
+
+        })
+    }
+
+    function almacenVacio(db, almacen) {
+        return new Promise((resolve, reject) => {
+            const dbName = db;
+            const storeName = almacen;
+            const request = indexedDB.open(dbName);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction([storeName], 'readonly');
+                const store = transaction.objectStore(storeName);
+                const getAllRequest = store.getAll();
+                getAllRequest.onsuccess = (event) => {
+                    const data = event.target.result;
+                    if (data.length > 0) {
+                        resolve(false);
+                    }
+                    else {
+                        resolve(true);
+                    }
+                };
+                getAllRequest.onerror = (event) => {
+                    console.error(`Error en la función almacenVacio al verificar si el almacen ${almacen} tiene contenido: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función almacenVacio al abrir la base de datos ${db} para verificar si el almacen ${almacen} tiene contenido: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function leerDatos(database, store) {
+        return new Promise((resolve, reject) => {
+            datos = [];
+            const request = indexedDB.open(database);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(store, 'readonly');
+                const almacen = transaction.objectStore(store);
+                const cursorRequest = almacen.openCursor();
+                cursorRequest.onsuccess = (event) => {
+                    const cursor = event.target.result;
+                    if (cursor) {
+                        datos.push(cursor.value);
+                        cursor.continue();
+                    } else {
+                        resolve(datos);
+                    }
+                };
+                cursorRequest.onerror = function (event) {
+                    console.error(`Error en la función leerDatos al solcitar el cursor para leer el almacen ${store}: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función leerDatos al solcitar abrir la base de datos para leer el almacen ${store}: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function limpiarDatos(database, store) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(database);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(store, 'readwrite');
+                const datosStore = transaction.objectStore(store);
+                const clearRequest = datosStore.clear();
+                clearRequest.onsuccess = (clearEvent) => {
+                    resolve(true);
+                };
+                clearRequest.onerror = (event) => {
+                    console.error(`Error en la función limpiarDatos al solcitar limpiar el almacen ${store}: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            }
+            request.onerror = (event) => {
+                console.error(`Error en la función limpiarDatos al solcitar abrir la base de datos para limpiar el almacen ${store}: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function agregarDato(database, store, data) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(database);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(store, 'readwrite');
+                const datosStore = transaction.objectStore(store);
+                const clearRequest = datosStore.clear();
+                clearRequest.onsuccess = (clearEvent) => {
+                    const requestAgregar = datosStore.add(data);
+                    requestAgregar.onsuccess = (event) => {
+                        resolve(true);
+                    };
+                    requestAgregar.onerror = (event) => {
+                        console.error(`Error en la función agregarDato al agregar los datos al almacén ${store}: ${event.target.error}`);
+                        reject(event.target.error);
+                    };
+                };
+                clearRequest.onerror = (event) => {
+                    console.error(`Error en la función agregarDato al limpiar el almacén ${store} para ingresar los nuevos datos: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función agregarDato al abrir la base de datos ${database} para ingresar los nuevos datos: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function agregarDato2(database, store, data) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(database);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(store, 'readwrite');
+                const datosStore = transaction.objectStore(store);
+                const requestAgregar = datosStore.add(data);
+                requestAgregar.onsuccess = (event) => {
+                    resolve(true);
+                };
+                requestAgregar.onerror = (event) => {
+                    console.error(`Error en la función agregarDato al agregar los datos al almacén ${store}: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función agregarDato al abrir la base de datos ${database} para ingresar los nuevos datos: ${event.target.error}`);
+                reject(event.target.error);
+            }
+        })
+    }
+
+    function agregarDatos(database, store, data) {
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(database);
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(store, 'readwrite');
+                const datosStore = transaction.objectStore(store);
+                const clearRequest = datosStore.clear();
+                clearRequest.onsuccess = (clearEvent) => {
+                    data.forEach(dato => {
+                        const requestAgregar = datosStore.add(dato);
+                        requestAgregar.onerror = (event) => {
+                            console.error(`Error en la función agregarDato al agregar los datos al almacén ${store}: ${event.target.error}`);
+                            reject(event.target.error);
+                        };
+                    })
+                };
+                clearRequest.onerror = (event) => {
+                    console.error(`Error en la función agregarDato al limpiar el almacén ${store} para ingresar los nuevos datos: ${event.target.error}`);
+                    reject(event.target.error);
+                };
+            };
+            request.onerror = (event) => {
+                console.error(`Error en la función agregarDato al abrir la base de datos ${database} para ingresar los nuevos datos: ${event.target.error}`);
+                reject(event.target.error);
+            }
+            resolve(true);
+        })
+    }
+
+    /* CERRAR SESIÓN */
+
+    function eliminarCookie(nombre) {
+        const tiempoExpiracion = 1; // Segundo 1 de la Época Unix
+        document.cookie = `${nombre}=; expires=${new Date(tiempoExpiracion * 1000).toUTCString()}; path=/;`;
+    }
+
+    async function cerrarSesions() {
+        if (navigator.onLine) {
+            try {
+                loaderOn();
+                const limpiarUsuario = await limpiarDatos('dosxdos', 'usuario');
+                const limpiarRutas = await limpiarDatos('dosxdos', 'rutas');
+                const limpiarLineas = await limpiarDatos('dosxdos', 'lineas');
+                localStorage.removeItem('login');
+                localStorage.removeItem('loginMontador');
+                localStorage.removeItem('ruta');
+                localStorage.removeItem('mensaje');
+                localStorage.removeItem('linea');
+                localStorage.removeItem('lineaActividad');
+                localStorage.removeItem('ot');
+                eliminarCookie('login');
+                eliminarCookie('usuario');
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+            }
+        }
+        else {
+            mensaje = 'No es posible cerrar la sesión sin conexión a internet';
+            $textoMensaje.innerHTML = mensaje;
+            mensajeOn();
+        }
+    }
+
+    /* TRAER DATOS DE LOS SERVIDORES */
+
+    function fetchLinea(ruta, linea) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const url = 'https://dosxdos.app.iidos.com/apirest/lineas.php?ruta=' + ruta + '&linea=' + linea;
+                const res = await fetch(url);
+                if (!res.ok) {
+                    mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchLinea'
+                    $textoMensaje.innerHTML = mensaje;
+                    mensajeOn();
+                    loaderOff();
+                    resolve(false);
+                }
+                const resJson = await res.json();
+                if (resJson[0]) {
+                    resolve(resJson[1]);
+                } else {
+                    mensaje = 'Error: no se pudo recibir una respuesta verdadera de la api intermedia en la función fetchLinea'
+                    $textoMensaje.innerHTML = mensaje;
+                    mensajeOn();
+                    loaderOff();
+                    resolve(false);
+                }
+            } catch (err) {
+                mensaje = 'Error al consultar la línea de la ruta: ' + res.message;
+                $textoMensaje.innerHTML = mensaje;
+                console.error(res);
+                mensajeOn();
+                loaderOff();
+                resolve(false);
+            }
+        });
+    }
+
+    /* LOGIN */
+
+    function vLogin() {
+        return new Promise((resolve, reject) => {
+            const login = localStorage.getItem('login');
+            if (login && login !== null) {
+                leerDatos('dosxdos', 'usuario')
+                    .then(res => {
+                        usuario = res[0];
+                        resolve(usuario.clase);
+                    })
+                    .catch(err => {
+                        resolve(false);
+                    })
+            }
+            else {
+                resolve(false);
+            }
+        })
+    }
+
+    /* CARGAR DATOS */
+
+    function cargarDatoTexto(id, valor) {
+        const elemento = document.getElementById(id);
+        temporalDiv = document.createElement("div");
+        temporalDiv.innerHTML = valor;
+        textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+        elemento.innerHTML = textoConvertido;
+    }
+
+    function cargarDatoValor(id, valor) {
+        const elemento = document.getElementById(id);
+        const numeroParseado = parseFloat(valor.replace(',', '.'));
+        elemento.value = numeroParseado;
+    }
+
+    function cargarDatoSelect(id, valor) {
+        const elemento = document.getElementById(id);
+        for (let i = 0; i < elemento.options.length; i++) {
+            if (elemento.options[i].value == valor) {
+                elemento.selectedIndex = i;
+                break;
+            }
+        }
+    }
+
+    function cargarFecha(id, fechaEnFormatoLocal) {
+        const partesFecha = fechaEnFormatoLocal.split('/');
+        const dia = parseInt(partesFecha[0], 10);
+        const mes = parseInt(partesFecha[1], 10) - 1; // Los meses en JavaScript van de 0 a 11
+        const anio = parseInt(partesFecha[2], 10);
+        // Si el año es menor que 100, asumimos que está en formato abreviado y le añadimos el siglo actual
+        const anioCompleto = anio < 100 ? anio + 2000 : anio;
+        const fecha = new Date(anioCompleto, mes, dia);
+        const anio2 = fecha.getFullYear();
+        const mes2 = ('0' + (fecha.getMonth() + 1)).slice(-2); // El mes está basado en 0, por eso +1
+        const dia2 = ('0' + fecha.getDate()).slice(-2);
+        const fecha2 = `${anio2}-${mes2}-${dia2}`;
+        const fechaInput = document.getElementById(id);
+        fechaInput.value = fecha2;
+    }
+
+    function obtenerConfirmacion() {
+        return new Promise((resolve, reject) => {
+            const respuesta = confirm('¿Estás segur@ que deseas eliminar el archivo del servidor?');
+            if (respuesta) {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        });
+    }
+
+    function eliminarFoto(jsonDelete) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonDelete);
+            fetch("https://dosxdos.app.iidos.com/apirest/fotos.php",
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonDelete
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las fotos de la línea`))))
+                .then((res) => {
+                    resolve(res[1]);
+                })
+                .catch((err) => {
+                    mensaje = err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    function eliminarFirma(jsonDelete) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonDelete);
+            fetch("https://dosxdos.app.iidos.com/apirest/firmas.php",
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonDelete
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las fotos de la línea`))))
+                .then((res) => {
+                    resolve(res[1]);
+                })
+                .catch((err) => {
+                    mensaje = err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    async function deletePhotoServidor(otFoto, id, usuarioElimina, tipo) {
+        if (navigator.onLine) {
+            try {
+                let eliminar;
+                const confirmar = await obtenerConfirmacion();
+                if (confirmar) {
+                    loaderOn();
+                    json = {};
+                    json.ot = otFoto;
+                    json.id = id;
+                    json.usuarioElimina = usuarioElimina;
+                    json.tipo = tipo;
+                    const jsonDelete = JSON.stringify(json);
+                    if (tipo == 'foto') {
+                        eliminar = await eliminarFoto(jsonDelete);
+                    } else {
+                        eliminar = await eliminarFirma(jsonDelete);
+                    }
+                    localStorage.setItem('mensaje', eliminar);
+                    window.location.href = "https://dosxdos.app.iidos.com/linea.html";
+                }
+            } catch (err) {
+                console.error(err);
+                alerta(err.message);
+            }
+        } else {
+            mensaje = 'No es posible eliminar archivos del servidor sin conexión a internet'
+            alerta(mensaje);
+            scrollToTop();
+        }
+    }
+
+    function esVideo(nombreArchivo) {
+        return new Promise((resolve, reject) => {
+            // Obtener la extensión del archivo
+            const extension = nombreArchivo.split('.').pop().toLowerCase();
+            // Lista de extensiones de video válidas
+            const extensionesVideo = ['mp4', 'mov', 'avi', 'wmv', 'flv', 'mkv', 'mpg'];
+            // Verificar si la extensión está en la lista
+            if (extensionesVideo.includes(extension)) {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        })
+    }
+
+
+    function traerFotos() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/fotos.php?ruta=' + ruta + '&linea=' + linea + '&ot=' + ot + '&lineaOt=' + lineaActividad;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las fotos de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        if (res[1].length > 0) {
+                            //console.log(res[1]);
+                            vectorDeFotos = res[1];
+                            vectorDeFotos.map(async objeto => {
+                                if (objeto.ext != 'zip') {
+                                    imgElement = '';
+                                    const esUnVideo = await esVideo(objeto.nombre);
+                                    console.log(esUnVideo);
+                                    // Puedes mostrar la imagen capturada si lo deseas
+                                    if (esUnVideo) {
+                                        imgElement = document.createElement('video');
+                                        imgElement.controls = true;
+                                        imgElement.className = 'imgCamara';
+                                        imgElement.src = objeto.link;
+                                        console.log('Entró a video');
+                                    } else {
+                                        imgElement = document.createElement('img');
+                                        imgElement.className = 'imgCamara';
+                                        imgElement.src = objeto.link;
+                                        console.log('No entró a video');
+                                    }
+
+                                    // Crear un botón para eliminar la foto
+                                    const deleteButton = document.createElement('button');
+                                    deleteButton.className = 'ruta';
+                                    deleteButton.textContent = 'Eliminar';
+                                    deleteButton.type = 'button';
+                                    deleteButton.onclick = function () {
+                                        deletePhotoServidor(ot, objeto.id, usuarioId, 'foto');
+                                    };
+
+                                    // Crear un contenedor para la imagen y el botón
+                                    const container = document.createElement('div');
+                                    container.className = 'cajaFoto';
+                                    container.appendChild(imgElement);
+                                    container.appendChild(deleteButton);
+
+                                    document.getElementById('photosContainer').appendChild(container);
+                                }
+                            })
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                            //console.log('sin fotos')
+                        }
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de fotos: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                })
+        });
+    }
+
+    function traerFirmas() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/firmas.php?ruta=' + ruta + '&linea=' + linea + '&ot=' + ot + '&lineaOt=' + lineaActividad;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las fotos de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        if (res[1].length > 0) {
+                            //console.log(res[1]);
+                            vectorDeFotos = res[1];
+                            vectorDeFotos.forEach(objeto => {
+                                if (objeto.ext != 'zip') {
+                                    // Puedes mostrar la imagen capturada si lo deseas
+                                    const imgElement = document.createElement('img');
+                                    imgElement.className = 'imgCamara';
+                                    imgElement.src = objeto.link;
+
+                                    // Crear un botón para eliminar la foto
+                                    const deleteButton = document.createElement('button');
+                                    deleteButton.className = 'ruta';
+                                    deleteButton.textContent = 'Eliminar';
+                                    deleteButton.type = 'button';
+                                    deleteButton.onclick = function () {
+                                        deletePhotoServidor(ot, objeto.id, usuarioId, 'firma');
+                                    };
+
+                                    // Crear un contenedor para la imagen y el botón
+                                    const container = document.createElement('div');
+                                    container.className = 'cajaFoto';
+                                    container.appendChild(imgElement);
+                                    container.appendChild(deleteButton);
+
+                                    document.getElementById('firmasContainer').appendChild(container);
+                                }
+                            })
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                            //console.log('sin fotos')
+                        }
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de firmas: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                })
+        });
+    }
+
+    async function traerNota() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/notas.php?ot=' + ot + '&linea=' + lineaActividad;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar la nota de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        notaObjeto = res[1];
+                        notaTexto = notaObjeto.nota;
+                        resolve(notaTexto);
+                    } else {
+                        resolve(false);
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de nota: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                })
+        });
+    }
+
+
+    /* MANJEO DEL FORMULARIO */
+
+    function actualizarLinea(json) {
+        //console.log(json);
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/lineas.php",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en los servidores al actualizar los datos de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                })
+        })
+    }
+
+    function subirFotos(json) {
+        return new Promise((resolve, reject) => {
+            //console.log(json);
+            fetch("https://dosxdos.app.iidos.com/apirest/fotos.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`Error en el servidor de la API intermedia al guardar las fotos. Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                })
+        })
+    }
+
+    function subirFirmas(json) {
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/firmas.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`Error en el servidor de la API intermedia al guardar las firmas. Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                })
+        })
+    }
+
+    function subirNota(json) {
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/notas.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`Error en el servidor de la API intermedia al guardar la nota. Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                })
+        })
+    }
+
+    async function procesarFormulario(jsonLinea, vJsonFotos, jsonFotos, vJsonFirmas, jsonFirmas, vNota, jsonNota) {
+        try {
+            mensaje = '';
+            const upLinea = await actualizarLinea(jsonLinea);
+            if (upLinea) {
+                mensaje = '-Datos guardados con éxito-';
+            } else {
+                mensaje = '-Error al guardar los datos-';
+            }
+            if (vJsonFotos) {
+                const upFotos = await subirFotos(jsonFotos);
+                if (upFotos) {
+                    mensaje += '-Fotos subidas con éxito-';
+                } else {
+                    mensaje += '-Error al subir las fotos-';
+                }
+            }
+            if (vJsonFirmas) {
+                const upFirmas = await subirFirmas(jsonFirmas);
+                if (upFirmas) {
+                    mensaje += '-Firmas subidas con éxito-';
+                } else {
+                    mensaje += '-Error al subir las firmas-';
+                }
+            }
+            if (vNota) {
+                const upNota = await subirNota(jsonNota);
+                if (upNota) {
+                    mensaje += '-Nota subida con éxito-';
+                } else {
+                    mensaje += '-Error al subir la nota-';
+                }
+            }
+            localStorage.setItem('mensaje', mensaje);
+            /*alerta(mensaje);
+            scrollToTop;*/
+            window.location.href = "https://dosxdos.app.iidos.com/linea.html";
+
+        } catch (error) {
+            console.log(error);
+            alerta(error.message);
+        }
+    }
+
+    async function procesarFormularioOff(lineaOb, vJsonFotos, fotosOb, vJsonFirmas, firmasOb, vNota, notaOb) {
+        try {
+            mensaje = 'Sin conexión a internet';
+            alerta(mensaje);
+            scrollToTop();
+        } catch (error) {
+            console.log(error);
+            alerta(error.message);
+            scrollToTop();
+        }
+    }
+
+    function escaparHTML(texto) {
+        return texto
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/'/g, '&#x27;')
+            .replace(/"/g, '&quot;')
+            .replace(/Á/g, '&Aacute;')
+            .replace(/É/g, '&Eacute;')
+            .replace(/Í/g, '&Iacute;')
+            .replace(/Ó/g, '&Oacute;')
+            .replace(/Ú/g, '&Uacute;')
+            .replace(/Ü/g, '&Uuml;')
+            .replace(/Ñ/g, '&Ntilde;')
+            .replace(/á/g, '&aacute;')
+            .replace(/é/g, '&eacute;')
+            .replace(/í/g, '&iacute;')
+            .replace(/ó/g, '&oacute;')
+            .replace(/ú/g, '&uacute;')
+            .replace(/ü/g, '&uuml;')
+            .replace(/ñ/g, '&ntilde;');
+    }
+
+    function sanarNombre(nombre) {
+        const escapedText = nombre.replace(/['\\/",]/, '');
+        return escapedText;
+    }
+
+    /* TAREAS EN LA INTERMITENCIA DE LA CONEXIÓN */
+
+    window.addEventListener('online', () => {
+        console.log('La conexión a Internet se ha recuperado.');
+        window.location.reload();
+    });
+
+    window.addEventListener('offline', () => {
+        console.log('La conexión a Internet se ha perdido.');
+    });
+
+    /* PAGESHOW */
+    window.addEventListener('pageshow', (e) => {
+        console.log('Carga completa de los elementos de la página no fetch');
+        let mensaje = localStorage.getItem('mensaje');
+        if (mensaje && mensaje !== null) {
+            $textoMensaje.innerHTML = mensaje;
+            mensajeOn();
+            localStorage.removeItem('mensaje');
+        }
+        let login = localStorage.getItem('login');
+        if (!login || login === null) {
+            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+        }
+    })
+
+    /* INICIAR APP ONLINE */
+    async function appOnline() {
+        try {
+            const login = await vLogin();
+            if (!login) {
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+            else {
+                const Arrayusuario = await leerDatos('dosxdos', 'usuario');
+                usuario = Arrayusuario[0];
+                $nombreUsuario.innerHTML = usuario.nombre;
+                if (usuario.imagen != '0') {
+                    $imagenUsuario.src = usuario.imagen;
+                }
+                if (usuario.clase == 'admon') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    $usuarios.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    /*const editarOt = document.getElementById('editarOt');
+                    editarOt.classList.replace('displayOff', 'displayOn');
+                    const archivarOt = document.getElementById('archivarOt');
+                    archivarOt.classList.replace('displayOff', 'displayOn');*/
+                    $dm.classList.replace('displayOff', 'displayOn');
+                    $reciclar.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'oficina') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'diseno') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'estudio') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'montador') {
+                    window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                }
+                const editarUsuario = document.getElementById('editarUsuario');
+                editarUsuario.addEventListener('click', e => {
+                    if (navigator.onLine) {
+                        window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                    } else {
+                        mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
+                        alerta(mensaje);
+                        scrollToTop();
+                    }
+                })
+                const lineaVector = await fetchLinea(ruta, linea);
+                if (lineaVector) {
+                    lineaObj = lineaVector[0];
+                    $titulo = document.getElementById('titulo');
+                    $titulo.innerHTML = `${nombreRuta} ${ot} Linea-${lineaActividad} Cliente-${lineaObj.NombreCliente} PV-${lineaObj.PuntoVenta} ${lineaObj.NombrePuntoVenta} Firma-${lineaObj.Firma}`;
+                    document.title = `${nombreRuta} ${ot} Linea-${lineaActividad} Cliente-${lineaObj.NombreCliente} PV-${lineaObj.PuntoVenta} ${lineaObj.NombrePuntoVenta} Firma-${lineaObj.Firma}`;
+                    //console.log(lineaObj);
+                    cargarDatoTexto('cliente', lineaObj.NombreCliente);
+                    cargarDatoTexto('ot', lineaObj.OT);
+                    cargarDatoTexto('tipoOt', lineaObj.TipoOT);
+                    cargarDatoTexto('descripcionOt', lineaObj.DescripcionOT);
+                    cargarDatoTexto('lineaOt', lineaObj.LineaActividad);
+                    cargarDatoTexto('puntoDeVenta', lineaObj.PuntoVenta);
+                    cargarDatoTexto('puntoDeVenta2', lineaObj.NombrePuntoVenta);
+                    cargarDatoTexto('zona', lineaObj.Zona);
+                    cargarDatoTexto('sector', lineaObj.Sector);
+                    cargarDatoTexto('direccion', lineaObj.DireccionPuntoVenta);
+                    cargarDatoTexto('tipoDeTrabajo', lineaObj.TipoTrabajo);
+                    cargarDatoTexto('tipoDeTrabajo2', lineaObj.DescripcionTipoTrabajo);
+                    cargarDatoTexto('observaciones', lineaObj.Observaciones);
+                    cargarDatoTexto('poner', lineaObj.Poner);
+                    cargarDatoTexto('quitar', lineaObj.Quitar);
+                    cargarDatoTexto('alto', lineaObj.Alto);
+                    cargarDatoTexto('ancho', lineaObj.Ancho);
+                    cargarDatoTexto('firmaDatos', lineaObj.Firma);
+                    cargarDatoTexto('revisado', lineaObj.Revisado);
+                    cargarDatoSelect('estado', lineaObj.Estado);
+                    /* FORMULARIO */
+                    if (lineaObj.Incidencia) {
+                        cargarDatoSelect('incidencia', lineaObj.Incidencia);
+                    }
+                    if (lineaObj.FechaActuacion) {
+                        cargarFecha('fecha', lineaObj.FechaActuacion);
+                    }
+                    if (lineaObj.DiasActuacion) {
+                        cargarDatoValor('dias', lineaObj.DiasActuacion);
+                    }
+                    if (lineaObj.TiempoActuacion) {
+                        cargarDatoValor('horas', lineaObj.TiempoActuacion);
+                    }
+                    if (lineaObj.MinutosActuacion) {
+                        cargarDatoValor('minutos', lineaObj.MinutosActuacion);
+                    }
+                    if (lineaObj.ObservacionesTecnico) {
+                        cargarDatoTexto('observacionesTecnico', lineaObj.ObservacionesTecnico);
+                    }
+                    const cargarNota = await traerNota();
+                    console.log(cargarNota);
+                    if (cargarNota) {
+                        cargarDatoTexto('appNotas', cargarNota);
+                    }
+                    const fotosServidor = await traerFotos();
+                    const firmasServidor = await traerFirmas();
+                    const editarUsuario = document.getElementById('editarUsuario');
+                    editarUsuario.addEventListener('click', e => {
+                        if (navigator.onLine) {
+                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                        } else {
+                            mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
+                            alerta(mensaje);
+                            scrollToTop();
+                        }
+                    })
+                    loaderOff();
+                }
+                loaderOff();
+            }
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+            loaderOff();
+        }
+    }
+
+    /* INICIAR APP OFFLINE */
+    async function appOffline() {
+        try {
+            const login = await vLogin();
+            if (!login) {
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+            else {
+                const login = await vLogin();
+                if (!login) {
+                    window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                }
+                else {
+                    const Arrayusuario = await leerDatos('dosxdos', 'usuario');
+                    usuario = Arrayusuario[0];
+                    $nombreUsuario.innerHTML = usuario.nombre;
+                    if (usuario.imagen != '0') {
+                        $imagenUsuario.src = usuario.imagen;
+                    }
+                    if (usuario.clase == 'admon') {
+                        $horarios.classList.replace('displayOff', 'displayOn');
+                        $archivos.classList.replace('displayOff', 'displayOn');
+                        $pv.classList.replace('displayOff', 'displayOn');
+                        $usuarios.classList.replace('displayOff', 'displayOn');
+                        $rutasIcono.classList.replace('displayOff', 'displayOn');
+                        $lineasIcono.classList.replace('displayOff', 'displayOn');
+                        $icLineasOt.classList.replace('displayOff', 'displayOn');
+                        /*const editarOt = document.getElementById('editarOt');
+                        editarOt.classList.replace('displayOff', 'displayOn');
+                        const archivarOt = document.getElementById('archivarOt');
+                        archivarOt.classList.replace('displayOff', 'displayOn');*/
+                        $dm.classList.replace('displayOff', 'displayOn');
+                        $reciclar.classList.replace('displayOff', 'displayOn');
+                    }
+                    if (usuario.clase == 'oficina') {
+                        $horarios.classList.replace('displayOff', 'displayOn');
+                        $pv.classList.replace('displayOff', 'displayOn');
+                        const usuariosOficina = document.getElementById('usuariosOficina');
+                        usuariosOficina.classList.replace('displayOff', 'displayOn');
+                        $archivos.classList.replace('displayOff', 'displayOn');
+                        $rutasIcono.classList.replace('displayOff', 'displayOn');
+                        $lineasIcono.classList.replace('displayOff', 'displayOn');
+                        $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    }
+                    if (usuario.clase == 'diseno') {
+                        $horarios.classList.replace('displayOff', 'displayOn');
+                        $pv.classList.replace('displayOff', 'displayOn');
+                        const usuariosOficina = document.getElementById('usuariosOficina');
+                        usuariosOficina.classList.replace('displayOff', 'displayOn');
+                        $archivos.classList.replace('displayOff', 'displayOn');
+                        $rutasIcono.classList.replace('displayOff', 'displayOn');
+                        $lineasIcono.classList.replace('displayOff', 'displayOn');
+                        $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    }
+                    if (usuario.clase == 'estudio') {
+                        $horarios.classList.replace('displayOff', 'displayOn');
+                        $pv.classList.replace('displayOff', 'displayOn');
+                        const usuariosOficina = document.getElementById('usuariosOficina');
+                        usuariosOficina.classList.replace('displayOff', 'displayOn');
+                        $archivos.classList.replace('displayOff', 'displayOn');
+                        $rutasIcono.classList.replace('displayOff', 'displayOn');
+                        $lineasIcono.classList.replace('displayOff', 'displayOn');
+                        $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    }
+                    if (usuario.clase == 'montador') {
+                        window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                    }
+                    const editarUsuario = document.getElementById('editarUsuario');
+                    editarUsuario.addEventListener('click', e => {
+                        if (navigator.onLine) {
+                            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                        } else {
+                            mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
+                            alerta(mensaje);
+                            scrollToTop();
+                        }
+                    })
+                    mensaje = 'Sin conexión a internet no es posible visualizar los datos y archivos de los servidores';
+                    alerta(mensaje);
+                    scrollToTop();
+                    loaderOff();
+                }
+            }
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+            scrollToTop();
+            loaderOff();
+        }
+    }
+
+    /* TAREAS AL INICIAR LA PANTALLA CON EL ESTADO DE LA CONEXIÓN */
+
+    if (navigator.onLine) {
+        console.log('La aplicación está en línea.');
+        appOnline();
+    } else {
+        console.log('La aplicación está fuera de línea.');
+        appOffline();
+    }
+
+
+</script>
+
+<!-- {"CodigoRuta": "R-0323", "LineaRuta": "10000", "DescripcionIncidencia": "prueba1", "DiasActuacion": "07",
+"Estado": "Pendiente", "FechaActuacion": "01/02/2023", "FirmaCliente": "prueba1", "FotosSubidas": "20",
+"HorasActuacion": "3,5", "Incidencia": "03", "MinutosActuacion": "45", "ObservacionesTecnico": "prueba1",
+"LinkWeb": "https://google.es"} -->
+
+</html>

@@ -1,0 +1,30 @@
+//OBTENER DATOS DE OT
+ot = zoho.crm.getRecordById("Deals",idOt);
+codigoOt = ot.get("C_digo");
+//OBTENER DATOS DE LAS LÍNEAS DE OT
+criterio = "(C_digo_de_OT_relacionada:equals:" + codigoOt + ")";
+lineas = zoho.crm.searchRecords("Products",criterio);
+//ACTUALIZAR CADA LÍNEA
+nowFecha = zoho.currentdate;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+fecha = ano + "-" + mes + "-" + dia;
+updateList = List();
+for each  linea in lineas
+{
+	idLinea = linea.get("id");
+	nuevaFase = {"id":idLinea,"Fase":"Facturadas","Fecha_Facturada":fecha};
+	updateList.add(nuevaFase);
+}
+lineasInfo = zoho.crm.bulkUpdate("Products",updateList);
+//info lineasInfo;

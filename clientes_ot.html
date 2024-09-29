@@ -1,0 +1,2782 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <title>clientes_ot</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        /* ESCRITORIO */
+        :root {
+            --x8: 8vw;
+            --x9m: -9vw;
+            --x0_5: 0.5vw;
+            --x1_4: 1.4vw;
+            --x0_2: 0.2vw;
+            --x23_5: 23.5vw;
+            --x2: 2vw;
+            --x1: 1vw;
+            --x0_15: 0.15vw;
+            --x22: 22vw;
+            --x1_5: 1.5vw;
+            --x1_8: 1.8vw;
+            --x1_7: 1.7vw;
+            --x2_5: 2.5vw;
+            --x2_4: 2.4vw;
+            --x2_9: 2.9vw;
+            --x18: 18vw;
+            --x0_7: 0.7vw;
+            --x1_1: 1.1vw;
+            --x40: 40vw;
+            --x28: 28vw;
+            --x2_3: 2.3vw;
+            --x13: 13vw;
+            --x10_5: 10.5vw;
+            --x1_35: 1.35vw;
+            --x0_8: 0.8vw;
+            --x34: 34vw;
+            --x38_5: 38.5vw;
+            --x0_3: 0.3vw;
+            --x5: 5vw;
+            --x0_1: 0.1vw;
+            --x4_9: 4.9vw;
+            --x10: 10vw;
+            --x7: 7vw;
+            --x3_2: 3.2vw;
+            --x2_85: 2.85vw;
+            --x2_75: 2.75vw;
+            --x3_7: 3.7vw;
+            --x14_75: 14.75vw;
+            --x1_23: 1.23vw;
+            --x0_47: 0.47vw;
+        }
+
+
+        /* FUENTES */
+        @font-face {
+            font-family: 'FuturaBold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'FuturaLight';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'FuturaMedium';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+        }
+
+        .FuturaBold {
+            font-family: 'FuturaBold';
+        }
+
+        .FuturaMedium {
+            font-family: 'FuturaMedium';
+        }
+
+        .FuturaLight {
+            font-family: 'FuturaLight';
+        }
+
+        .displayOn {
+
+            display: flex;
+        }
+
+        .displayOff {
+            display: none;
+        }
+
+        /* LOADING */
+
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            z-index: 3000;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lds-roller {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-roller div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 40px 40px;
+        }
+
+        .lds-roller div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #db0032;
+            margin: -4px 0 0 -4px;
+        }
+
+        .lds-roller div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .lds-roller div:nth-child(1):after {
+            top: 63px;
+            left: 63px;
+        }
+
+        .lds-roller div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .lds-roller div:nth-child(2):after {
+            top: 68px;
+            left: 56px;
+        }
+
+        .lds-roller div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .lds-roller div:nth-child(3):after {
+            top: 71px;
+            left: 48px;
+        }
+
+        .lds-roller div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .lds-roller div:nth-child(4):after {
+            top: 72px;
+            left: 40px;
+        }
+
+        .lds-roller div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .lds-roller div:nth-child(5):after {
+            top: 71px;
+            left: 32px;
+        }
+
+        .lds-roller div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .lds-roller div:nth-child(6):after {
+            top: 68px;
+            left: 24px;
+        }
+
+        .lds-roller div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .lds-roller div:nth-child(7):after {
+            top: 63px;
+            left: 17px;
+        }
+
+        .lds-roller div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .lds-roller div:nth-child(8):after {
+            top: 56px;
+            left: 12px;
+        }
+
+        @keyframes lds-roller {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        main {
+            display: flex;
+            width: 100%;
+        }
+
+        /* Secciones */
+
+        .pdvs-container {
+            /* border: 1px solid greenyellow; */
+            display: flex;
+            order: 1;
+            width: 25%;
+            height: 100vh;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .middle-container {
+            /* border: 1px solid red; */
+            display: flex;
+            order: 2;
+            width: 60%;
+            height: 100vh;
+        }
+
+        .mini-photos-container {
+            /* border: 1px solid yellow; */
+            display: flex;
+            order: 3;
+            width: 15%;
+            height: 100vh;
+        }
+
+        /* Pdvs Container */
+
+        .pdvs-container header {
+            /* border: 1px solid blue; */
+            width: var(--x8);
+            height: 18%;
+            margin-left: var(--x9m);
+        }
+
+        .pdvs-container header figure img {
+            width: var(--x8);
+            height: var(--x8);
+        }
+
+        #contenedorSeccion1 {
+            /* border: 1px solid orange; */
+            display: flex;
+            flex-direction: column;
+            height: 75%;
+        }
+
+        .pdv-input-container {
+            /* border: 1px solid red; */
+            display: flex;
+            flex-direction: column;
+            margin-top: 0;
+            padding: var(--x0_5);
+            width: 100%;
+            height: 15%;
+
+        }
+
+        .pdv {
+            /* border: 1px solid blue; */
+            font-size: var(--x1_4);
+            margin-left: var(--x0_5);
+            margin-bottom: var(--x0_2);
+            color: #db0032;
+            font-family: 'FuturaMedium';
+        }
+
+        .pdv-input-container input {
+            width: var(--x23_5);
+            height: var(--x2);
+            font-size: var(--x1);
+            border: var(--x0_15) solid #db0032;
+            border-radius: 0.6vw;
+            margin-top: var(--x0_2);
+            padding: var(--x0_5);
+        }
+
+        .pdv-input-container input:focus {
+            outline: none;
+        }
+
+        .buttons-container {
+            /* border: 1px solid blueviolet; */
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            height: 90%;
+            overflow-y: scroll;
+            padding: var(--x0_5);
+        }
+
+        .buttons-container button {
+            align-items: flex-start;
+            width: var(--x22);
+            font-size: var(--x1);
+            color: Gray;
+            margin-bottom: var(--x0_5);
+            border-radius: 0.6vw;
+            padding: var(--x0_5) var(--x1_5);
+            font-family: 'FuturaMedium';
+            border: none;
+        }
+
+        .buttons-container button:nth-child(odd) {
+            background-color: #c9c9c9;
+        }
+
+        .buttons-container button:nth-child(even) {
+            background-color: #e5e5e5;
+        }
+
+        .buttons-container button:hover {
+            cursor: pointer;
+        }
+
+        .pdvs-container footer {
+            /* border: 1px solid blue; */
+            display: flex;
+            width: 86%;
+            position: absolute;
+            bottom: 0;
+            left: 1vw;
+            height: 7%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pdvs-container footer figure {
+            /* border: 1px solid yellow; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdvs-container footer figure img {
+            width: var(--x1_8);
+            cursor: pointer;
+        }
+
+        .pdvs-container footer figure img:active {
+            width: var(--x1_7);
+        }
+
+        .pdvs-container footer a {
+            /* border: 1px solid red; */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pdvs-container footer a img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(128, 128, 128, 0.559);
+            width: var(--x2_5);
+            height: var(--x2_5);
+            border-radius: 50%;
+        }
+
+        .pdvs-container footer a img:active {
+            width: var(--x2_4);
+            height: var(--x2_4);
+        }
+
+        #avisoComprimidoOt {
+            /* border: 1px solid red; */
+            position: absolute;
+            flex-direction: column;
+            bottom: var(--x2_9);
+            z-index: 2500;
+            justify-content: center;
+            align-items: center;
+            width: var(--x18);
+            border-radius: var(--x0_7);
+            background-color: rgb(245, 245, 245);
+            padding: var(--x0_5);
+            flex-wrap: wrap;
+            font-size: var(--x1_1);
+            font-family: 'FuturaMedium';
+            color: rgba(0, 0, 0, 0.274);
+        }
+
+        /* Middle Container */
+
+        .main-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        .vertical-left-container {
+            /* border: 1px solid black; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3%;
+            height: 100%;
+            position: relative;
+        }
+
+        .vertical-left-line {
+            display: flex;
+            position: absolute;
+            top: 0;
+            height: 55%;
+            width: 0.1vw;
+            /* Grosor de la línea */
+            background: linear-gradient(to bottom, #db0032 95%, transparent 5%);
+            /* Línea vertical */
+            /* position: relative; */
+        }
+
+        .vertical-left-dot {
+            display: flex;
+            width: 0.4vw;
+            /* Ancho del punto */
+            height: 0.4vw;
+            /* Altura del punto */
+            background-color: #db0032;
+            border-radius: 50%;
+            /* Forma circular para el punto */
+            position: absolute;
+            top: 52%;
+        }
+
+        .photo-container {
+            /* border: 1px solid orange; */
+            display: flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 73%;
+        }
+
+        #titulos {
+            /* border: 1px solid violet; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0.5vw;
+        }
+
+        #nombreDeOt {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: var(--x1);
+            color: Gray;
+        }
+
+        #nombrePv {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: var(--x1);
+            color: Gray;
+        }
+
+        .photo {
+            /* border: 1px solid green; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-top: 2vw;
+            width: var(--x40);
+            height: var(--x28);
+        }
+
+        .photo img {
+            max-width: var(--x40);
+            max-height: var(--x28);
+        }
+
+        .photo img:hover {
+            cursor: pointer;
+        }
+
+        .left-arrow img {
+            position: absolute;
+            top: 50%;
+            left: 2vw;
+            width: var(--x2_5);
+            height: var(--x2_5);
+        }
+
+        .left-arrow img:active {
+            width: var(--x2_3);
+            height: var(--x2_3);
+        }
+
+        .right-arrow img {
+            position: absolute;
+            top: 50%;
+            right: 2vw;
+            width: var(--x2_5);
+            height: var(--x2_5);
+        }
+
+        .right-arrow img:active {
+            width: var(--x2_3);
+            height: var(--x2_3);
+        }
+
+        .rate-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            /* border: 1px solid green; */
+            position: relative;
+            height: 27%;
+            bottom: 0;
+        }
+
+        .parabola {
+            position: absolute;
+            border-top-left-radius: 10vw;
+            border-top-right-radius: 10vw;
+            width: 80%;
+            height: var(--x13);
+            bottom: 0;
+            background-color: #db0032;
+        }
+
+        .inside-parabola {
+            /* border: 1.5px solid; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'FuturaMedium';
+            height: var(--x10_5);
+            margin-top: var(--x1_35);
+        }
+
+        .inside-parabola p {
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: var(--x0_8);
+            margin-bottom: var(--x0_5);
+        }
+
+        .inside-parabola .span-container {
+            /* border: 1px solid blue; */
+            display: flex;
+            flex-wrap: wrap;
+            width: var(--x34);
+        }
+
+        .inside-parabola p span:nth-child(1) {
+            margin-bottom: 0.3vw;
+        }
+
+        .inside-parabola p span:nth-child(2) {
+            margin-left: 0.3vw;
+        }
+
+        .inside-parabola figure img {
+            width: var(--x1_5);
+            height: var(--x1_5);
+            margin: 0.5vw 0.8vw 0.5vw 0;
+        }
+
+        .inside-parabola figure img:hover {
+            cursor: pointer;
+        }
+
+        .inside-parabola input {
+            width: var(--x38_5);
+            height: var(--x2);
+            border-radius: var(--x0_5);
+            border: none;
+            margin-bottom: -0.5vw;
+            font-size: var(--x1);
+            padding: var(--x0_5);
+        }
+
+        .inside-parabola input:focus {
+            outline: none;
+        }
+
+        .inside-parabola button {
+            border-radius: var(--x0_3);
+            font-size: var(--x0_8);
+            width: var(--x5);
+            height: var(--x1_5);
+            padding: var(--x0_1) 0;
+            margin-top: 1.1vw;
+            border: none;
+            font-family: 'FuturaBold';
+            color: #db0032;
+            cursor: pointer;
+        }
+
+        .inside-parabola button:active {
+            width: var(--x4_9);
+            height: var(--x1_4);
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 96%;
+        }
+
+        .vertical-right-container {
+            /* border: 1px solid black; */
+            display: flex;
+            width: 3%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .vertical-right-line {
+            display: flex;
+            height: 50%;
+            width: 0.1vw;
+            /* Grosor de la línea */
+            background: linear-gradient(to top, #db0032 95%, transparent 5%);
+            /* Línea vertical */
+            /* position: relative; */
+            position: absolute;
+            bottom: 0;
+        }
+
+        .vertical-right-dot {
+            display: block;
+            width: 0.4vw;
+            /* Ancho del punto */
+            height: 0.4vw;
+            /* Altura del punto */
+            background-color: #db0032;
+            border-radius: 50%;
+            /* Forma circular para el punto */
+            position: absolute;
+            top: 52%;
+        }
+
+
+        /* Mini Photos Container */
+
+        .gray-rectangles {
+            /* border: 1px solid blue; */
+            display: block;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--x0_5);
+            margin-top: 4vw;
+            height: 91%;
+            overflow-y: scroll;
+        }
+
+        .gray-rectangles div {
+            display: flex;
+            width: var(--x10);
+            height: var(--x7);
+            border-radius: var(--x0_5);
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1.5vw;
+            margin-left: 1.3vw;
+        }
+
+        .gray-rectangles div img {
+            max-width: var(--x10);
+            max-height: var(--x7);
+            border-radius: var(--x0_5);
+            cursor: pointer;
+        }
+
+        .opciones {
+            /* border: 1px solid red; */
+            display: flex;
+            position: absolute;
+            top: 0.5vw;
+            right: 2vw;
+            justify-content: space-evenly;
+            align-items: center;
+            height: var(--x3_2);
+            z-index: 2700;
+        }
+
+        .opciones a {
+            /* border: 1px solid green; */
+            position: relative;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .opciones img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(128, 128, 128, 0.559);
+            width: var(--x2_85);
+            height: var(--x2_85);
+            border-radius: 50%;
+            margin-left: 1.5vw;
+        }
+
+        .opciones img:hover {
+            cursor: pointer;
+        }
+
+        .opciones img:active {
+            width: var(--x2_75);
+            height: var(--x2_75);
+        }
+
+        #avisoComprimido {
+            /* border: 1px solid red; */
+            position: absolute;
+            flex-direction: column;
+            top: var(--x2_9);
+            z-index: 2500;
+            justify-content: center;
+            align-items: center;
+            width: var(--x18);
+            border-radius: var(--x0_7);
+            background-color: rgb(245, 245, 245);
+            padding: var(--x0_5);
+            flex-wrap: wrap;
+            font-size: var(--x1_1);
+            font-family: 'FuturaMedium';
+            color: rgba(0, 0, 0, 0.274);
+        }
+
+        #opcionesUsuario {
+            /* border: 1px solid gray; */
+            position: absolute;
+            flex-direction: column;
+            top: var(--x3_7);
+            right: var(--x2);
+            justify-content: space-evenly;
+            align-items: center;
+            width: var(--x14_75);
+            border-radius: var(--x0_7);
+            background-color: rgb(245, 245, 245);
+            padding: var(--x0_5);
+            flex-wrap: wrap;
+            align-self: flex-end;
+            justify-content: center;
+            text-align: center;
+            z-index: 2800;
+        }
+
+        #opcionesUsuario button {
+            border: none;
+            background-color: transparent;
+            font-size: var(--x1_23);
+            padding: var(--x0_47);
+            font-family: 'FuturaMedium';
+            color: rgba(0, 0, 0, 0.274);
+        }
+
+        #opcionesUsuario button:hover {
+            cursor: pointer;
+            color: rgba(0, 0, 0, 0.509);
+        }
+
+        #opcionesUsuario button:active {
+            color: #db0032;
+        }
+
+        .foco {
+            outline: 0.15vw solid #db0032;
+        }
+
+        #mensaje {
+            border: 1px solid red;
+            position: absolute;
+            top: 0.1vw;
+            left: 13.5vw;
+            width: 76vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2900;
+            background-color: white;
+            padding: 0.5vw;
+        }
+
+        #alerta {
+            width: 2.38vw;
+        }
+
+        #textoMensaje {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+            flex-wrap: wrap;
+            font-family: 'FuturaMedium';
+            color: rgba(128, 128, 128, 0.945);
+            font-size: 0.95vw;
+            margin-top: 0.95vw;
+        }
+
+        #imgCerrar {
+            position: absolute;
+            width: 1.14vw;
+            top: 0.3vw;
+            right: 0.3vw;
+        }
+
+        #imgCerrar:hover {
+            cursor: pointer;
+        }
+
+        #imgCerrarFotoCompleta {
+            position: absolute;
+            width: 1.14vw;
+            top: 0.3vw;
+            right: 0.3vw;
+        }
+
+        #imgCerrarFotoCompleta:hover {
+            cursor: pointer;
+        }
+
+        /* LOADING2 */
+
+        #loader2 {
+            /* border: 1px solid red; */
+            width: 60%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 2500;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lds-roller2 {
+            /* border: 1px solid green; */
+            display: inline-block;
+            position: relative;
+            width: 74px;
+            height: 74px;
+        }
+
+        .lds-roller2 div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 34px 34px;
+        }
+
+        .lds-roller2 div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            /* TAMAÑO DE LOS PUNTOS */
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #db0032;
+            margin: -4px 0 0 -4px;
+        }
+
+        .lds-roller2 div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .lds-roller2 div:nth-child(1):after {
+            top: 57px;
+            left: 57px;
+        }
+
+        .lds-roller2 div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .lds-roller2 div:nth-child(2):after {
+            top: 62px;
+            left: 50px;
+        }
+
+        .lds-roller2 div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .lds-roller2 div:nth-child(3):after {
+            top: 65px;
+            left: 42px;
+        }
+
+        .lds-roller2 div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .lds-roller2 div:nth-child(4):after {
+            top: 66px;
+            left: 34px;
+        }
+
+        .lds-roller2 div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .lds-roller2 div:nth-child(5):after {
+            top: 65px;
+            left: 26px;
+        }
+
+        .lds-roller2 div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .lds-roller2 div:nth-child(6):after {
+            top: 62px;
+            left: 18px;
+        }
+
+        .lds-roller2 div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .lds-roller2 div:nth-child(7):after {
+            top: 57px;
+            left: 11px;
+        }
+
+        .lds-roller2 div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .lds-roller2 div:nth-child(8):after {
+            top: 50px;
+            left: 6px;
+        }
+
+        @keyframes lds-roller2 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* LOADING3 */
+
+        #loader3 {
+            /* border: 1px solid red; */
+            width: 14%;
+            height: 100%;
+            position: absolute;
+            bottom: 0;
+            z-index: 2500;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lds-roller3 {
+            /* border: 1px solid blue; */
+            display: inline-block;
+            position: relative;
+            width: 74px;
+            height: 74px;
+        }
+
+        .lds-roller3 div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 34px 34px;
+        }
+
+        .lds-roller3 div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            /* TAMAÑO DE LOS PUNTOS */
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #db0032;
+            margin: -4px 0 0 -4px;
+        }
+
+        .lds-roller3 div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .lds-roller3 div:nth-child(1):after {
+            top: 57px;
+            left: 57px;
+        }
+
+        .lds-roller3 div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .lds-roller3 div:nth-child(2):after {
+            top: 62px;
+            left: 50px;
+        }
+
+        .lds-roller3 div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .lds-roller3 div:nth-child(3):after {
+            top: 65px;
+            left: 42px;
+        }
+
+        .lds-roller3 div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .lds-roller3 div:nth-child(4):after {
+            top: 66px;
+            left: 34px;
+        }
+
+        .lds-roller3 div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .lds-roller3 div:nth-child(5):after {
+            top: 65px;
+            left: 26px;
+        }
+
+        .lds-roller3 div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .lds-roller3 div:nth-child(6):after {
+            top: 62px;
+            left: 18px;
+        }
+
+        .lds-roller3 div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .lds-roller3 div:nth-child(7):after {
+            top: 57px;
+            left: 11px;
+        }
+
+        .lds-roller3 div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .lds-roller3 div:nth-child(8):after {
+            top: 50px;
+            left: 6px;
+        }
+
+        @keyframes lds-roller3 {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #fotoCompleta {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            padding: 0.5vw;
+            z-index: 2900;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            z-index: 2900;
+        }
+
+        #enlaceFotoCompleta {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #imagenFotoCompleta {
+            max-width: 100%;
+            max-height: 100%;
+            cursor: pointer;
+        }
+
+        .resaltado {
+            background-color: rgba(0, 0, 0, 0.970);
+        }
+
+        /* CELL PHONES = ROOT + 172% */
+        @media screen and (max-width: 500px) {
+            :root {
+                --x8: 21.76vw;
+                --x9m: -75vw;
+                --x0_5: 1.36vw;
+                --x1_4: 3.80vw;
+                --x0_2: 0.54vw;
+                --x23_5: 63.92vw;
+                --x2: 5.44vw;
+                --x1: 2.72vw;
+                --x0_15: 0.40vw;
+                --x22: 59.84vw;
+                --x1_5: 4.08vw;
+                --x1_8: 4.89vw;
+                --x1_7: 4.62vw;
+                --x2_5: 6.8vw;
+                --x2_4: 6.52vw;
+                --x2_9: 7.88vw;
+                --x18: 48.96vw;
+                --x0_7: 1.90vw;
+                --x1_1: 2.99vw;
+                --x40: 98vw;
+                --x28: 76.16vw;
+                --x2_3: 6.25vw;
+                --x13: 35.36vw;
+                --x10_5: 28.56vw;
+                --x1_35: 3.67vw;
+                --x0_8: 2.17vw;
+                --x34: 92.48vw;
+                --x38_5: 98vw;
+                --x0_3: 0.81vw;
+                --x5: 13.6vw;
+                --x0_1: 0.27vw;
+                --x4_9: 13.32vw;
+                --x10: 27.2vw;
+                --x7: 19.04vw;
+                --x3_2: 8.70vw;
+                --x2_85: 7.75vw;
+                --x2_75: 7.48vw;
+                --x3_7: 10.06vw;
+                --x14_75: 40.12vw;
+                --x1_23: 3.34vw;
+                --x0_47: 1.27vw;
+            }
+
+            main {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+            }
+
+            .pdvs-container {
+                /* border: 1px solid greenyellow; */
+                width: 100%;
+                height: auto;
+                flex-direction: column;
+                height: 33vh;
+                margin: 0;
+            }
+
+            .middle-container {
+                /* border: 1px solid red; */
+                width: 100%;
+                height: 55vh;
+                margin: 0;
+            }
+
+            .mini-photos-container {
+                /* border: 1px solid yellow; */
+                width: 100%;
+                height: 10vh;
+                margin: 0;
+            }
+
+            #contenedorSeccion1 {
+                /* border: 1px solid orange; */
+                margin-left: 10vw;
+                height: 27vh;
+            }
+
+            .buttons-container {
+                /* border: 1px solid blueviolet; */
+                height: 22vh;
+                margin-top: 4vw;
+            }
+
+            .pdvs-container footer {
+                /* border: 1px solid blue; */
+                width: 20vw;
+                flex-direction: row;
+                position: absolute;
+                bottom: auto;
+                top: 0;
+                left: 25vw;
+                height: 10vw;
+                justify-content: center;
+                padding: var(--x1);
+            }
+
+            .pdvs-container footer figure {
+                /* border: 1px solid yellow; */
+                display: flex;
+                position: absolute;
+                left: 0;
+            }
+
+            .pdvs-container a {
+                position: absolute;
+                right: 0;
+            }
+
+            #avisoComprimidoOt {
+                bottom: -7vw;
+            }
+
+            .vertical-right-container {
+                display: none;
+            }
+
+            .vertical-left-container {
+                display: none;
+            }
+
+            .gray-rectangles {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 0;
+                padding-bottom: var(--x1_5);
+                padding-right: var(--x1_5);
+                padding-top: var(--x1_5);
+                overflow-x: scroll;
+                height: 100%;
+                /* border: 1px solid green; */
+            }
+
+            .gray-rectangles div {
+                display: flex;
+                margin: 0;
+                margin-left: var(--x1_5);
+            }
+
+            .content {
+                /* border: 1px solid violet; */
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .photo {
+                /* border: 1px solid green; */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                margin-top: 2vw;
+                width: 80%;
+                height: 80%;
+            }
+
+            .photo img {
+                max-width: 100%;
+                max-height: 100%;
+            }
+
+            .parabola {
+                position: relative;
+                margin: 0;
+                width: 96%;
+                height: 32vw;
+                background-color: #db0032;
+            }
+
+            .inside-parabola {
+                /* border: 1.5px solid; */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-family: 'FuturaMedium';
+                height: var(--x10_5);
+                margin-top: var(--x1_35);
+            }
+
+            .inside-parabola p {
+                display: flex;
+                justify-content: center;
+                color: white;
+                font-size: var(--x0_8);
+                margin-bottom: var(--x0_5);
+            }
+
+            .inside-parabola .span-container {
+                /* border: 1px solid blue; */
+                display: flex;
+                flex-wrap: wrap;
+                width: var(--x34);
+            }
+
+            .inside-parabola p span:nth-child(1) {
+                margin-bottom: 0.3vw;
+            }
+
+            .inside-parabola p span:nth-child(2) {
+                margin-left: 0.3vw;
+            }
+
+            .inside-parabola figure img {
+                width: var(--x1_5);
+                height: var(--x1_5);
+                margin: 0.5vw 0.8vw 0.5vw 0;
+            }
+
+            .inside-parabola figure img:hover {
+                cursor: pointer;
+            }
+
+            .inside-parabola input {
+                width: 90%;
+                height: var(--x2);
+                border-radius: var(--x0_5);
+                border: none;
+                margin-bottom: -0.5vw;
+                font-size: var(--x1);
+                padding: var(--x0_5);
+            }
+
+            .inside-parabola input:focus {
+                outline: none;
+            }
+
+            .inside-parabola button {
+                border-radius: var(--x0_3);
+                font-size: var(--x0_8);
+                width: var(--x5);
+                height: var(--x1_5);
+                padding: var(--x0_1) 0;
+                margin-top: 1.1vw;
+                border: none;
+                font-family: 'FuturaBold';
+                color: #db0032;
+                cursor: pointer;
+            }
+
+            .inside-parabola button:active {
+                width: var(--x4_9);
+                height: var(--x1_4);
+            }
+
+            #titulos {
+                /* border: 1px solid violet; */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: var(--x1);
+            }
+
+            #imgCerrarFotoCompleta {
+                width: 5vw;
+            }
+
+            #alerta {
+                width: 10vw;
+            }
+
+            #textoMensaje {
+                font-size: 4vw;
+            }
+
+            #imgCerrar {
+                width: 4vw;
+            }
+
+            #loader2 {
+                /* border: 1px solid red; */
+                width: 100%;
+                height: 56%;
+                z-index: 2900;
+                top: 34%;
+            }
+
+            #loader3 {
+                /* border: 1px solid blue; */
+                width: 100%;
+                height: 10%;
+                z-index: 2900;
+            }
+        }
+
+        /* SMALLER TABLETS = ROOT + 60% */
+        @media screen and (min-width: 500px) and (max-width: 900px) {
+            #imgCerrarFotoCompleta {
+                width: 3vw;
+            }
+
+            #alerta {
+                width: 4vw;
+            }
+
+            #textoMensaje {
+                font-size: 2vw;
+            }
+
+            #imgCerrar {
+                width: 2vw;
+            }
+        }
+
+        /* LARGER TABLETS = ROOT + 30% */
+        @media screen and (min-width: 900px) and (max-width: 1200px) {
+            #imgCerrarFotoCompleta {
+                width: 2vw;
+            }
+
+            #alerta {
+                width: 4vw;
+            }
+
+            #textoMensaje {
+                font-size: 2vw;
+            }
+
+            #imgCerrar {
+                width: 1.5vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader" class="displayOn">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div id="fotoCompleta" class="displayOff">
+        <img id="imgCerrarFotoCompleta" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+        <a href="https://dosxdos.app.iidos.com/img/ejemplo.jpeg" download="ejemplo.jpeg" id="enlaceFotoCompleta"><img
+                src="https://dosxdos.app.iidos.com/img/ejemplo.jpeg" id="imagenFotoCompleta"></a>
+    </div>
+    <main>
+        <section class="pdvs-container">
+            <header>
+                <figure><img src="https://dosxdos.app.iidos.com/img/botonSuperior.png"></figure>
+            </header>
+            <div id="contenedorSeccion1">
+                <div class="pdv-input-container">
+                    <p class="pdv">PDV:</p>
+                    <input type="text" id="buscador">
+                </div>
+                <div class="buttons-container" id="botonesLineas"></div>
+            </div>
+            <footer>
+                <figure><img src="https://dosxdos.app.iidos.com/img/flechaIzq.png" id="leftArrow"></figure>
+                <a href="" download="" id="enlaceComprimidoOt" class="displayOff">
+                    <img src="https://dosxdos.app.iidos.com/img/comprimido2.png" id="comprimidoOt">
+                    <p id="avisoComprimidoOt" class="displayOff">Descargar todas las imágenes</p>
+                </a>
+            </footer>
+        </section>
+
+        <section class="middle-container">
+            <div id="loader2" class="displayOn">
+                <div class="lds-roller2">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="main-container">
+                <div class="vertical-left-container">
+                    <div class="vertical-left-line"></div>
+                    <div class="vertical-left-dot"></div>
+                </div>
+                <div class="content">
+                    <div id="mensaje" class="displayOff">
+                        <img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+                        <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+                        <p id="textoMensaje">añlksdj falskdjf añlskdjf alskdjf añlsdkjf añslkdjf asñldkjf aslñdkjf
+                            añsldkjf añsldkjf
+                            aslkdjfa sldkfjasd fñlaksdj falskdjf añslkdjf asldñkjf asdlkfja sñdlkfjasñldkfj
+                            alaksdjflñaksdjfñlaskdjflkasdjf alñskdjflñaskdjf asldkjfalñskdfj añslkdfj</p>
+                    </div>
+                    <div class="photo-container">
+                        <div id="titulos">
+                            <p id="nombreDeOt"></p>
+                            <p id="nombrePv"></p>
+                        </div>
+                        <figure class="photo">
+                            <img src="https://dosxdos.app.iidos.com/img/logoPwa1024.png" id="imgPrincipal">
+                            <figure class="left-arrow"><img src="https://dosxdos.app.iidos.com/elementos_diseno/flechaIzq.png"
+                                    id="fotoIzquierda"></figure>
+                            <figure class="right-arrow"><img src="https://dosxdos.app.iidos.com/elementos_diseno/flechaDer.png"
+                                    id="fotoDerecha"></figure>
+                        </figure>
+                    </div>
+                    <div class="rate-container">
+                        <div class="parabola">
+                            <div class="inside-parabola">
+                                <p class="span-container">
+                                    <span>Para nosotros tu opinión es muy importante,</span>
+                                    <span id="retroLinea"></span>
+                                </p>
+                                <figure>
+                                    <img src="https://dosxdos.app.iidos.com/img/estrellaVacia.png" id="estrella1">
+                                    <img src="https://dosxdos.app.iidos.com/img/estrellaVacia.png" id="estrella2">
+                                    <img src="https://dosxdos.app.iidos.com/img/estrellaVacia.png" id="estrella3">
+                                    <img src="https://dosxdos.app.iidos.com/img/estrellaVacia.png" id="estrella4">
+                                    <img src="https://dosxdos.app.iidos.com/img/estrellaVacia.png" id="estrella5">
+                                </figure>
+                                <p>¿Te gustaría añadir algún comentario?</p>
+                                <input type="text" id="comentarioRetro">
+                                <button class="enviar-button" id="enviarRetro">ENVIAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vertical-right-container">
+                    <div class="vertical-right-line"></div>
+                    <div class="vertical-right-dot"></div>
+                </div>
+            </div>
+        </section>
+        <section class="mini-photos-container">
+            <div id="opciones" class="opciones displayOn">
+                <a href="" download="" id="enlaceComprimido" class="displayOff">
+                    <img src="https://dosxdos.app.iidos.com/img/comprimido2.png" id="comprimido">
+                    <p id="avisoComprimido" class="displayOff">Descargar imágenes del PDV</p>
+                </a>
+                <img src="https://dosxdos.app.iidos.com/img/botonHome.png" id="botonHome">
+                <img src="https://dosxdos.app.iidos.com/img/usuarioClientes.png" id="imagenUsuario">
+            </div>
+            <div id="opcionesUsuario" class="displayOff">
+                <button id="editarUsuarioB">Editar Usuario</button>
+                <button id="cerrarSesionB">Cerrar Sesión</button>
+            </div>
+            <div id="loader3" class="displayOn">
+                <div class="lds-roller3">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="gray-rectangles" id="miniaturas"></div>
+        </section>
+    </main>
+</body>
+
+</html>
+
+<script>
+
+    /* VARIABLES GLOBALES */
+    let usuario,
+        vObjetoOt = false,
+        ot,
+        lineas,
+        linea,
+        lineaRetro,
+        fotos,
+        firmas,
+        carpetas,
+        carpetasOt,
+        linksFotos = [],
+        totalFotos = 0,
+        numFoto = 0,
+        retroalimentacion = 0;
+
+    /* CONSTANTES DEL DOM */
+    const $loader = document.getElementById('loader'),
+        $loader2 = document.getElementById('loader2'),
+        $loader3 = document.getElementById('loader3'),
+        $imagenUsuario = document.getElementById('imagenUsuario'),
+        $opcionesUsuario = document.getElementById('opcionesUsuario'),
+        $mensaje = document.getElementById('mensaje'),
+        $imgCerrar = document.getElementById('imgCerrar'),
+        $textoMensaje = document.getElementById('textoMensaje'),
+        $buscador = document.getElementById('buscador'),
+        $estrella1 = document.getElementById('estrella1'),
+        $estrella2 = document.getElementById('estrella2'),
+        $estrella3 = document.getElementById('estrella3'),
+        $estrella4 = document.getElementById('estrella4'),
+        $estrella5 = document.getElementById('estrella5'),
+        $fotoCompleta = document.getElementById('fotoCompleta'),
+        $imgPrincipal = document.getElementById('imgPrincipal'),
+        $imagenFotoCompleta = document.getElementById('imagenFotoCompleta'),
+        $enlaceFotoCompleta = document.getElementById('enlaceFotoCompleta'),
+        $nombrePv = document.getElementById('nombrePv'),
+        $nombreDeOt = document.getElementById('nombreDeOt'),
+        $retroLinea = document.getElementById('retroLinea'),
+        $enlaceComprimidoOt = document.getElementById('enlaceComprimidoOt'),
+        $avisoComprimidoOt = document.getElementById('avisoComprimidoOt'),
+        $enlaceComprimido = document.getElementById('enlaceComprimido'),
+        $avisoComprimido = document.getElementById('avisoComprimido');
+
+
+    /* CONSTANTES DE LOCALSTORAGE */
+
+    const objetoOt = localStorage.getItem('objetoOt');
+    if (objetoOt && objetoOt !== null) {
+        ot = JSON.parse(objetoOt);
+        //console.log(ot);
+        vObjetoOt = true;
+    }
+    else {
+        mensaje = 'No se han recibido los datos necesarios a través de las variables del localStorage'
+        alerta(mensaje);
+    }
+
+    /* VLOGIN */
+
+    function obtenerValorCookie(nombre) {
+        return new Promise((resolve, reject) => {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(nombre + '=') == 0) {
+                    var valor = cookie.substring(nombre.length + 1, cookie.length);
+                    resolve(valor);
+                }
+            }
+            resolve(false);
+        })
+    }
+
+    function fetchUsuario(idUsuario) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/usuarios.php?id=' + idUsuario;
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchUsuario'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1][0]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchUsuario: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    function vLogin() {
+        return new Promise(async (resolve, reject) => {
+            loginCookie = await obtenerValorCookie('login');
+            usuarioCookie = await obtenerValorCookie('usuario');
+            if (loginCookie && usuarioCookie) {
+                if (navigator.onLine) {
+                    usuario = await fetchUsuario(usuarioCookie);
+                    //console.log(usuario);
+                    if (!usuario) {
+                        mensaje = 'No se ha podido consultar los datos del usuario en nuestra base de datos, por favor inténtalo nuevamente. Si el error persiste por favor comunícate con nosotros'
+                        localStorage.setItem('mensaje', mensaje);
+                        window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                    } else {
+                        if (usuario.eliminado == '1') {
+                            mensaje = 'El usuario ha sido eliminado, por favor comunícate con nosotros'
+                            localStorage.setItem('mensaje', mensaje);
+                            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                        }
+                        if (usuario.activo == '0') {
+                            mensaje = 'El usuario ha sido inactivado, por favor comunícate con nosotros'
+                            localStorage.setItem('mensaje', mensaje);
+                            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                        }
+                    }
+                } else {
+                    mensaje = 'No tienes acceso a internet, no es posible navegar en los datos y los archivos de nuestro servidor sin una conexión a internet establecida'
+                    alerta(mensaje);
+                    resolve(true);
+                }
+                resolve(true);
+            }
+        })
+    }
+
+    /* LOADER */
+
+    function loaderOn() {
+        scrollToTop();
+        $loader.classList.remove('displayOff');
+        $loader.classList.add('displayOn');
+    }
+
+    function loaderOff() {
+        setTimeout(() => {
+            $loader.classList.remove('displayOn');
+            $loader.classList.add('displayOff')
+        }, 1000)
+    }
+
+    function loaderOn2() {
+        scrollToTop();
+        $loader2.classList.remove('displayOff');
+        $loader2.classList.add('displayOn');
+    }
+
+    function loaderOff2() {
+        setTimeout(() => {
+            $loader2.classList.remove('displayOn');
+            $loader2.classList.add('displayOff')
+        }, 1000)
+    }
+
+    function loaderOn3() {
+        scrollToTop();
+        $loader3.classList.remove('displayOff');
+        $loader3.classList.add('displayOn');
+    }
+
+    function loaderOff3() {
+        setTimeout(() => {
+            $loader3.classList.remove('displayOn');
+            $loader3.classList.add('displayOff')
+        }, 1000)
+    }
+
+    /* MENSAJE */
+
+    function scrollToTop() {
+        // Para navegadores modernos
+        document.documentElement.scrollTop = 0;
+        // Para navegadores antiguos
+        document.body.scrollTop = 0;
+    }
+
+    function mensajeOn() {
+        $mensaje.classList.remove('displayOff');
+        $mensaje.classList.add('displayOn');
+    }
+
+    function mensajeOff() {
+        $mensaje.classList.remove('displayOn');
+        $mensaje.classList.add('displayOff');
+    }
+
+    function alerta(men) {
+        $textoMensaje.innerHTML = men;
+        mensajeOn();
+        scrollToTop();
+        loaderOff();
+    }
+
+    /* CERRAR SESIÓN */
+
+    function eliminarCookie(nombre) {
+        const tiempoExpiracion = 1; // Segundo 1 de la Época Unix
+        document.cookie = `${nombre}=; expires=${new Date(tiempoExpiracion * 1000).toUTCString()}; path=/;`;
+    }
+
+    function cerrarSesions() {
+        try {
+            loaderOn();
+            localStorage.removeItem('login');
+            localStorage.removeItem('usuario');
+            eliminarCookie('login');
+            eliminarCookie('usuario');
+            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    function limpiarContenedor(contenedor) {
+        return new Promise((resolve, reject) => {
+            try {
+                while (contenedor.firstChild) {
+                    contenedor.removeChild(contenedor.firstChild);
+                }
+                resolve(true);
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                resolve(false);
+            }
+
+        })
+    }
+
+    function limpiarVector(vector) {
+        return new Promise((resolve, reject) => {
+            try {
+                vector.length = 0;
+                resolve(true);
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                resolve(false);
+            }
+        })
+    }
+
+    async function pdv(linea) {
+        loaderOn2();
+        loaderOn3();
+        fotos = await fetchFotos(linea);
+        if (fotos) {
+            //console.log('Fotos:');
+            //console.log(fotos);
+            firmas = await fetchFirmas(linea);
+            if (firmas) {
+                //console.log('Firmas:');
+                //console.log(firmas);
+                const volcarFotosFirmas = await volcarImagenes(fotos, firmas);
+                if (volcarFotosFirmas) {
+                    numFoto = 0;
+                    carpetas = await fetchCarpetas(linea);
+                    if (carpetas) {
+                        //console.log('Carpetas:');
+                        //console.log(carpetas);
+                        //console.log(linksFotos);
+                        if (carpetas.length != 0) {
+                            if (carpetas.length == 1) {
+                                const carpetaDeLinea = carpetas[0];
+                                $enlaceComprimido.download = carpetaDeLinea.nombre;
+                                $enlaceComprimido.href = carpetaDeLinea.link;
+                                $enlaceComprimido.classList.replace('displayOff', 'displayOn');
+                            } else {
+                                const fechaReciente = await carpetaFechaReciente(carpetas);
+                                if (fechaReciente) {
+                                    //console.log('Fecha más reciente carpetas:');
+                                    //console.log(fechaReciente);
+                                    const carpetaActualizada = await carpetaReciente(carpetas, fechaReciente)
+                                    if (carpetaActualizada) {
+                                        //console.log('Carpeta actualizada:');
+                                        //console.log(carpetaActualizada);
+                                        $enlaceComprimido.download = carpetaActualizada.nombre;
+                                        $enlaceComprimido.href = carpetaActualizada.link;
+                                        $enlaceComprimido.classList.replace('displayOff', 'displayOn');
+                                    }
+                                }
+                            }
+                        }
+                        if (carpetas.length == 0) {
+                            $enlaceComprimido.classList.replace('displayOn', 'displayOff');
+                        }
+                        loaderOff2();
+                        loaderOff3();
+                    }
+                }
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        document.addEventListener('click', (e) => {
+
+            if (e.target.matches('#imagenUsuario')) {
+                $opcionesUsuario.classList.toggle('displayOff');
+                $opcionesUsuario.classList.toggle('displayOn');
+            } else {
+                if (!e.target.matches('#editarUsuarioB') && !e.target.matches('#cerrarSesionB') && $opcionesUsuario.classList.contains('displayOn')) {
+                    $opcionesUsuario.classList.replace('displayOn', 'displayOff');
+                }
+            }
+
+            if (e.target.matches('#editarUsuarioB')) {
+                const pAnterior = "https://dosxdos.app.iidos.com/clientes_ot.html";
+                localStorage.setItem('pAnterior', pAnterior);
+                window.location.href = "https://dosxdos.app.iidos.com/editar_usuario_cliente.html";
+            }
+
+            if (e.target.matches('#cerrarSesionB')) {
+                cerrarSesions();
+            }
+
+            if (e.target.matches('#botonHome')) {
+                window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+            }
+
+            if (e.target.matches('#leftArrow')) {
+                window.location.href = "https://dosxdos.app.iidos.com/clientes_ots.html";
+            }
+
+            if (e.target.matches('#imgCerrar')) {
+                mensajeOff();
+            }
+
+            /* FOCUS lÍNEAS, FOTOS Y ESTRELLAS */
+
+            if (e.target.matches('.botonLinea span')) {
+                const botones = document.querySelectorAll('.buttons-container button');
+                botones.forEach((boton) => {
+                    if (boton.classList.contains('foco')) {
+                        boton.classList.remove('foco');
+                    }
+                })
+                e.target.parentElement.classList.add('foco');
+                linea = e.target.parentElement.id;
+                console.log('Línea: ' + e.target.parentElement.id);
+                const texto = e.target.textContent;
+                console.log(texto);
+                const tituloLinea = document.getElementById('nombrePv');
+                const retroLinea = document.getElementById('retroLinea');
+                tituloLinea.textContent = texto;
+                retroLinea.textContent = '¿qué te pareció el montaje de ' + texto + '?';
+                pdv(linea);
+            }
+
+            if (e.target.matches('.botonLinea')) {
+                const botones = document.querySelectorAll('.buttons-container button');
+                botones.forEach((boton) => {
+                    if (boton.classList.contains('foco')) {
+                        boton.classList.remove('foco');
+                    }
+                })
+                e.target.classList.add('foco');
+                linea = e.target.id;
+                console.log('Línea: ' + e.target.id);
+                const texto = e.target.firstChild.textContent;
+                console.log(texto);
+                const tituloLinea = document.getElementById('nombrePv');
+                const retroLinea = document.getElementById('retroLinea');
+                tituloLinea.textContent = texto;
+                retroLinea.textContent = '¿qué te pareció el montaje de ' + texto + '?';
+                pdv(linea);
+            }
+
+            if (e.target.matches('.gray-rectangles div img')) {
+                const imagenes = document.querySelectorAll('.gray-rectangles div img');
+                imagenes.forEach((imagen) => {
+                    if (imagen.classList.contains('foco')) {
+                        imagen.classList.remove('foco');
+                        e.target.classList.add('foco');
+                        $imgPrincipal.src = e.target.src;
+                        numero = e.target.id.replace('img', '');
+                        numero = parseInt(numero, 10);
+                        numFoto = numero;
+                    }
+                })
+            }
+
+            if (e.target.matches('#estrella1')) {
+                retroalimentacion = 1;
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+            }
+
+            if (e.target.matches('#estrella2')) {
+                retroalimentacion = 2;
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+            }
+
+            if (e.target.matches('#estrella3')) {
+                retroalimentacion = 3;
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+            }
+
+            if (e.target.matches('#estrella4')) {
+                retroalimentacion = 4;
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+            }
+
+            if (e.target.matches('#estrella5')) {
+                retroalimentacion = 5;
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaLlena.png';
+            }
+
+            if (e.target.matches('#imgCerrarFotoCompleta')) {
+                $fotoCompleta.classList.remove('displayOn');
+                $fotoCompleta.classList.add('displayOff');
+            }
+
+            if (e.target.matches('#imgPrincipal')) {
+                $enlaceFotoCompleta.href = $imgPrincipal.src;
+                const nombre = $imgPrincipal.src.substring($imgPrincipal.src.lastIndexOf('/') + 1);
+                $enlaceFotoCompleta.download = nombre;
+                $imagenFotoCompleta.src = $imgPrincipal.src;
+                scrollToTop();
+                $fotoCompleta.classList.remove('displayOff');
+                $fotoCompleta.classList.add('displayOn');
+            }
+
+            if (e.target.matches('#fotoDerecha')) {
+                //console.log('Derecha');
+                totalFotos = linksFotos.length - 1;
+                numFoto++;
+                if (numFoto > totalFotos) {
+                    numFoto = 0;
+                }
+                const idFoto = 'img' + numFoto;
+                const imagenes = document.querySelectorAll('.gray-rectangles div img');
+                imagenes.forEach((imagen) => {
+                    if (imagen.classList.contains('foco')) {
+                        imagen.classList.remove('foco');
+                    }
+                    if (imagen.id == idFoto) {
+                        imagen.classList.add('foco');
+                        $imgPrincipal.src = imagen.src;
+                    }
+                })
+            }
+
+            if (e.target.matches('#fotoIzquierda')) {
+                //console.log('Izquierda');
+                totalFotos = linksFotos.length - 1;
+                numFoto--;
+                if (numFoto < 0) {
+                    numFoto = totalFotos;
+                }
+                const idFoto = 'img' + numFoto;
+                const imagenes = document.querySelectorAll('.gray-rectangles div img');
+                imagenes.forEach((imagen) => {
+                    if (imagen.classList.contains('foco')) {
+                        imagen.classList.remove('foco');
+                    }
+                    if (imagen.id == idFoto) {
+                        imagen.classList.add('foco');
+                        $imgPrincipal.src = imagen.src;
+                    }
+                })
+            }
+
+            if (e.target.matches('#enviarRetro')) {
+                if (retroalimentacion) {
+                    enviarRetroalimentar();
+                } else {
+                    mensaje = 'Para enviarnos tu valiosa retroalimentación, es necesario que al menos califiques el montaje con las estrellas';
+                    alerta(mensaje);
+                }
+
+            }
+
+        })
+
+        /* BUSCADOR */
+
+        $buscador.addEventListener('input', () => {
+            botones = document.querySelectorAll('.buttons-container button');
+            const valorBusqueda = $buscador.value.toLowerCase();
+            botones.forEach((boton) => {
+                const textoBoton = boton.textContent.toLowerCase();
+                const span = boton.querySelector('span'); // Obtener el elemento <span> dentro del botón
+                if (textoBoton.includes(valorBusqueda)) {
+                    boton.classList.replace("displayOff", "displayOn");
+                    // Crear una expresión regular para buscar la coincidencia exacta
+                    const regex = new RegExp(valorBusqueda, 'gi');
+                    const textoResaltado = boton.textContent.replace(regex, '<span class="resaltado">$&</span>');
+                    span.innerHTML = textoResaltado;
+                } else {
+                    boton.classList.replace("displayOn", "displayOff");
+                    // Restablecer el texto original sin resaltado
+                    span.textContent = span.textContent;
+                }
+            });
+        });
+
+        $enlaceComprimidoOt.addEventListener('mouseover', () => {
+            $avisoComprimidoOt.classList.replace('displayOff', 'displayOn')
+        })
+
+        $enlaceComprimidoOt.addEventListener('mouseout', () => {
+            $avisoComprimidoOt.classList.replace('displayOn', 'displayOff')
+        })
+
+        $enlaceComprimido.addEventListener('mouseover', () => {
+            $avisoComprimido.classList.replace('displayOff', 'displayOn')
+        })
+
+        $enlaceComprimido.addEventListener('mouseout', () => {
+            $avisoComprimido.classList.replace('displayOn', 'displayOff')
+        })
+
+    })
+
+    /* INICIAR BUSCADOR */
+
+    function startBuscador() {
+        if ($buscador.value) {
+            botones = document.querySelectorAll('.buttons-container button');
+            const valorBusqueda = $buscador.value.toLowerCase();
+            botones.forEach((boton) => {
+                const textoBoton = boton.textContent.toLowerCase();
+                const span = boton.querySelector('span'); // Obtener el elemento <span> dentro del botón
+                if (textoBoton.includes(valorBusqueda)) {
+                    boton.classList.replace("displayOff", "displayOn");
+                    // Crear una expresión regular para buscar la coincidencia exacta
+                    const regex = new RegExp(valorBusqueda, 'gi');
+                    const textoResaltado = boton.textContent.replace(regex, '<span class="resaltado">$&</span>');
+                    span.innerHTML = textoResaltado;
+                } else {
+                    boton.classList.replace("displayOn", "displayOff");
+                    // Restablecer el texto original sin resaltado
+                    span.textContent = span.textContent;
+                }
+            });
+        }
+    }
+
+    /* TIPOS OT */
+
+    function fetchTiposOt(idCliente) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&tiposOt';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchTiposOt'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchTiposOt: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* FETCH OTS */
+
+    function fetchOts(idCliente, codCliente, codOt) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&codCliente=' + codCliente + '&codOt=' + codOt + '&clientesOts';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchOts'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchOts: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* LÍNEAS */
+
+    function fetchLineas(ot) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?ot=' + ot + '&lineasDeOt';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchLineas'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchLineas: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* FOTOS */
+
+    function fetchFotos(linea) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?ot=' + ot.nombre + '&lineaOt=' + linea + '&fotos';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchFotos'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchFotos: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* FIRMAS */
+
+    function fetchFirmas(linea) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?ot=' + ot.nombre + '&lineaOt=' + linea + '&firmas';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchFirmas'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchFirmas: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* CARPETAS */
+
+    function fetchCarpetas(linea) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?ot=' + ot.nombre + '&lineaOt=' + linea + '&carpetas';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchCarpetas'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchCarpetas: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* CARPETAS OT*/
+
+    function fetchCarpetasOt(ot) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?ot=' + ot + '&carpetasOt';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchCarpetasOt'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchCarpetasOt: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* RETROALIMENTACIONES */
+
+    function retroalimentar(json) {
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/clientes.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función retroalimentar'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(true);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función retroalimentar: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* VOLCAR DATOS */
+
+    async function volcarDatosLineas(lineas) {
+        return new Promise(async (resolve, reject) => {
+            const fragmento = document.createDocumentFragment();
+            const promises = lineas.map(linea => {
+                const boton = document.createElement('button');
+                boton.id = linea.lineaOt;
+                boton.className = 'botonLinea';
+                boton.classList.add('displayOn');
+                const botonSpan = document.createElement('span');
+                temporalDiv = document.createElement("div");
+                if (linea.nombrePv) {
+                    temporalDiv.innerHTML = linea.nombrePv.replace(/\\/g, '');
+                    textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                    textoConvertido = textoConvertido.toLowerCase();
+                    botonSpan.textContent = `${textoConvertido} - ln${linea.lineaOt}`;
+                } else {
+                    botonSpan.textContent = 'Pv sin nombre en la base de datos';
+                }
+                boton.appendChild(botonSpan);
+                fragmento.appendChild(boton);
+            })
+            await Promise.all(promises);
+            const botonesLineas = document.getElementById('botonesLineas');
+            botonesLineas.appendChild(fragmento);
+            resolve(true);
+        })
+    }
+
+    async function volcarImagenes(fotos, firmas) {
+        return new Promise(async (resolve, reject) => {
+            const miniaturas = document.getElementById('miniaturas');
+            const limpiarMiniaturas = await limpiarContenedor(miniaturas);
+            if (limpiarMiniaturas) {
+                const fragmento = document.createDocumentFragment();
+                const limpiarLinks = await limpiarVector(linksFotos);
+                if (limpiarLinks) {
+                    i = 0;
+                    if (fotos.length != 0) {
+                        const promisesFotos = fotos.map(foto => {
+                            linksFotos.push(foto.link);
+                            const contenedor = document.createElement('div');
+                            const imagen = document.createElement('img');
+                            imagen.src = foto.link;
+                            imagen.id = 'img' + i;
+                            if (i == 0) {
+                                imagen.classList.add('foco');
+                                $imgPrincipal.src = foto.link;
+                            }
+                            i++;
+                            contenedor.appendChild(imagen);
+                            fragmento.appendChild(contenedor);
+                        })
+                        await Promise.all(promisesFotos);
+                    }
+                    if (firmas.length != 0) {
+                        const promisesFirmas = firmas.map(firma => {
+                            linksFotos.push(firma.link);
+                            const contenedor = document.createElement('div');
+                            const imagen = document.createElement('img');
+                            imagen.src = firma.link;
+                            imagen.id = 'img' + i;
+                            if (i == 0) {
+                                imagen.classList.add('foco');
+                                $imgPrincipal.src = firma.link;
+                            }
+                            i++;
+                            contenedor.appendChild(imagen);
+                            fragmento.appendChild(contenedor);
+                        })
+                        await Promise.all(promisesFirmas);
+                    }
+                    if (fotos.length == 0 && firmas.length == 0) {
+                        $imgPrincipal.src = 'https://dosxdos.app.iidos.com/img/logoPwa1024.png'
+                    }
+                    miniaturas.appendChild(fragmento);
+                    resolve(true);
+                }
+            }
+        })
+    }
+
+    /* FECHA RECIENTE CARPETA */
+    async function carpetaFechaReciente(folders) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                stringsDeFechas = [];
+                const promisesFechas = folders.map(folder => {
+                    stringsDeFechas.push(folder.fecha);
+                })
+                await Promise.all(promisesFechas);
+                // Convierte cada string en un objeto Date y guárdalos en un array
+                let fechas = stringsDeFechas.map(stringFecha => {
+                    return new Date(stringFecha);
+                });
+                await Promise.all(fechas);
+                // Encuentra la fecha más reciente usando el método reduce
+                let fechaMasReciente = fechas.reduce((fechaA, fechaB) => {
+                    return fechaA > fechaB ? fechaA : fechaB;
+                });
+                resolve(fechaMasReciente);
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                resolve(false);
+            }
+        })
+    }
+
+    /* CARPETA RECIENTE */
+    async function carpetaReciente(folders, fecha) {
+        return new Promise(async (resolve, reject) => {
+            fecha = fecha.getTime();
+            //console.log('Fecha recibida en carpetaReciente:');
+            //console.log(fecha);
+            let folderActualizado;
+            try {
+                const promisesFechas = folders.map(folder => {
+                    fechaFolder = new Date(folder.fecha);
+                    fechaFolder = fechaFolder.getTime();
+                    //console.log('Objeto fecha en carpetaReciente:');
+                    //console.log(fechaFolder);
+                    //console.log(fecha);
+                    if (fechaFolder == fecha) {
+                        folderActualizado = folder;
+                    }
+                })
+                await Promise.all(promisesFechas);
+                resolve(folderActualizado);
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                resolve(false);
+            }
+        })
+    }
+
+    /* CARPETA RECIENTE */
+    async function enviarRetroalimentar() {
+        return new Promise(async (resolve, reject) => {
+            loaderOn2();
+            const jsonRetro = {};
+            try {
+                jsonRetro.ot = ot.nombre;
+                jsonRetro.descripcionOt = ot.descripcion;
+                jsonRetro.firma = ot.firma;
+                jsonRetro.ano = ot.ano;
+                jsonRetro.linea = linea;
+                const promisesLineaRetro = lineas.map(lineaObjeto => {
+                    if (lineaObjeto.lineaOt == linea) {
+                        lineaRetro = lineaObjeto;
+                        console.log(lineaRetro);
+                    }
+                })
+                await Promise.all(promisesLineaRetro);
+                jsonRetro.pv = lineaRetro.pv;
+                jsonRetro.nombrePv = lineaRetro.nombrePv;
+                jsonRetro.evaluacion = retroalimentacion;
+                const inputComentario = document.getElementById('comentarioRetro');
+                jsonRetro.comentario = inputComentario.value;
+                jsonRetro.usuarioId = usuario.id;
+                jsonRetro.clienteUsuario = ot.cliente;
+                jsonRetro.nombreClienteUsuario = ot.nombreCliente;
+                jsonRetro.nombreUsuario = usuario.nombre;
+                jsonRetro.apellidoUsuario = usuario.apellido;
+                console.log(jsonRetro);
+                const jsonStringRetro = JSON.stringify(jsonRetro);
+                await retroalimentar(jsonStringRetro);
+                $estrella1.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella2.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella3.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella4.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                $estrella5.src = 'https://dosxdos.app.iidos.com/img/estrellaVacia.png';
+                inputComentario.value = '';
+                retroalimentacion = 0;
+                loaderOff2();
+                resolve(true);
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                resolve(false);
+            }
+        })
+    }
+
+    /* INICIAR APP ONLINE */
+
+    async function appOnline() {
+        try {
+            const login = await vLogin();
+            if (usuario.imagen != '0') {
+                $imagenUsuario.src = 'https://dosxdos.app.iidos.com/' + usuario.imagen
+            }
+            if (vObjetoOt) {
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.nombre.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertidoNombre = textoConvertido.toLowerCase();
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.descripcion.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertidoDescripcion = textoConvertido.toLowerCase();
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.firma.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertidoFirma = textoConvertido.toLowerCase();
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.ano.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertidoAno = textoConvertido.toLowerCase();
+                document.title = `${textoConvertidoNombre} - ${textoConvertidoDescripcion} - ${textoConvertidoFirma} - ${textoConvertidoAno} - ${usuario.nombre} ${usuario.apellido} - dosxdos`;
+                $nombreDeOt.textContent = `${textoConvertidoNombre} - ${textoConvertidoDescripcion} - ${textoConvertidoFirma} - ${textoConvertidoAno}`;
+                lineas = await fetchLineas(ot.nombre);
+                if (lineas) {
+                    //console.log('Lineas:')
+                    //console.log(lineas);
+                    const volcarLineas = await volcarDatosLineas(lineas);
+                    if (volcarLineas) {
+                        //console.log('Líneas volcadas');
+                        const primeraLinea = lineas[0];
+                        linea = primeraLinea.lineaOt;
+                        //console.log('Línea: ' + linea);
+                        const botonPrimeraLinea = document.getElementById(linea);
+                        botonPrimeraLinea.classList.add('foco');
+                        $nombrePv.textContent = botonPrimeraLinea.firstChild.textContent;
+                        $retroLinea.textContent = `¿qué te pareció el montaje de ${botonPrimeraLinea.firstChild.textContent}?`;
+                        carpetasOt = await fetchCarpetasOt(ot.nombre);
+                        if (carpetasOt) {
+                            //console.log('CarpetasOt:');
+                            //console.log(carpetasOt);
+                            if (carpetasOt.length != 0) {
+                                if (carpetasOt.length == 1) {
+                                    const carpetaDeOt = carpetasOt[0];
+                                    $enlaceComprimidoOt.download = carpetaDeOt.nombre;
+                                    $enlaceComprimidoOt.href = carpetaDeOt.link;
+                                    $enlaceComprimidoOt.classList.replace('displayOff', 'displayOn');
+                                } else {
+                                    const fechaReciente = await carpetaFechaReciente(carpetasOt);
+                                    if (fechaReciente) {
+                                        //console.log('Fecha más reciente carpetas de ot:');
+                                        //console.log(fechaReciente);
+                                        const carpetaActualizada = await carpetaReciente(carpetasOt, fechaReciente)
+                                        //console.log(carpetaActualizada);
+                                        if (carpetaActualizada) {
+                                            //console.log('Carpeta actualizada de ot:');
+                                            //console.log(carpetaActualizada);
+                                            $enlaceComprimidoOt.download = carpetaActualizada.nombre;
+                                            $enlaceComprimidoOt.href = carpetaActualizada.link;
+                                            $enlaceComprimidoOt.classList.replace('displayOff', 'displayOn');
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        loaderOff();
+                        pdv(linea);
+                    }
+                }
+            } else {
+                document.title = `${usuario.nombre} ${usuario.apellido} - dosxdos`;
+            }
+            startBuscador();
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    /* INICIAR APP OFFLINE */
+
+    async function appOffline() {
+        try {
+            const login = await vLogin();
+            alerta('No es posible visualizar los datos del servidor sin conexión a internet');
+            loaderOff();
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    /* TAREAS AL INICIAR LA PANTALLA CON EL ESTADO DE LA CONEXIÓN */
+
+    if (navigator.onLine) {
+        console.log('La aplicación está en línea.');
+        appOnline();
+    } else {
+        console.log('La aplicación está fuera de línea.');
+        appOffline();
+    }
+
+    /* PAGE SHOW - MENSAJES */
+    window.addEventListener('pageshow', (e) => {
+        let mensaje = localStorage.getItem('mensaje');
+        if (mensaje && mensaje !== null) {
+            alerta(mensaje);
+            localStorage.removeItem('mensaje');
+        }
+    })
+
+    /* TAREAS EN LA INTERMITENCIA DE LA CONEXIÓN */
+
+    window.addEventListener('online', () => {
+        console.log('La conexión a Internet se ha recuperado.');
+        window.location.reload();
+    });
+
+    window.addEventListener('offline', () => {
+        console.log('La conexión a Internet se ha perdido.');
+    });
+
+</script>

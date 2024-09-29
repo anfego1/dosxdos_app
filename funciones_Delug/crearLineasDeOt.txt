@@ -1,0 +1,47 @@
+//OBTENER REGISTRO
+criterio = "(N:equals:" + numPdv + ")";
+pdv = zoho.crm.searchRecords("Puntos_de_venta",criterio);
+pdv = pdv.get(0);
+criterio = "(C_digo:equals:" + codOt + ")";
+ot = zoho.crm.searchRecords("Deals",criterio);
+ot = ot.get(0);
+//OBTENER DATOS DE LA OT
+prefijoOt = ot.get("Prefijo");
+nombreOt = ot.get("Deal_Name");
+idOt = ot.get("id");
+otRelacionada = {"name":nombreOt,"id":idOt};
+empresaRelacionada = ot.get("Empresa");
+contactoRelacionado = ot.get("Contact_Name");
+fechaPrevisionOt = ot.get("Fecha_de_previsi_n_de_OT");
+firma = ot.get("Firma");
+//OBTENER DATOS DEL PDV
+nombrePdv = pdv.get("Name");
+numeroPdv = pdv.get("N");
+zonaPdv = pdv.get("Zona");
+sectorPdv = pdv.get("Sector");
+direccionPdv = pdv.get("Direcci_n");
+idPdv = pdv.get("id");
+pdvRelacionado = {"name":nombrePdv,"id":idPdv};
+//FECHA DE CREACIÓN
+nowFecha = zoho.currenttime;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+hora = dateActual.getHour();
+minutos = dateActual.getMinutes();
+fecha = ano + "-" + mes + "-" + dia;
+// CONSTRUIR DATOS EN COMÚN
+nombreLinea = nombrePdv + ", " + prefijoOt + ", " + codOt + ", " + zonaPdv + ", " + direccionPdv;
+// CREAR LA LÍNEA
+linea = {"Product_Name":nombreLinea,"OT_relacionada":otRelacionada,"Punto_de_venta":pdvRelacionado,"Nombre_de_Empresa":empresaRelacionada,"Contacto_Relacionado":contactoRelacionado,"Fase":"Nuevas","Fecha_de_previsi_n_de_L_nea":fechaPrevisionOt,"Fecha_de_creaci_n":fecha,"Hora_de_creaci_n":hora,"Minutos_de_creaci_n":minutos,"Prefijo_OT_relacionada":prefijoOt};
+response = zoho.crm.createRecord("Products",linea);
+//info response;

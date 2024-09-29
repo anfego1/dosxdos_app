@@ -1,0 +1,12 @@
+info idNuevaLinea;
+linea = zoho.crm.getRecordById("Deals",idNuevaLinea);
+info linea;
+otRelacionada = linea.get('OT_related');
+idOt = otRelacionada.get('id');
+ot = zoho.crm.getRecordById("Lines",idOt);
+info ot;
+fechaPrevisionOt = ot.get('Fecha_2');
+info fechaPrevisionOt;
+nuevaFecha = {"Fecha_de_previsi_n":fechaPrevisionOt};
+actualizarFecha = zoho.crm.updateRecord("Deals",idNuevaLinea,nuevaFecha);
+info actualizarFecha;

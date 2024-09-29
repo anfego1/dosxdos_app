@@ -1,0 +1,15 @@
+{
+    "tittle": "Login dos.dos",
+    "usuario": "User:",
+    "contrasena": "Password:",
+    "olvidar": "Can we help you remember some data?",
+    "acceder": "LOGIN",
+    "email": "Email:",
+    "recordar": "SEND",
+    "volver": "BACK",
+    "instalar": "Install our app!",
+    "reContrasena": "New Password:",
+    "reContrasena2": "Repeat new password:",
+    "reestablecer": "RESET",
+    "tittle2": "Reset password dos.dos"
+}

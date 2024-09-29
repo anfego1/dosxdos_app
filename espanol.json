@@ -1,0 +1,15 @@
+{
+    "tittle": "Autenticación dos.dos",
+    "usuario": "Usuario:",
+    "contrasena": "Contraseña:",
+    "olvidar": "¿Te ayudamos a recordar algún dato?",
+    "acceder": "ACCEDER",
+    "email": "Correo electrónico:",
+    "recordar": "ENVIAR",
+    "volver": "VOLVER",
+    "instalar": "¡Instala nuestra aplicación!",
+    "reContrasena": "Nueva contraseña:",
+    "reContrasena2": "Repetir nueva contraseña:",
+    "reestablecer": "RESTABLECER",
+    "tittle2": "Restablecer contraseña dos.dos"
+}

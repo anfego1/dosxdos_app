@@ -1,0 +1,634 @@
+/* VARIABLES */
+
+$variables: (
+  --letterSpacing: 1.5px,
+  --loaderWH: 60px,
+  --cajaLoginW: 380px,
+  --cajaLoginMT: 130px,
+  --cajaLogoP: 40px,
+  --cajaLogoH: 250px,
+  --logoW: 350px,
+  --logoH: 100px,
+  --formularioPB: 40px,
+  --datosTMT: 100px,
+  --datosT2MT: 20px,
+  --cajaIconoWH: 50px,
+  --cajaIconoMR: 15px,
+  --cajaIconoImgP: 10px,
+  --cajaDatosInputW: 250px,
+  --cajaDatosInputH: 55px,
+  --cajaDatosInputFS: 20px,
+  --cajaDatos2MT: 20px,
+  --cajaUsuarioMT: 30px,
+  --accionMT: 35px,
+  --accionH: 45px,
+  --accionW: 120px,
+  --accionFS: 17px,
+  --accionLS: 2.5px,
+  --accion2MT: 30px,
+  --accion2H: 45px,
+  --accion2W: 150px,
+  --accion2FS: 17px,
+  --accion2LS: 2.5px,
+  --cancelarMT: 20px,
+  --cancelarH: 45px,
+  --cancelarW: 150px,
+  --cancelarFS: 17px,
+  --cancelarLS: 2.5px,
+  --mensajeFS: 18px,
+  --mensajeLS: 2.5px,
+  --mensajeP: 10px,
+  --opcionesMT: 5px,
+  --opcionesFS: 20px,
+  --x2: 2px,
+  --x28: 28px,
+  --x20: 20px
+);
+
+$variablesP: (
+  --letterSpacing: 0.36vw,
+  --loaderWH: 14.56vw,
+  --cajaLoginW: 92.23vw,
+  --cajaLoginMT: 31.55vw,
+  --cajaLogoP: 9.71vw,
+  --cajaLogoH: 60.68vw,
+  --logoW: 84.95vw,
+  --logoH: 24.27vw,
+  --formularioPB: 9.71vw,
+  --datosTMT: 24.27vw,
+  --datosT2MT: 4.85vw,
+  --cajaIconoWH: 12.14vw,
+  --cajaIconoMR: 3.64vw,
+  --cajaIconoImgP: 2.43vw,
+  --cajaDatosInputW: 60.68vw,
+  --cajaDatosInputH: 13.35vw,
+  --cajaDatosInputFS: 4.85vw,
+  --cajaDatos2MT: 4.85vw,
+  --cajaUsuarioMT: 7.28vw,
+  --accionMT: 8.50vw,
+  --accionH: 10.92vw,
+  --accionW: 29.13vw,
+  --accionFS: 4.13vw,
+  --accionLS: 0.61vw,
+  --accion2MT: 7.28vw,
+  --accion2H: 10.92vw,
+  --accion2W: 36.41vw,
+  --accion2FS: 4.13vw,
+  --accion2LS: 0.61vw,
+  --cancelarMT: 4.85vw,
+  --cancelarH: 10.92vw,
+  --cancelarW: 36.41vw,
+  --cancelarFS: 4.13vw,
+  --cancelarLS: 0.61vw,
+  --mensajeFS: 4.37vw,
+  --mensajeLS: 0.61vw,
+  --mensajeP: 2.43vw,
+  --opcionesMT: 1.21vw,
+  --opcionesFS: 4.85vw,
+  --x2: 0.49vw,
+  --x28: 6.80vw,
+  --x20: 4.85vw
+);
+
+$variablesE: (
+  --letterSpacing: 1px,
+  --loaderWH: 80px,
+  --cajaLoginW: 430px,
+  --cajaLoginMT: 80px,
+  --cajaLogoP: 20px,
+  --cajaLogoH: 150px,
+  --logoW: 350px,
+  --logoH: 100px,
+  --formularioPB: 30px,
+  --datosTMT: 100px,
+  --datosT2MT: 20px,
+  --cajaIconoWH: 48px,
+  --cajaIconoMR: 15px,
+  --cajaIconoImgP: 10px,
+  --cajaDatosInputW: 280px,
+  --cajaDatosInputH: 50px,
+  --cajaDatosInputFS: 15px,
+  --cajaDatos2MT: 20px,
+  --cajaUsuarioMT: 30px,
+  --accionMT: 35px,
+  --accionH: 45px,
+  --accionW: 120px,
+  --accionFS: 17px,
+  --accionLS: 1.5px,
+  --accion2MT: 30px,
+  --accion2H: 45px,
+  --accion2W: 150px,
+  --accion2FS: 15px,
+  --accion2LS: 1.5px,
+  --cancelarMT: 20px,
+  --cancelarH: 45px,
+  --cancelarW: 150px,
+  --cancelarFS: 15px,
+  --cancelarLS: 1.5px,
+  --mensajeFS: 15px,
+  --mensajeLS: 1.5px,
+  --mensajeP: 10px,
+  --opcionesMT: 5px,
+  --opcionesFS: 18px,
+  --x2: 1.2px,
+  --x28: 16.80px,
+  --x20: 12px
+);
+
+$variablesEP: (
+  --letterSpacing: 0.08vw,
+  --loaderWH: 6.67vw,
+  --cajaLoginW: 35.83vw,
+  --cajaLoginMT: 6.67vw,
+  --cajaLogoP: 1.67vw,
+  --cajaLogoH: 12.50vw,
+  --logoW: 29.17vw,
+  --logoH: 8.33vw,
+  --formularioPB: 2.50vw,
+  --datosTMT: 8.33vw,
+  --datosT2MT: 1.67vw,
+  --cajaIconoWH: 4vw,
+  --cajaIconoMR: 1.25vw,
+  --cajaIconoImgP: 0.83vw,
+  --cajaDatosInputW: 23.33vw,
+  --cajaDatosInputH: 4.17vw,
+  --cajaDatosInputFS: 1.25vw,
+  --cajaDatos2MT: 1.67vw,
+  --cajaUsuarioMT: 2.50vw,
+  --accionMT: 2.92vw,
+  --accionH: 3.75vw,
+  --accionW: 10vw,
+  --accionFS: 1.42vw,
+  --accionLS: 0.13vw,
+  --accion2MT: 2.50vw,
+  --accion2H: 3.75vw,
+  --accion2W: 12.50vw,
+  --accion2FS: 1.25vw,
+  --accion2LS: 0.13vw,
+  --cancelarMT: 1.67vw,
+  --cancelarH: 3.75vw,
+  --cancelarW: 12.50vw,
+  --cancelarFS: 1.25vw,
+  --cancelarLS: 0.13vw,
+  --mensajeFS: 1.25vw,
+  --mensajeLS: 0.13vw,
+  --mensajeP: 0.83vw,
+  --opcionesMT: 0.42vw,
+  --opcionesFS: 1.50vw,
+  --x2: 0.10vw,
+  --x28: 1.40vw,
+  --x20: 1vw
+);
+
+/* FIRST MOBILE SAMSUNG GALAXY A51/71 (w: 412px)*/
+
+:root {
+
+  @each $var,
+  $value in $variablesP {
+    #{$var}: $value;
+  }
+}
+
+/* INICIO */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  letter-spacing: var(--letterSpacing);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  align-items: center;
+  background-image: url('../img/fondo.jpg');
+  background-size: cover;
+  /* Ajusta la imagen para cubrir todo el fondo */
+  background-repeat: no-repeat;
+  /* Evita la repetición de la imagen */
+  background-attachment: fixed;
+  /* Mantiene la imagen fija en su lugar mientras se desplaza la página */
+  background-position: left center;
+}
+
+.oyh {
+  overflow-y: hidden;
+}
+
+.displayOff {
+  display: none;
+}
+
+.displayOn {
+  display: flex;
+}
+
+.borde {
+  border: 1px solid black;
+}
+
+/* FUENTES */
+@font-face {
+  font-family: 'Roboto';
+  src: url("fuentes/Roboto/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url("fuentes/Merriweather/Merriweather-Light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Merriweather-Bold';
+  src: url("fuentes/Merriweather/Merriweather-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url("fuentes/Lora/Lora-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Lora-Medium';
+  src: url("fuentes/Lora/Lora-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'Lora-Bold';
+  src: url("fuentes/Lora/Lora-Bold.ttf") format("truetype");
+}
+
+/* LOADER */
+
+#loader {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.886);
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: var(--loaderWH);
+  height: var(--loaderWH);
+  color: #fff;
+}
+
+.loader:before,
+.loader:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s spin linear infinite;
+}
+
+.loader:after {
+  color: #b20b15;
+  transform: rotateY(70deg);
+  animation-delay: .4s;
+}
+
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
+
+/* CONTENIDO */
+
+#cajaLogin {
+  display: flex;
+  z-index: 20;
+  position: absolute;
+  width: var(--cajaLoginW);
+  flex-direction: column;
+  align-items: center;
+  margin-top: var(--cajaLoginMT);
+}
+
+#cajaLogo {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: var(--cajaLogoP);
+  padding-bottom: var(--cajaLogoP);
+  height: var(--cajaLogoH);
+  background-color: rgba(255, 255, 255, 0.281);
+}
+
+#logo {
+  display: flex;
+  width: var(--logoW);
+  justify-content: center;
+  height: var(--logoH);
+}
+
+#logo>img {
+  width: var(--logoW);
+  height: var(--logoH);
+}
+
+.formulario {
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.173);
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  padding-bottom: var(--formularioPB);
+}
+
+.datos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.datosT {
+  margin-top: var(--datosTMT);
+}
+
+.datosT2 {
+  margin-top: var(--datosT2MT);
+}
+
+h1 {
+  font-family: 'Roboto', 'Roboto-Light';
+}
+
+.cajaDatos {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.cajaIcono {
+  display: flex;
+  width: var(--cajaIconoWH);
+  height: var(--cajaIconoWH);
+  margin-right: var(--cajaIconoMR);
+}
+
+.cajaIcono>img {
+  background-color: rgba(255, 255, 255, 0.837);
+  width: 100%;
+  height: 100%;
+  padding: var(--cajaIconoImgP);
+  border-radius: 50%;
+}
+
+.cajaDatos>input {
+  display: flex;
+  width: var(--cajaDatosInputW);
+  height: var(--cajaDatosInputH);
+  border-radius: 30px;
+  justify-content: center;
+  font-size: var(--cajaDatosInputFS);
+  text-align: center;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.837);
+}
+
+.cajaDatos2 {
+  margin-top: var(--cajaDatos2MT);
+}
+
+.cajaUsuario {
+  margin-top: var(--cajaUsuarioMT);
+}
+
+.accion {
+  margin-top: var(--accionMT);
+  height: var(--accionH);
+  width: var(--accionW);
+  border-radius: 30px;
+  border: none;
+  font-size: var(--accionFS);
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  letter-spacing: var(--accionLS);
+  font-family: 'Lora', 'Lora-Regular';
+}
+
+.accion:hover {
+  cursor: pointer;
+}
+
+.accion:active {
+  background-color: black;
+}
+
+.accion2 {
+  margin-top: var(--accion2MT);
+  height: var(--accion2H);
+  width: var(--accion2W);
+  border-radius: 30px;
+  border: none;
+  font-size: var(--accion2FS);
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  letter-spacing: var(--accion2LS);
+  font-family: 'Lora', 'Lora-Regular';
+}
+
+.accion2:hover {
+  cursor: pointer;
+}
+
+.accion2:active {
+  background-color: black;
+}
+
+.cancelar {
+  margin-top: var(--cancelarMT);
+  height: var(--cancelarH);
+  width: var(--cancelarW);
+  border-radius: 30px;
+  border: none;
+  font-size: var(--cancelarFS);
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  letter-spacing: var(--cancelarLS);
+  font-family: 'Lora', 'Lora-Regular';
+}
+
+.cancelar:hover {
+  cursor: pointer;
+}
+
+.cancelar:active {
+  background-color: black;
+}
+
+#mensaje {
+  position: relative;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: var(--mensajeFS);
+  letter-spacing: var(--mensajeLS);
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  padding: var(--mensajeP);
+  font-family: 'Roboto', 'Roboto-Light';
+  width: 100%;
+  justify-content: center; 
+ }
+
+#mensaje>p {display: flex; flex-wrap: wrap; margin-top: var(--x20); margin-bottom: var(--x20);}
+
+#imgCerrar {position: absolute; width: var(--x28); top: var(--x2); right: var(--x2);}
+
+#imgCerrar:hover {cursor: pointer;}
+
+#opciones {
+  display: flex;
+  width: 100%;
+  margin-top: var(--opcionesMT);
+  justify-content: space-around;
+}
+
+#registro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--accionMT);
+  height: var(--accionH);
+  width: var(--accionW);
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  letter-spacing: var(--accionLS);
+  font-family: 'Lora', 'Lora-Regular';
+  font-size: var(--accionFS);
+}
+
+#registro:hover {
+  cursor: pointer;
+}
+
+#recordarContrasena {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: var(--accionMT);
+  height: var(--accionH);
+  width: var(--accionW);
+  border-radius: 30px;
+  border: none;
+  font-size: var(--accionFS);
+  background-color: rgba(0, 0, 0, 0.573);
+  color: white;
+  letter-spacing: var(--accionLS);
+  font-family: 'Lora', 'Lora-Regular';
+  font-size: var(--accionFS);
+}
+
+#recordarContrasena:hover {
+  cursor: pointer;
+}
+
+/* MOVILES GRANDES */
+
+@media screen and (min-width: 412px) and (max-width: 767px) {
+  :root {
+
+    @each $var,
+    $value in $variables {
+      #{$var}: $value;
+    }
+  }
+}
+
+/* TABLETS */
+
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  :root {
+
+    @each $var,
+    $value in $variablesEP {
+      #{$var}: $value;
+    }
+  }
+}
+
+/* ESCRITORIOS */
+
+@media screen and (min-width: 1200px) {
+  :root {
+
+    @each $var,
+    $value in $variablesE {
+      #{$var}: $value;
+    }
+  }
+}

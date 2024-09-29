@@ -1,0 +1,15 @@
+ot = zoho.crm.getRecordById("Deals",idOt);
+departamentos = ot.get("Departamentos_relacionados");
+result = departamentos.replaceAll("Rutas","a4f052c9-fd44-45b4-9128-7d9acb7451a6");
+result = result.replaceAll("Taller","_IO;");
+result = result.replaceAll("Producción","Xi;S");
+result = result.replaceAll("Diseño","pdh{");
+result = result.replaceAll("Estudio","XVWz");
+result = result.replaceAll("Almacén","a3715429-1199-413d-83ad-7e2223103008");
+result = result.replaceAll("Clientes","79123c85-e8a4-4025-b770-5504d36bbe62");
+//info result;
+result = result.toString();
+//info departamentos;
+combined = {"id":idOt,"Combinado":result};
+combinedField = zoho.crm.updateRecord("Deals",idOt,combined);
+//info combinedField;

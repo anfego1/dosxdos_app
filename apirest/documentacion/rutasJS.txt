@@ -1,0 +1,17 @@
+
+GET - Se pueden usar las variables en URL: 
+
+ruta = recibe número de ruta
+
+activas
+
+inactivas
+
+montador = recibe código del montador y responde con las rutas activas asociadas al montador
+
+montadores = recibe ruta y responde con los montadores asociados
+
+totalMontadores (responde con el total de rutas y sus montadores asociados)
+
+
+

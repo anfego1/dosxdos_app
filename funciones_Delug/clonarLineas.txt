@@ -1,0 +1,597 @@
+//FECHA Y HORA
+nowFecha = zoho.currenttime;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+hora = dateActual.getHour();
+minutos = dateActual.getMinutes();
+fecha = ano + "-" + mes + "-" + dia;
+//LÍNEA
+linea = zoho.crm.getRecordById("Products",idLinea);
+linea.remove("id");
+linea.remove("Codigo_de_l_nea");
+linea.remove("Fotos");
+linea.remove("Fase");
+linea.put("Fase","Nuevas");
+nombreLinea = linea.get("Product_Name");
+linea.remove("Fecha_de_creaci_n");
+linea.remove("Minutos_de_creaci_n");
+linea.remove("Hora_de_creaci_n");
+linea.put("Fecha_de_creaci_n",fecha);
+linea.put("Minutos_de_creaci_n",minutos);
+linea.put("Hora_de_creaci_n",hora);
+bucle = List();
+if(numLineas == 1)
+{
+	bucle.add("uno");
+}
+else if(numLineas == 2)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+}
+else if(numLineas == 3)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+}
+else if(numLineas == 4)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+}
+else if(numLineas == 5)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+}
+else if(numLineas == 6)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+}
+else if(numLineas == 7)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+}
+else if(numLineas == 8)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+}
+else if(numLineas == 9)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+}
+else if(numLineas == 10)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+}
+else if(numLineas == 11)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+}
+else if(numLineas == 12)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+}
+else if(numLineas == 13)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+}
+else if(numLineas == 14)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+}
+else if(numLineas == 15)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+}
+else if(numLineas == 16)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+}
+else if(numLineas == 17)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+}
+else if(numLineas == 18)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+}
+else if(numLineas == 19)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+}
+else if(numLineas == 20)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+}
+else if(numLineas == 21)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+}
+else if(numLineas == 22)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+}
+else if(numLineas == 23)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+}
+else if(numLineas == 24)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+}
+else if(numLineas == 25)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+}
+else if(numLineas == 26)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+	bucle.add("ventiseis");
+}
+else if(numLineas == 27)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+	bucle.add("ventiseis");
+	bucle.add("veintisiete");
+}
+else if(numLineas == 28)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+	bucle.add("ventiseis");
+	bucle.add("veintisiete");
+	bucle.add("veintiocho");
+}
+else if(numLineas == 29)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+	bucle.add("ventiseis");
+	bucle.add("veintisiete");
+	bucle.add("veintiocho");
+	bucle.add("ventinueve");
+}
+else if(numLineas == 30)
+{
+	bucle.add("uno");
+	bucle.add("dos");
+	bucle.add("tres");
+	bucle.add("cuatro");
+	bucle.add("cinco");
+	bucle.add("seis");
+	bucle.add("siete");
+	bucle.add("ocho");
+	bucle.add("nueve");
+	bucle.add("diez");
+	bucle.add("once");
+	bucle.add("doce");
+	bucle.add("trece");
+	bucle.add("catorce");
+	bucle.add("quince");
+	bucle.add("diezyseis");
+	bucle.add("diezysiete");
+	bucle.add("diezyocho");
+	bucle.add("diezynueve");
+	bucle.add("veinte");
+	bucle.add("veintiuno");
+	bucle.add("ventidos");
+	bucle.add("ventitres");
+	bucle.add("venticuatro");
+	bucle.add("venticinco");
+	bucle.add("ventiseis");
+	bucle.add("veintisiete");
+	bucle.add("veintiocho");
+	bucle.add("ventinueve");
+	bucle.add("treinta");
+}
+contadora = 1;
+for each  numero in bucle
+{
+	nombreLineaNueva = nombreLinea + ", " + "CD" + contadora;
+	linea.remove("Product_Name");
+	linea.put("Product_Name",nombreLineaNueva);
+	response = zoho.crm.createRecord("Products",linea);
+	info response;
+	contadora = contadora + 1;
+}

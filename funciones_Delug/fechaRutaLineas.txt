@@ -1,0 +1,17 @@
+nowFecha = zoho.currentdate;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+fecha = ano + "-" + mes + "-" + dia;
+actualizar = {"Fecha_Ruta":fecha,"Ruta":fase};
+response = zoho.crm.updateRecord("Products",idLinea,actualizar);
+//info response;

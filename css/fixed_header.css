@@ -1,0 +1,18 @@
+table.fixedHeader-floating {
+    background-color: rgba(128, 128, 128);
+}
+
+table.fixedHeader-floating.no-footer {
+    border-bottom-width: 0
+}
+
+table.fixedHeader-locked {
+    position: absolute !important;
+    background-color: rgba(128, 128, 128);
+}
+
+@media print {
+    table.fixedHeader-floating {
+        display: none
+    }
+}

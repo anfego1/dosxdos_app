@@ -1,0 +1,19 @@
+nowFecha = zoho.currenttime;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+hora = dateActual.getHour();
+minutos = dateActual.getMinutes();
+fecha = ano + "-" + mes + "-" + dia;
+actualizar = {"Fecha_de_creaci_n":fecha,"Hora_de_creaci_n":hora,"Minutos_de_creaci_n":minutos};
+response = zoho.crm.updateRecord("Deals",idOt,actualizar);
+//info response;

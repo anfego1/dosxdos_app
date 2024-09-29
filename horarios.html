@@ -1,0 +1,2750 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HORARIOS</title>
+    <link rel="stylesheet" href="https://dosxdos.app.iidos.com/css/cdn_data_tables.css">
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <style>
+        @charset "UTF-8";
+
+        /* $variables - 40% */
+        :root {
+            --x1_7: 0.41vw;
+            --x60: 14.56vw;
+            --x10: 2.43vw;
+            --x300: 72.82vw;
+            --x15: 3.64vw;
+            --x5: 1.21vw;
+            --x70: 16.99vw;
+            --x25: 6.07vw;
+            --x3: 0.73vw;
+            --x1: 0.24vw;
+            --x20: 4.85vw;
+            --x250: 60.68vw;
+            --x30: 7.28vw;
+            --x22: 5.34vw;
+            --x28: 6.8vw;
+            --x1_5: 0.36vw;
+            --x2: 0.49vw;
+            --x18: 4.37vw;
+            --x2_5: 0.61vw;
+            --x220: 53.4vw;
+            --x50: 12.14vw;
+            --x380: 92.23vw;
+            --x150: 36.41vw;
+        }
+
+        /* INICIO */
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            letter-spacing: var(--x1_7);
+        }
+
+        .displayOff {
+            display: none;
+        }
+
+        .displayOn {
+            display: flex;
+        }
+
+        .borde {
+            border: var(--x1) solid black;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .oyh {
+            overflow-y: hidden;
+        }
+
+        /* FUENTES */
+        @font-face {
+            font-family: 'Roboto';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Roboto/Roboto-Light.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Merriweather';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Light.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Merriweather-Bold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Merriweather/Merriweather-Bold.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Regular.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora-Medium';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Medium.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'Lora-Bold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Lora/Lora-Bold.ttf") format("truetype");
+        }
+
+        /* LOADER */
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            z-index: 2000;
+            background-color: rgba(0, 0, 0, 0.886);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            transform: rotateZ(45deg);
+            perspective: 1000px;
+            border-radius: 50%;
+            width: var(--x60);
+            height: var(--x60);
+            color: #fff;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: inherit;
+            height: inherit;
+            border-radius: 50%;
+            transform: rotateX(70deg);
+            animation: 1s spin linear infinite;
+        }
+
+        .loader:after {
+            color: #b20b15;
+            transform: rotateY(70deg);
+            animation-delay: .4s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, -50%) rotateZ(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotateZ(360deg);
+            }
+        }
+
+        @keyframes rotateccw {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(-360deg);
+            }
+        }
+
+        @keyframes spin {
+
+            0%,
+            100% {
+                box-shadow: .2em 0px 0 0px currentcolor;
+            }
+
+            12% {
+                box-shadow: .2em .2em 0 0 currentcolor;
+            }
+
+            25% {
+                box-shadow: 0 .2em 0 0px currentcolor;
+            }
+
+            37% {
+                box-shadow: -.2em .2em 0 0 currentcolor;
+            }
+
+            50% {
+                box-shadow: -.2em 0 0 0 currentcolor;
+            }
+
+            62% {
+                box-shadow: -.2em -.2em 0 0 currentcolor;
+            }
+
+            75% {
+                box-shadow: 0px -.2em 0 0 currentcolor;
+            }
+
+            87% {
+                box-shadow: .2em -.2em 0 0 currentcolor;
+            }
+        }
+
+        /* NAVEGACIÓN */
+        #encabezado {
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        #logo {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: var(--x10);
+        }
+
+        #logo>img {
+            width: var(--x300);
+        }
+
+        #menu {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: var(--x10);
+            justify-content: space-between;
+            margin-top: var(--x10);
+        }
+
+        #usuario {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #usuario:hover {
+            cursor: pointer;
+        }
+
+        #iconoUsuario {
+            display: flex;
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 50%;
+        }
+
+        #iconoUsuario>img {
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 50%;
+        }
+
+        #nombreUsuario {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--x25);
+            margin-left: var(--x5);
+            font-family: "Merriweather-Bold", "Merriweather-Bold";
+        }
+
+        #flechaUsuario {
+            display: flex;
+            width: var(--x25);
+            height: var(--x25);
+            margin-left: var(--x3);
+        }
+
+        #flechaUsuario>img {
+            width: var(--x25);
+            height: var(--x25);
+        }
+
+        .botonIcono {
+            border: var(--x1) solid gray;
+            display: flex;
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 20%;
+            background-color: #d31216;
+        }
+
+        .botonIcono:hover {
+            cursor: pointer;
+        }
+
+        .botonIcono:active {
+            background-color: #b20b15;
+        }
+
+        .botonIcono>img {
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 20%;
+            padding: var(--x10);
+        }
+
+        #opcionesMenu {
+            width: 100%;
+            padding: var(--x15);
+            justify-content: space-evenly;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        #opcionesMenu2 {
+            width: 100%;
+            padding: var(--x15);
+            justify-content: space-evenly;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        .opcionMenu {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .opcionMenu p {
+            display: flex;
+            width: var(--x150);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            font-size: var(--x20);
+            font-family: "Merriweather-Bold", "Merriweather-Bold";
+        }
+
+        #opcionesUsuario {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: var(--x15);
+        }
+
+        .boton {
+            width: var(--x250);
+            border-radius: var(--x30);
+            font-family: 'Merriweather-Bold', 'Merriweather-Bold';
+            font-size: var(--x22);
+            height: var(--x60);
+            padding: var(--x10);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+        }
+
+        .boton2 {
+            width: var(--x250);
+            border-radius: var(--x30);
+            font-family: 'Merriweather-Bold', 'Merriweather-Bold';
+            font-size: var(--x22);
+            height: var(--x60);
+            padding: var(--x10);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+            margin-top: var(--x15);
+        }
+
+        .boton:hover {
+            cursor: pointer;
+        }
+
+        .boton:active {
+            background-color: #b20b15;
+        }
+
+        .boton2:hover {
+            cursor: pointer;
+        }
+
+        .boton2:active {
+            background-color: #b20b15;
+        }
+
+        .titulo {
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            width: 100%;
+            font-size: var(--x28);
+            padding: var(--x5);
+            text-align: center;
+            margin-top: var(--x20);
+            position: relative;
+        }
+
+        .tituloFijo {
+            justify-content: center;
+            align-items: center;
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            width: 100%;
+            font-size: var(--x28);
+            padding: var(--x5);
+            text-align: center;
+            position: fixed;
+            top: 0;
+            margin-top: 0;
+            z-index: 10000;
+            background-color: #f4f4f4;
+        }
+
+        #mensaje {
+            position: relative;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x18);
+            letter-spacing: var(--x2_5);
+            background-color: rgba(0, 0, 0, 0.573);
+            color: white;
+            padding: var(--x10);
+            font-family: 'Roboto', 'Roboto-Light';
+            width: 100%;
+            justify-content: center;
+        }
+
+        #mensaje>p {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: var(--x20);
+            margin-bottom: var(--x20);
+        }
+
+        #imgCerrar {
+            position: absolute;
+            width: var(--x28);
+            top: var(--x2);
+            right: var(--x2);
+        }
+
+        #imgCerrar:hover {
+            cursor: pointer;
+        }
+
+        #contenido {
+            width: 100%;
+            flex-direction: column;
+            padding: var(--x15);
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        .ruta {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: #d31216;
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .ruta:hover {
+            cursor: pointer;
+        }
+
+        .ruta:active {
+            background-color: #b20b15;
+        }
+
+        .ruta2 {
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: black;
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .ruta2:hover {
+            cursor: pointer;
+        }
+
+        .ruta2:active {
+            background-color: #b20b15;
+        }
+
+        .resaltado {
+            background-color: rgba(0, 0, 0, 0.573);
+        }
+
+        /* LINEA_MONTADOR */
+        #datosBoton {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x20);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        #datosBoton:hover {
+            cursor: pointer;
+        }
+
+        #datosBoton:active {
+            background-color: black;
+        }
+
+        #cajaCanvasFirma {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        #borrarFirma {
+            margin-top: var(--x60);
+            margin-bottom: var(--x20);
+        }
+
+        .bDark {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x10);
+            margin-bottom: var(--x10);
+            padding: var(--x15);
+        }
+
+        .bDark:hover {
+            cursor: pointer;
+        }
+
+        .bDark:active {
+            background-color: black;
+        }
+
+        #fotos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--x30);
+            font-family: 'Lora-Bold', 'Lora-Bold';
+            font-size: var(--x22);
+            border: var(--x1) solid gray;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.573);
+            margin-top: var(--x20);
+            padding: var(--x15);
+            margin-top: var(--x30);
+            margin-bottom: var(--x20);
+        }
+
+        #fotos:hover {
+            cursor: pointer;
+        }
+
+        #fotos:active {
+            background-color: black;
+        }
+
+        #datosLinea {
+            width: 100%;
+            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: var(--x20);
+            padding-bottom: var(--x30);
+            border: var(--x1) solid black;
+        }
+
+        .tituloDatos {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+            font-weight: normal;
+        }
+
+        .pDatos {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x20);
+            color: #d31216;
+        }
+
+        label {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+        }
+
+        input {
+            display: flex;
+            width: var(--x220);
+            height: var(--x50);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        input:focus {
+            outline-color: #b20b15;
+        }
+
+        #fotosGaleria {
+            font-size: var(--x28);
+            width: var(--x380);
+            height: var(--x60);
+            padding: 0;
+            border: none;
+        }
+
+        #fotosGaleria:hover {
+            cursor: pointer;
+        }
+
+        select {
+            display: flex;
+            width: var(--x300);
+            height: var(--x50);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        select:focus {
+            outline-color: #b20b15;
+        }
+
+        textarea {
+            width: var(--x380);
+            height: var(--x150);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x22);
+            color: #d31216;
+            margin-top: var(--x10);
+            padding: var(--x10);
+            border: var(--x1) solid black;
+        }
+
+        textarea:focus {
+            outline-color: #b20b15;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cajaEstado {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #cajaForm {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #listaCamaras {
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: var(--x20);
+        }
+
+        #camara {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            background-color: #e1e1e1;
+        }
+
+        #video {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video:active {
+            background-color: rgba(0, 0, 0, 0.573);
+        }
+
+        #imgCerrarCamara {
+            position: absolute;
+            width: var(--x30);
+            top: var(--x10);
+            right: var(--x10);
+            z-index: 2000;
+        }
+
+        #imgCerrarFirma {
+            position: absolute;
+            width: var(--x30);
+            top: var(--x10);
+            right: var(--x10);
+            z-index: 2000;
+        }
+
+        #imgCerrarCamara:hover {
+            cursor: pointer;
+        }
+
+        #imgCerrarFirma:hover {
+            cursor: pointer;
+        }
+
+        #photosContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #firmasContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #carpetasContainer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #firmar {
+            margin-top: var(--x30);
+        }
+
+        .cajaFoto {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin-top: var(--x50);
+        }
+
+        .cajaFirma {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .imgCamara {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .imgComprimido {
+            width: var(--x70);
+            height: auto;
+        }
+
+        .imgFirma {
+            max-width: 100%;
+            height: auto;
+            background-color: white;
+            border: var(--x1) solid black;
+        }
+
+        #tituloFirma {
+            display: flex;
+            width: 100%;
+            margin-top: var(--x20);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            text-align: center;
+            font-size: var(--x22);
+            font-weight: normal;
+            margin-bottom: var(--x10);
+        }
+
+        #enviar {
+            margin-top: var(--x60);
+        }
+
+        .seccionArchivos {
+            display: Flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--x20);
+            border: var(--x1) solid black;
+            padding-left: var(--x10);
+            padding-right: var(--x10);
+            padding-bottom: var(--x50);
+        }
+
+        h2 {
+            margin-top: var(--x50);
+            font-size: var(--x30);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .enlaceImg {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .enlaceCarpeta {
+            border: var(--x1) solid gray;
+            display: flex;
+            width: var(--x70);
+            height: var(--x70);
+            border-radius: 20%;
+            background-color: #d31216;
+        }
+
+        .detalleFoto {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: var(--x30);
+            margin-top: var(--x10);
+        }
+
+        .loader2 {
+            width: var(--x50);
+            height: var(--x50);
+            margin-top: var(--x30);
+            border: 5px solid #FFF;
+            border-bottom-color: #b20b15;
+            border-radius: 50%;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .imgTrash {
+            width: var(--x50);
+        }
+
+        .imgTrash:hover {
+            cursor: pointer;
+        }
+
+        .checkVisible {
+            width: var(--x50);
+            margin-left: var(--x30);
+            background-color: #d31216;
+        }
+
+        .checkVisible:hover {
+            cursor: pointer;
+        }
+
+        .checkVisible:checked {
+            background-color: #d31216;
+        }
+
+        .cajaOpcionesFoto {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin-top: var(--x20);
+        }
+
+        #crearCarpeta {
+            margin-top: var(--x50);
+            margin-bottom: var(--x50);
+        }
+
+        .bolder {
+            font-weight: bolder;
+        }
+
+        .fs25 {
+            font-size: var(--x25);
+        }
+
+        .mt-15 {
+            margin-top: var(--x10);
+        }
+
+        #otCompleta {
+            margin-top: var(--x20);
+        }
+
+        #contenTabla {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-top: var(--x20);
+            border: var(--x1) solid black;
+            padding: var(--x10);
+            overflow-x: auto;
+        }
+
+        table {
+            font-size: var(--x25);
+        }
+
+        .overfila:hover {
+            background-color: rgba(128, 128, 128, 0.479);
+            cursor: pointer;
+        }
+
+        .overfila:active {
+            background-color: gray;
+        }
+
+        .visibilidad {
+            display: flex;
+            width: var(--x50);
+        }
+
+        /* MOVILES GRANDES */
+        @media screen and (min-width: 412px) and (max-width: 767px) {
+            :root {
+                --x1_7: 1.7px;
+                --x60: 60px;
+                --x10: 10px;
+                --x300: 300px;
+                --x15: 15px;
+                --x5: 5px;
+                --x70: 70px;
+                --x25: 25px;
+                --x3: 3px;
+                --x1: 1px;
+                --x20: 20px;
+                --x250: 250px;
+                --x30: 30px;
+                --x22: 22px;
+                --x28: 28px;
+                --x1_5: 1.5px;
+                --x2: 2px;
+                --x18: 18px;
+                --x2_5: 2.5px;
+                --x220: 220px;
+                --x50: 50px;
+                --x380: 380px;
+                --x150: 150px;
+            }
+        }
+
+        /* TABLETS */
+        @media screen and (min-width: 768px) and (max-width: 1199px) {
+            :root {
+                --x1_7: 0.09vw;
+                --x60: 3vw;
+                --x10: 0.5vw;
+                --x300: 15vw;
+                --x15: 0.75vw;
+                --x5: 0.25vw;
+                --x70: 3.5vw;
+                --x25: 1.25vw;
+                --x3: 0.15vw;
+                --x1: 0.05vw;
+                --x20: 1vw;
+                --x250: 12.5vw;
+                --x30: 1.5vw;
+                --x22: 1.1vw;
+                --x28: 1.4vw;
+                --x1_5: 0.08vw;
+                --x2: 0.1vw;
+                --x18: 0.9vw;
+                --x2_5: 0.13vw;
+                --x220: 11vw;
+                --x50: 2.5vw;
+                --x380: 19vw;
+                --x150: 7.5vw;
+            }
+
+            #menu {
+                justify-content: space-evenly;
+            }
+
+            .imgCamara {
+                max-width: 80%;
+            }
+
+            .imgFirma {
+                max-width: 80%;
+            }
+
+            .seccionArchivos {
+                width: 80%;
+            }
+
+            .enlaceImg {
+                width: 80%;
+            }
+        }
+
+        /* ESCRITORIOS */
+        @media screen and (min-width: 1200px) {
+            :root {
+                --x1_7: 1.02px;
+                --x60: 36px;
+                --x10: 6px;
+                --x300: 180px;
+                --x15: 9px;
+                --x5: 3px;
+                --x70: 42px;
+                --x25: 15px;
+                --x3: 1.8px;
+                --x1: 0.6px;
+                --x20: 12px;
+                --x250: 150px;
+                --x30: 18px;
+                --x22: 13.2px;
+                --x28: 16.8px;
+                --x1_5: 0.9px;
+                --x2: 1.2px;
+                --x18: 10.8px;
+                --x2_5: 1.5px;
+                --x220: 132px;
+                --x50: 30px;
+                --x380: 228px;
+                --x150: 90px;
+            }
+
+            #menu {
+                justify-content: space-evenly;
+            }
+
+            .imgCamara {
+                max-width: 70%;
+            }
+
+            .imgFirma {
+                max-width: 70%;
+            }
+
+            .seccionArchivos {
+                width: 80%;
+            }
+
+            .enlaceImg {
+                width: 70%;
+            }
+        }
+    </style>
+    <script src="https://dosxdos.app.iidos.com/js/jquery.js"></script>
+    <script src="https://dosxdos.app.iidos.com/js/data_tables.js"></script>
+    <script src="https://dosxdos.app.iidos.com/js/cdn_data_tables.js"></script>
+    <script src="https://dosxdos.app.iidos.com/js/index_db.js"></script>
+</head>
+
+<body id="body" class="">
+
+    <div id="loader" class="displayOn">
+        <span class="loader"></span>
+    </div>
+
+    <section id="encabezado" class="displayOn">
+
+        <div id="logo">
+            <img src="https://dosxdos.app.iidos.com/img/logo300.png">
+        </div>
+
+        <nav id="menu">
+
+            <div id="usuario">
+                <div id="iconoUsuario">
+                    <img src="https://dosxdos.app.iidos.com/img/usuario.png" id="imagenUsuario">
+                </div>
+                <p id="nombreUsuario"></p>
+                <div id="flechaUsuario">
+                    <img src="https://dosxdos.app.iidos.com/img/flechaAbajo.png">
+                </div>
+            </div>
+
+            <button id="casa" class="botonIcono">
+                <img src="https://dosxdos.app.iidos.com/img/casaWhite.png">
+            </button>
+
+        </nav>
+
+        <nav id="opcionesMenu" class="displayOff">
+
+            <div class="opcionMenu displayOff" id="horarios">
+                <button class="botonIcono" type="button" id="horariosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/relojWhite.png">
+                </button>
+                <p>Horarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="archivos">
+                <button class="botonIcono" type="button" id="archivosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/work.png">
+                </button>
+                <p>OT</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="icLineasOt">
+                <button class="botonIcono" type="button" id="icLineasOtBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas OT</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="pv">
+                <button class="botonIcono" type="button" id="pvBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/tienda.png">
+                </button>
+                <p>PV</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="rutasIcono">
+                <button class="botonIcono" type="button" id="rutasIconoBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/rutasWhite.png">
+                </button>
+                <p>Rutas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="lineasIcono">
+                <button class="botonIcono" type="button" id="lineasIconoBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas Ruta</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="usuarios">
+                <button class="botonIcono" type="button" id="usuariosBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/usuarios.png">
+                </button>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="usuariosOficina">
+                <button class="botonIcono" type="button" id="usuariosOficinaBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/usuarios.png">
+                </button>
+                <p>Usuarios</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="rutasMontador">
+                <button class="botonIcono" type="button" id="rutasMontadorBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/rutasWhite.png">
+                </button>
+                <p>Rutas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="lineasMontador">
+                <button class="botonIcono" type="button" id="lineasMontadorBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/task.png">
+                </button>
+                <p>Líneas</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="dm">
+                <button class="botonIcono" type="button" id="dmBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/dm.png">
+                </button>
+                <p>DM</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="reciclar">
+                <button class="botonIcono" type="button" id="reciclarBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/papelera.png">
+                </button>
+                <p>Reciclar</p>
+            </div>
+
+        </nav>
+
+        <nav id="opcionesUsuario" class="displayOff">
+
+            <button type="button" id="editarUsuario" class="boton">Editar usuario</button>
+            <button type="button" id="cerrarSesion" class="boton2">Cerrar sesión</button>
+
+        </nav>
+
+        <div id="mensaje" class="displayOff">
+            <p id="textoMensaje"></p><img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+        </div>
+
+        <div id="tituloVisible"></div>
+
+        <h1 id="titulo" class="displayOn titulo">HORARIOS</h1>
+        <p>EN DESARROLLO...</p>
+
+    </section>
+
+
+    <section id="contenido" class="displayOff">
+
+        <nav id="opcionesMenu2" class="displayOff">
+
+            <div class="opcionMenu displayOn" id="crearCarpeta">
+                <button class="botonIcono" type="button" id="crearCarpetaBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/comprimido.png">
+                </button>
+                <p>Crear Carpeta</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="editarOt">
+                <button class="botonIcono" type="button" id="editarOtBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/editar.png">
+                </button>
+                <p>Editar OT</p>
+            </div>
+
+            <div class="opcionMenu displayOff" id="archivarOt">
+                <button class="botonIcono" type="button" id="archivarOtBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/archivar.png">
+                </button>
+                <p>Archivar OT</p>
+            </div>
+
+            <div class="opcionMenu displayOn" id="volver">
+                <button class="botonIcono" type="button" id="volverBoton">
+                    <img src="https://dosxdos.app.iidos.com/img/back.png">
+                </button>
+                <p>Volver</p>
+            </div>
+
+        </nav>
+
+        <h2 id="tituloLineas" class="displayOff">LÍNEAS DE LA OT</h2>
+        <div id="contenTabla" class="displayOff">
+            <table id="tablaLineasOt">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>LINEA</th>
+                        <th>PV</th>
+                        <th>PV-NOMBRE</th>
+                        <th>FIRMA</th>
+                        <th>USUARIO</th>
+                        <th>INICIO</th>
+                        <th>APROBÓ</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoLineasOt"></tbody>
+            </table>
+        </div>
+
+        <h2 class="displayOff">CARPETAS DE LA OT</h2>
+        <section id="carpetas" class="seccionArchivos displayOff">
+            <div id="carpetasContainer"></div>
+        </section>
+
+        <h2 class="displayOff">FOTOS DE LA OT</h2>
+        <section id="fotosSeccion" class="seccionArchivos displayOff">
+            <div id="photosContainer"></div>
+        </section>
+
+        <h2 class="displayOff">FIRMAS DE LA OT</h2>
+        <section id="firmasSeccion" class="seccionArchivos displayOff">
+            <div id="firmasContainer"></div>
+        </section>
+
+    </section>
+
+</body>
+
+<script>
+
+    const tituloElement = document.getElementById('titulo');
+    const tituloVisible = document.getElementById('tituloVisible');
+    function checkVisibility() {
+        const tituloVisiblePosition = tituloVisible.getBoundingClientRect();
+        const isVisible = tituloVisiblePosition.top > 0;
+        const tieneClaseTitulo = tituloElement.classList.contains('tituloFijo');
+        if (isVisible && tieneClaseTitulo) {
+            tituloElement.classList.remove('tituloFijo');
+            tituloElement.classList.add('titulo');
+        } else if (!isVisible && !tieneClaseTitulo) {
+            tituloElement.classList.remove('titulo');
+            tituloElement.classList.add('tituloFijo');
+        }
+    }
+    // Llama a checkVisibility al cargar la página y al cambiar el tamaño de la ventana
+    window.addEventListener('load', checkVisibility);
+    window.addEventListener('resize', checkVisibility);
+    // Llama a checkVisibility al hacer scroll, utilizando requestAnimationFrame
+    window.addEventListener('scroll', () => {
+        requestAnimationFrame(checkVisibility);
+    });
+
+    /* LISTENERS */
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const casaButton = document.getElementById('casa');
+        casaButton.addEventListener('click', () => {
+            toggleElemento('opcionesMenu');
+        });
+
+        const usuarioButton = document.getElementById('usuario');
+        usuarioButton.addEventListener('click', () => {
+            toggleElemento('opcionesUsuario');
+        });
+
+        const cerrarSesion = document.getElementById('cerrarSesion');
+        cerrarSesion.addEventListener('click', () => {
+            cerrarSesions();
+        });
+
+        const imgCerrar = document.getElementById('imgCerrar');
+        imgCerrar.addEventListener('click', () => {
+            mensajeOff();
+        });
+
+        const rutasIcono = document.getElementById('rutasIcono');
+        rutasIcono.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/rutas.html";
+        });
+
+        const pvBoton = document.getElementById('pv');
+        pvBoton.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/pv.html";
+        });
+
+        const lineasIcono = document.getElementById('lineasIcono');
+        lineasIcono.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas.html";
+        })
+
+        const usuarios = document.getElementById('usuarios');
+        usuarios.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=usuarios";
+        })
+
+        const horariosClick = document.getElementById('horarios');
+        horariosClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/horarios.html";
+        })
+
+        const icLineasOtClick = document.getElementById('icLineasOt');
+        icLineasOtClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/lineas_ot.html";
+        })
+
+        const pvClick = document.getElementById('pv');
+        pvClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/pv.html";
+        })
+
+        const archivosClick = document.getElementById('archivos');
+        archivosClick.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+        })
+
+        const usuariosOficina = document.getElementById('usuariosOficina');
+        usuariosOficina.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/usuarios_oficina.html";
+        })
+
+        const rutasMontador = document.getElementById('rutasMontador');
+        rutasMontador.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+        })
+
+        const lineasMontador = document.getElementById('lineasMontador');
+        lineasMontador.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/ruta_montador.html";
+        })
+
+        const volver = document.getElementById('volver');
+        volver.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/ot.html";
+        })
+
+        $dm.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/dm.html";
+        })
+
+        $reciclar.addEventListener('click', () => {
+            window.location.href = "https://dosxdos.app.iidos.com/reciclar.html";
+        })
+    });
+
+    function toggleElemento(elementId) {
+        const elemento = document.getElementById(elementId);
+        elemento.classList.toggle('displayOn');
+        elemento.classList.toggle('displayOff');
+    }
+
+    /* CONSTANTES DEL DOM */
+    const $opcionesMenu = document.getElementById('opcionesMenu'),
+        $opcionesUsuario = document.getElementById('opcionesUsuario'),
+        $casa = document.getElementById('casa'),
+        $usuario = document.getElementById('usuario'),
+        $rutas = document.getElementById('rutas'),
+        $loader = document.getElementById('loader'),
+        $body = document.getElementById('body'),
+        $mensaje = document.getElementById('mensaje'),
+        $imgCerrar = document.getElementById('imgCerrar'),
+        $textoMensaje = document.getElementById('textoMensaje'),
+        buscador = document.getElementById('buscador'),
+        $nombreUsuario = document.getElementById('nombreUsuario'),
+        $imagenUsuario = document.getElementById('imagenUsuario'),
+        $botonRutas = document.getElementById('rutasIconoBoton'),
+        $horarios = document.getElementById('horarios'),
+        $archivos = document.getElementById('archivos'),
+        $usuarios = document.getElementById('usuarios'),
+        $rutasIcono = document.getElementById('rutasIcono'),
+        $lineasIcono = document.getElementById('lineasIcono'),
+        $pv = document.getElementById('pv'),
+        $icLineasOt = document.getElementById('icLineasOt'),
+        $inactivas = document.getElementById('inactivas'),
+        $dm = document.getElementById('dm'),
+        $reciclar = document.getElementById('reciclar');
+    let usuario,
+        lineaData;
+
+    /* CONSTANTES DE LOCALSTORAGE */
+
+    function fetchLinea($rutaBuscar, $lineaBuscar) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/lineas.php?ruta=' + $rutaBuscar + '&linea=' + $lineaBuscar;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar los datos de la línea`))))
+                .then((res) => {
+                    resolve(res);
+                })
+                .catch((err) => {
+                    mensaje = 'Error al eliminar la firma: ' + err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    /*const ot = localStorage.getItem('otCompleta');
+    if (ot && ot !== null) {
+        console.log('Ot: ' + ot);
+    }
+    else {
+        mensaje = 'No se han recibido los datos necesarios a través de las variables de localStorage'
+        alerta(mensaje);
+        scrollToTop();
+    }
+    const ruta = localStorage.getItem('rutaOtCompleta');
+    if (ruta && ruta !== null) {
+        console.log('Ruta: ' + ruta);
+    }
+    else {
+        console.log('Sin variable rutaOtCompleta');
+    }*/
+
+    /* LOADER */
+
+    function scrollToTop() {
+        // Para navegadores modernos
+        document.documentElement.scrollTop = 0;
+        // Para navegadores antiguos
+        document.body.scrollTop = 0;
+    }
+
+    /* LOADER */
+    function loaderOn() {
+        scrollToTop();
+        $loader.classList.remove('displayOff');
+        $loader.classList.add('displayOn');
+        $body.classList.add('oyh');
+    }
+
+    function loaderOff() {
+        setTimeout(() => {
+            $loader.classList.remove('displayOn');
+            $loader.classList.add('displayOff')
+            $body.classList.remove('oyh');
+        }, 1000)
+    }
+
+    /* MENSAJE */
+
+    function mensajeOn() {
+        $mensaje.classList.remove('displayOff');
+        $mensaje.classList.add('displayOn');
+    }
+
+    function mensajeOff() {
+        $mensaje.classList.remove('displayOn');
+        $mensaje.classList.add('displayOff');
+    }
+
+    $imgCerrar.addEventListener('click', e => {
+        mensajeOff();
+    })
+
+    function alerta(men) {
+        $textoMensaje.innerHTML = men;
+        mensajeOn();
+        loaderOff();
+    }
+
+    /* CERRAR SESIÓN */
+
+    function eliminarCookie(nombre) {
+        const tiempoExpiracion = 1; // Segundo 1 de la Época Unix
+        document.cookie = `${nombre}=; expires=${new Date(tiempoExpiracion * 1000).toUTCString()}; path=/;`;
+    }
+
+    function cerrarSesions() {
+        if (navigator.onLine) {
+            try {
+                loaderOn();
+                localStorage.removeItem('login');
+                localStorage.removeItem('ruta');
+                localStorage.removeItem('mensaje');
+                localStorage.removeItem('linea');
+                localStorage.removeItem('lineaActividad');
+                localStorage.removeItem('ot');
+                eliminarCookie('login');
+                eliminarCookie('usuario');
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            } catch (error) {
+                mensaje = 'ERROR: ' + error.message;
+                console.error(error);
+                alerta(mensaje);
+                scrollToTop();
+            }
+        }
+        else {
+            mensaje = 'No es posible cerrar la sesión sin conexión a internet';
+            $textoMensaje.innerHTML = mensaje;
+            mensajeOn();
+        }
+    }
+
+    function convertirFecha(fecha) {
+        // Separar la fecha y la hora
+        const [fechaParte, horaParte] = fecha.split(' ');
+        // Separar la fecha en año, mes y día
+        const [anio, mes, dia] = fechaParte.split('-');
+        // Formatear la fecha al estilo deseado: DD/MM/AAAA HH:MM
+        const fechaFormateada = `${dia}/${mes}/${anio}`;
+        // Devolver la fecha formateada junto con la hora original
+        return `${fechaFormateada} ${horaParte}`;
+    }
+
+    const idsGenerados = new Set(); // Utilizamos un conjunto para evitar IDs duplicados
+
+    function generarId(min, max) {
+        // Genera un número aleatorio en el rango [min, max]
+        const id = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        // Verifica si el ID ya ha sido generado
+        if (idsGenerados.has(id)) {
+            // Si ya existe, vuelve a generar el ID de forma recursiva
+            return generarId(min, max);
+        }
+
+        // Agrega el ID generado al conjunto
+        idsGenerados.add(id);
+
+        return id;
+    }
+
+    function obtenerConfirmacion() {
+        return new Promise((resolve, reject) => {
+            const respuesta = confirm('¿Estás segur@ que deseas eliminar el archivo del servidor?');
+            if (respuesta) {
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        });
+    }
+
+    function eliminarFoto(jsonDelete) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonDelete);
+            fetch("https://dosxdos.app.iidos.com/apirest/fotos.php",
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonDelete
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar eliminar las fotos de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+
+                })
+                .catch((err) => {
+                    mensaje = 'Error al eliminar la foto: ' + err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    function eliminarFirma(jsonDelete) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonDelete);
+            fetch("https://dosxdos.app.iidos.com/apirest/firmas.php",
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonDelete
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar eliminar las firmas de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    mensaje = 'Error al eliminar la firma: ' + err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    function eliminarCarpeta(jsonDelete) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonDelete);
+            fetch("https://dosxdos.app.iidos.com/apirest/carpetas.php",
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonDelete
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar eliminar las carpetas de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    mensaje = 'Error al eliminar la carpeta: ' + err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    function visible(jsonVisible, tipo) {
+        return new Promise((resolve, reject) => {
+            //console.log(jsonVisible);
+            url = '';
+            if (tipo == 'foto') {
+                url = 'https://dosxdos.app.iidos.com/apirest/fotos.php'
+            } else if (tipo == 'firma') {
+                url = 'https://dosxdos.app.iidos.com/apirest/firmas.php'
+            } else {
+                url = 'https://dosxdos.app.iidos.com/apirest/carpetas.php'
+            }
+            fetch(url,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: jsonVisible
+                })
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar poner visible el archivo al cliente`))))
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(true);
+                    } else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    mensaje = 'Error al intentar poner el archivo visible al cliente: ' + err.message;
+                    console.error(err);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(new Error(mensaje))
+                })
+        })
+    }
+
+    async function deletePhotoServidor(otFoto, id, usuarioElimina, tipo, loaderId, contenedorId) {
+        if (navigator.onLine) {
+            try {
+                let eliminar;
+                const confirmar = await obtenerConfirmacion();
+                if (confirmar) {
+                    const loader2 = document.getElementById(loaderId);
+                    loader2.classList.replace('displayOff', 'displayOn');
+                    json = {};
+                    json.ot = otFoto;
+                    json.id = id;
+                    json.usuarioElimina = usuarioElimina;
+                    json.tipo = tipo;
+                    const jsonDelete = JSON.stringify(json);
+                    if (tipo == 'foto') {
+                        eliminar = await eliminarFoto(jsonDelete);
+                    } else if (tipo == 'firma') {
+                        eliminar = await eliminarFirma(jsonDelete);
+                    } else {
+                        eliminar = await eliminarCarpeta(jsonDelete);
+                    }
+                    if (eliminar) {
+                        const contenedorEliminado = document.getElementById(contenedorId);
+                        if (contenedorEliminado) {
+                            contenedorEliminado.remove();
+                        }
+                    } else {
+                        mensaje = 'Error al eliminar el archivo, el archivo no ha sido eliminado';
+                        alerta(mensaje);
+                        scrollToTop();
+                    }
+
+                }
+            } catch (err) {
+                console.error(err);
+                alerta(err.message);
+                scrollToTop();
+            }
+        } else {
+            mensaje = 'No es posible eliminar archivos del servidor sin conexión a internet';
+            alerta(mensaje);
+            scrollToTop();
+        }
+    }
+
+    async function archivoVisible(loaderId, tipo, id, tabla, accion, usuario, nombreUsuario, apellidoUsuario, detalleId) {
+        if (navigator.onLine) {
+            try {
+                const loader2 = document.getElementById(loaderId);
+                loader2.classList.replace('displayOff', 'displayOn');
+                json = {};
+                json.id = id;
+                json.tabla = tabla;
+                json.accion = accion;
+                json.usuario = usuario;
+                const jsonVisible = JSON.stringify(json);
+                visibleImagen = await visible(jsonVisible, tipo);
+                if (visibleImagen) {
+                    if (accion) {
+                        const detalle = document.getElementById(detalleId);
+                        detalle.innerHTML = `Aprobó: ${nombreUsuario} ${apellidoUsuario}`;
+                        detalle.classList.replace('displayOff', 'displayOn');
+                        loader2.classList.replace('displayOn', 'displayOff');
+                    } else {
+                        const detalle = document.getElementById(detalleId);
+                        detalle.innerHTML = '';
+                        detalle.classList.replace('displayOn', 'displayOff');
+                        loader2.classList.replace('displayOn', 'displayOff');
+                    }
+                } else {
+                    mensaje = 'Error al poner el archivo visible al cliente';
+                    alerta(mensaje);
+                    scrollToTop();
+                }
+            } catch (err) {
+                console.error(err);
+                alerta(err.message);
+            }
+        } else {
+            mensaje = 'No es posible poner archivos visibles al cliente sin conexión a internet';
+            alerta(mensaje);
+            scrollToTop();
+        }
+    }
+
+    function traerFotos() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/fotos.php?otCompleta=1&' + 'ot=' + ot;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las fotos de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        if (res[1].length > 0) {
+                            //console.log(res[1]);
+                            vectorDeFotos = res[1];
+                            vectorDeFotos.forEach(objeto => {
+                                if (objeto.ext != 'zip') {
+
+                                    let usuarioAprueba = '';
+
+                                    // Crear un contenedor para la imagen, los detalles y los botones
+                                    const container = document.createElement('div');
+                                    container.id = generarId(1, 10000000);
+                                    container.className = 'cajaFoto';
+
+                                    // Crear un contenedor para las opciones
+                                    const containerOpciones = document.createElement('div');
+                                    containerOpciones.className = 'cajaOpcionesFoto';
+
+                                    //crear loader
+                                    const loaderOpciones = document.createElement('span');
+                                    loaderOpciones.className = 'loader2 displayOff';
+                                    loaderOpciones.id = generarId(1, 10000000);
+
+                                    //crear icono trash
+                                    const imgTrash = document.createElement('img');
+                                    imgTrash.className = 'imgTrash';
+                                    imgTrash.src = 'https://dosxdos.app.iidos.com/img/trash.png';
+                                    imgTrash.onclick = function () {
+                                        deletePhotoServidor(objeto.ot, objeto.id, usuario.id, 'foto', loaderOpciones.id, container.id)
+                                    };
+
+                                    // Crear la imagen
+                                    const imgElement = document.createElement('img');
+                                    imgElement.className = 'imgCamara';
+                                    imgElement.src = objeto.link;
+
+                                    //Crear el enlace de descarga
+                                    const enlace = document.createElement('a');
+                                    enlace.href = objeto.link;
+                                    enlace.download = objeto.nombre;
+                                    enlace.className = 'enlaceImg'
+                                    enlace.appendChild(imgElement);
+
+                                    //fecha
+                                    const fechaFoto = document.createElement('p');
+                                    const formatoFecha = convertirFecha(objeto.fecha)
+                                    fechaFoto.textContent = formatoFecha;
+                                    fechaFoto.className = 'detalleFoto';
+
+                                    //Usuario sube
+                                    const UsuarioSube = document.createElement('p');
+                                    UsuarioSube.textContent = `Subió: ${objeto.nombreUsuario} ${objeto.apellidoUsuario}`;
+                                    UsuarioSube.className = 'detalleFoto';
+
+                                    //linea
+                                    const lineaSube = document.createElement('p');
+                                    lineaSube.textContent = `Línea: ${objeto.lineaActividad}`;
+                                    lineaSube.className = 'detalleFoto';
+
+                                    //cliente
+                                    const clienteSube = document.createElement('p');
+                                    clienteSube.textContent = `Cliente: ${objeto.nombreCliente}`;
+                                    clienteSube.className = 'detalleFoto';
+
+                                    //punto de venta
+                                    const pvSube = document.createElement('p');
+                                    pvSube.textContent = `PV: ${objeto.pv} - ${objeto.pvNombre}`;
+                                    pvSube.className = 'detalleFoto';
+
+                                    //Usuario aprueba
+                                    usuarioAprueba = document.createElement('p');
+                                    usuarioAprueba.id = generarId(1, 10000000);
+                                    if (objeto.visible != 0) {
+                                        usuarioAprueba.textContent = `Aprobó: ${objeto.nombreUsuarioVisible} ${objeto.apellidoUsuarioVisible}`;
+                                        usuarioAprueba.className = 'detalleFoto displayOn';
+                                    } else {
+                                        usuarioAprueba.className = 'detalleFoto displayOff';
+                                    }
+
+                                    //check
+                                    const checkbox = document.createElement('input');
+                                    checkbox.type = 'checkbox';
+                                    checkbox.className = 'checkVisible';
+                                    if (objeto.visible != 0) {
+                                        checkbox.checked = true;
+                                    }
+                                    checkbox.addEventListener('change', () => {
+                                        const valorCheckbox = checkbox.checked;
+                                        if (valorCheckbox) {
+                                            tabla = `fotos${objeto.ano}`;
+                                            accion = 1;
+                                            archivoVisible(loaderOpciones.id, 'foto', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        } else {
+                                            tabla = `fotos${objeto.ano}`;
+                                            accion = 0;
+                                            archivoVisible(loaderOpciones.id, 'foto', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        }
+                                    })
+
+                                    //Agregar al contenedor de opciones
+                                    containerOpciones.appendChild(imgTrash);
+                                    containerOpciones.appendChild(checkbox);
+
+                                    //Agregar todo al contenedor principal
+                                    container.appendChild(enlace);
+                                    container.appendChild(fechaFoto);
+                                    container.appendChild(lineaSube);
+                                    container.appendChild(clienteSube);
+                                    container.appendChild(pvSube);
+                                    container.appendChild(UsuarioSube);
+                                    container.appendChild(usuarioAprueba);
+                                    container.appendChild(containerOpciones);
+                                    container.appendChild(loaderOpciones);
+
+                                    //Agregar todo al contenedor de fotos
+                                    document.getElementById('photosContainer').appendChild(container);
+                                }
+                            })
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                            //console.log('sin fotos')
+                        }
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de fotos: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                    scrollToTop();
+                })
+        });
+    }
+
+    function traerFirmas() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/firmas.php?otCompleta=1&' + 'ot=' + ot;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las firmas de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        if (res[1].length > 0) {
+                            //console.log(res[1]);
+                            vectorDeFotos = res[1];
+                            vectorDeFotos.forEach(objeto => {
+                                if (objeto.ext != 'zip') {
+                                    let usuarioAprueba = '';
+
+                                    // Crear un contenedor para la imagen, los detalles y los botones
+                                    const container = document.createElement('div');
+                                    container.id = generarId(1, 10000000);
+                                    container.className = 'cajaFoto';
+
+                                    // Crear un contenedor para las opciones
+                                    const containerOpciones = document.createElement('div');
+                                    containerOpciones.className = 'cajaOpcionesFoto';
+
+                                    //crear loader
+                                    const loaderOpciones = document.createElement('span');
+                                    loaderOpciones.className = 'loader2 displayOff';
+                                    loaderOpciones.id = generarId(1, 10000000);
+
+                                    //crear icono trash
+                                    const imgTrash = document.createElement('img');
+                                    imgTrash.className = 'imgTrash';
+                                    imgTrash.src = 'https://dosxdos.app.iidos.com/img/trash.png';
+                                    imgTrash.onclick = function () {
+                                        deletePhotoServidor(objeto.ot, objeto.id, usuario.id, 'firma', loaderOpciones.id, container.id)
+                                    };
+
+                                    // Crear la imagen
+                                    const imgElement = document.createElement('img');
+                                    imgElement.className = 'imgCamara';
+                                    imgElement.src = objeto.link;
+
+                                    //Crear el enlace de descarga
+                                    const enlace = document.createElement('a');
+                                    enlace.href = objeto.link;
+                                    enlace.download = objeto.nombre;
+                                    enlace.className = 'enlaceImg'
+                                    enlace.appendChild(imgElement);
+
+                                    //fecha
+                                    const fechaFoto = document.createElement('p');
+                                    const formatoFecha = convertirFecha(objeto.fecha)
+                                    fechaFoto.textContent = formatoFecha;
+                                    fechaFoto.className = 'detalleFoto';
+
+                                    //Usuario sube
+                                    const UsuarioSube = document.createElement('p');
+                                    UsuarioSube.textContent = `Subió: ${objeto.nombreUsuario} ${objeto.apellidoUsuario}`;
+                                    UsuarioSube.className = 'detalleFoto';
+
+                                    //linea
+                                    const lineaSube = document.createElement('p');
+                                    lineaSube.textContent = `Línea: ${objeto.lineaActividad}`;
+                                    lineaSube.className = 'detalleFoto';
+
+                                    //cliente
+                                    const clienteSube = document.createElement('p');
+                                    clienteSube.textContent = `Cliente: ${objeto.nombreCliente}`;
+                                    clienteSube.className = 'detalleFoto';
+
+                                    //punto de venta
+                                    const pvSube = document.createElement('p');
+                                    pvSube.textContent = `PV: ${objeto.pv} - ${objeto.pvNombre}`;
+                                    pvSube.className = 'detalleFoto';
+
+
+                                    //Usuario aprueba
+                                    usuarioAprueba = document.createElement('p');
+                                    usuarioAprueba.id = generarId(1, 10000000);
+                                    if (objeto.visible != 0) {
+                                        usuarioAprueba.textContent = `Aprobó: ${objeto.nombreUsuarioVisible} ${objeto.apellidoUsuarioVisible}`;
+                                        usuarioAprueba.className = 'detalleFoto displayOn';
+                                    } else {
+                                        usuarioAprueba.className = 'detalleFoto displayOff';
+                                    }
+
+                                    //check
+                                    const checkbox = document.createElement('input');
+                                    checkbox.type = 'checkbox';
+                                    checkbox.className = 'checkVisible';
+                                    if (objeto.visible != 0) {
+                                        checkbox.checked = true;
+                                    }
+                                    checkbox.addEventListener('change', () => {
+                                        const valorCheckbox = checkbox.checked;
+                                        if (valorCheckbox) {
+                                            tabla = `firmas${objeto.ano}`;
+                                            accion = 1;
+                                            archivoVisible(loaderOpciones.id, 'firma', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        } else {
+                                            tabla = `firmas${objeto.ano}`;
+                                            accion = 0;
+                                            archivoVisible(loaderOpciones.id, 'firma', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        }
+                                    })
+
+                                    //Agregar al contenedor de opciones
+                                    containerOpciones.appendChild(imgTrash);
+                                    containerOpciones.appendChild(checkbox);
+
+                                    //Agregar todo al contenedor principal
+                                    container.appendChild(enlace);
+                                    container.appendChild(fechaFoto);
+                                    container.appendChild(lineaSube);
+                                    container.appendChild(clienteSube);
+                                    container.appendChild(pvSube);
+                                    container.appendChild(UsuarioSube);
+                                    container.appendChild(usuarioAprueba);
+                                    container.appendChild(containerOpciones);
+                                    container.appendChild(loaderOpciones);
+
+                                    //Agregar todo al contenedor de fotos
+                                    document.getElementById('firmasContainer').appendChild(container);
+                                }
+                            })
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                            //console.log('sin fotos')
+                        }
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de firmas: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                    scrollToTop();
+                })
+        });
+    }
+
+    function traerCarpetas() {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/carpetas.php?otCompleta=1&' + 'ot=' + ot;
+            fetch(url)
+                .then((res) => (res.ok ? res.json() : reject(new Error(`Error en el servidor de la api intermedia al intentar consultar las carpetas de la línea`))))
+                .then((res) => {
+                    if (res[0]) {
+                        if (res[1].length > 0) {
+                            //console.log(res[1]);
+                            vectorDeCarpetas = res[1];
+                            vectorDeCarpetas.forEach(objeto => {
+                                if (objeto.ext == 'zip') {
+                                    let usuarioAprueba = '';
+
+                                    // Crear un contenedor para la imagen, los detalles y los botones
+                                    const container = document.createElement('div');
+                                    container.id = generarId(1, 10000000);
+                                    container.className = 'cajaFoto';
+
+                                    // Crear un contenedor para las opciones
+                                    const containerOpciones = document.createElement('div');
+                                    containerOpciones.className = 'cajaOpcionesFoto';
+
+                                    //crear loader
+                                    const loaderOpciones = document.createElement('span');
+                                    loaderOpciones.className = 'loader2 displayOff';
+                                    loaderOpciones.id = generarId(1, 10000000);
+
+                                    //crear icono trash
+                                    const imgTrash = document.createElement('img');
+                                    imgTrash.className = 'imgTrash';
+                                    imgTrash.src = 'https://dosxdos.app.iidos.com/img/trash.png';
+                                    imgTrash.onclick = function () {
+                                        deletePhotoServidor(objeto.ot, objeto.id, usuario.id, 'zip', loaderOpciones.id, container.id)
+                                    };
+
+                                    // Crear la imagen del ícono
+                                    const imgElement = document.createElement('img');
+                                    imgElement.className = 'imgComprimido';
+                                    imgElement.src = 'https://dosxdos.app.iidos.com/img/comprimido.png';
+
+                                    //Crear el enlace de descarga
+                                    const enlace = document.createElement('a');
+                                    enlace.href = objeto.link;
+                                    enlace.download = objeto.nombre;
+                                    enlace.className = 'enlaceCarpeta'
+                                    enlace.appendChild(imgElement);
+
+                                    //fecha
+                                    const fechaFoto = document.createElement('p');
+                                    const formatoFecha = convertirFecha(objeto.fecha)
+                                    fechaFoto.textContent = formatoFecha;
+                                    fechaFoto.className = 'detalleFoto';
+
+                                    //Usuario sube
+                                    const UsuarioSube = document.createElement('p');
+                                    UsuarioSube.textContent = `Subió: ${objeto.nombreUsuario} ${objeto.apellidoUsuario}`;
+                                    UsuarioSube.className = 'detalleFoto';
+
+                                    carpetaDeOt = document.createElement('p');
+                                    carpetaDeOt.textContent = 'CARPETA DE OT';
+                                    carpetaDeOt.className = 'detalleFoto';
+
+                                    //linea
+                                    const lineaSube = document.createElement('p');
+                                    lineaSube.textContent = `Línea: ${objeto.lineaActividad}`;
+                                    lineaSube.className = 'detalleFoto';
+
+                                    //cliente
+                                    const clienteSube = document.createElement('p');
+                                    clienteSube.textContent = `Cliente: ${objeto.nombreCliente}`;
+                                    clienteSube.className = 'detalleFoto';
+
+                                    //punto de venta
+                                    const pvSube = document.createElement('p');
+                                    pvSube.textContent = `PV: ${objeto.pv} - ${objeto.pvNombre}`;
+                                    pvSube.className = 'detalleFoto';
+
+                                    //Usuario aprueba
+                                    usuarioAprueba = document.createElement('p');
+                                    usuarioAprueba.id = generarId(1, 10000000);
+                                    if (objeto.visible != 0) {
+                                        usuarioAprueba.textContent = `Aprobó: ${objeto.nombreUsuarioVisible} ${objeto.apellidoUsuarioVisible}`;
+                                        usuarioAprueba.className = 'detalleFoto displayOn';
+                                    } else {
+                                        usuarioAprueba.className = 'detalleFoto displayOff';
+                                    }
+
+                                    //check
+                                    const checkbox = document.createElement('input');
+                                    checkbox.type = 'checkbox';
+                                    checkbox.className = 'checkVisible';
+                                    if (objeto.visible != 0) {
+                                        checkbox.checked = true;
+                                    }
+                                    checkbox.addEventListener('change', () => {
+                                        const valorCheckbox = checkbox.checked;
+                                        if (valorCheckbox) {
+                                            tabla = `carpetas${objeto.ano}`;
+                                            accion = 1;
+                                            archivoVisible(loaderOpciones.id, 'zip', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        } else {
+                                            tabla = `carpetas${objeto.ano}`;
+                                            accion = 0;
+                                            archivoVisible(loaderOpciones.id, 'zip', objeto.id, tabla, accion, usuario.id, usuario.nombre, usuario.apellido, usuarioAprueba.id);
+                                        }
+                                    })
+
+                                    //Agregar al contenedor de opciones
+                                    containerOpciones.appendChild(imgTrash);
+                                    containerOpciones.appendChild(checkbox);
+
+                                    //Agregar todo al contenedor principal
+                                    container.appendChild(enlace);
+                                    container.appendChild(fechaFoto);
+                                    if (objeto.lineaActividad == 0) {
+                                        container.appendChild(carpetaDeOt);
+                                    } else {
+                                        container.appendChild(lineaSube);
+                                        container.appendChild(clienteSube);
+                                        container.appendChild(pvSube);
+                                    }
+                                    container.appendChild(UsuarioSube);
+                                    container.appendChild(usuarioAprueba);
+                                    container.appendChild(containerOpciones);
+                                    container.appendChild(loaderOpciones);
+
+                                    //Agregar todo al contenedor de fotos
+                                    document.getElementById('carpetasContainer').appendChild(container);
+                                }
+                            })
+                            resolve(true);
+                        } else {
+                            resolve(false);
+                            //console.log('sin fotos')
+                        }
+                    }
+                })
+                .catch((res) => {
+                    mensaje = 'Error al consultar la existencia de firmas: ' + res.message;
+                    console.error(res);
+                    alerta(mensaje);
+                    scrollToTop();
+                })
+        });
+    }
+
+    function subirCarpeta(json) {
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/carpetas.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (!res.ok) {
+                        throw new Error(`Error en el servidor de la API intermedia al crear y guardar la carpeta. Status: ${res.status}`);
+                    }
+                    return res.json();
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        resolve(false);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                    reject(err);
+                })
+        })
+    }
+
+    function sanarNombre(nombre) {
+        const escapedText = nombre.replace(/['\\/",]/, '');
+        return escapedText;
+    }
+
+    async function procesarCarpeta(otJ, usuarioJ) {
+        try {
+            mensaje = '';
+            json = {};
+            json.otCompleta = 1;
+            json.ot = otJ;
+            json.usuario = usuarioJ;
+            jsonCarpeta = JSON.stringify(json);
+            //console.log(jsonCarpeta);
+            const upCarpeta = await subirCarpeta(jsonCarpeta);
+            if (upCarpeta) {
+                mensaje = '-Carpeta creada exitosamente-';
+                const contenedor = document.getElementById('carpetasContainer');
+                // Elimina todos los hijos del contenedor
+                while (contenedor.firstChild) {
+                    contenedor.removeChild(contenedor.firstChild);
+                }
+                const carpetasActuales = await traerCarpetas();
+                if (carpetasActuales) {
+                    mensaje += '-Carpetas cargadas exitosamente-';
+                }
+            } else {
+                mensaje = 'Error al crear la carpeta';
+            }
+            alerta(mensaje);
+            scrollToTop();
+        } catch (error) {
+            console.log(error);
+            alerta(error.message);
+            scrollToTop();
+        }
+    }
+
+    /* LOGIN */
+
+    function vLogin() {
+        return new Promise((resolve, reject) => {
+            const login = localStorage.getItem('login');
+            if (login && login !== null) {
+                leerDatos('dosxdos', 'usuario')
+                    .then(res => {
+                        usuario = res[0];
+                        resolve(true);
+                    })
+                    .catch(err => {
+                        resolve(false);
+                    })
+            }
+            else {
+                resolve(false);
+            }
+        })
+    }
+
+    function cargarDatoTexto(id, valor) {
+        const elemento = document.getElementById(id);
+        temporalDiv = document.createElement("div");
+        temporalDiv.innerHTML = valor;
+        textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+        elemento.innerHTML = textoConvertido;
+    }
+
+    // TRAER DATOS NECESARIOS
+
+    function fetchOts(otAr) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/ot_app.php?ot=' + otAr;
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchOts'
+                        alerta(mensaje);
+                        scrollToTop();
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        scrollToTop();
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchOts: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(error);
+                })
+        })
+    }
+
+    function fetchLineasOt(otL) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/lineas_app.php?ot=' + otL;
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchLineasOt'
+                        alerta(mensaje);
+                        scrollToTop();
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        scrollToTop();
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchLineasOt: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    scrollToTop();
+                    reject(error);
+                })
+        })
+    }
+
+    function formatearFechaHora(fechaHoraString) {
+        // Parsear la cadena de fecha y hora
+        var fechaHora = new Date(fechaHoraString);
+        // Obtener componentes de la fecha
+        var dia = ("0" + fechaHora.getDate()).slice(-2);
+        var mes = ("0" + (fechaHora.getMonth() + 1)).slice(-2);
+        var anio = fechaHora.getFullYear();
+        var horas = ("0" + fechaHora.getHours()).slice(-2);
+        var minutos = ("0" + fechaHora.getMinutes()).slice(-2);
+        var segundos = ("0" + fechaHora.getSeconds()).slice(-2);
+        // Formatear la fecha y hora en el formato deseado
+        var fechaHoraFormateada = dia + "/" + mes + "/" + anio + " " + horas + ":" + minutos + ":" + segundos;
+        return fechaHoraFormateada;
+    }
+
+    async function volcarDatos(lineasOt) {
+        return new Promise(async (resolve, reject) => {
+            const fragmento = document.createDocumentFragment();
+            const promises = lineasOt.map(linea => {
+                const fila = document.createElement('tr');
+                fila.className = 'overfila';
+                fila.setAttribute('data-linea', linea.lineaOt);
+                fila.setAttribute('data-ruta', linea.ruta);
+                fila.setAttribute('data-lineaRuta', linea.linea);
+                const estadoVisible = document.createElement('td');
+                estadoVisible.className = 'tdlinea';
+                const iEstadoVisible = document.createElement('img');
+                iEstadoVisible.className = 'visibilidad';
+                if (linea.visible != 0) {
+                    iEstadoVisible.src = 'https://dosxdos.app.iidos.com/img/visible.png';
+                } else {
+                    iEstadoVisible.src = 'https://dosxdos.app.iidos.com/img/no_visible.png';
+                }
+                estadoVisible.appendChild(iEstadoVisible);
+                const tdlinea = document.createElement('td');
+                tdlinea.textContent = linea.lineaOt;
+                tdlinea.className = 'tdlinea';
+                const tdPv = document.createElement('td');
+                tdPv.textContent = linea.pv;
+                tdPv.className = 'tdlinea';
+                const tdPvNombre = document.createElement('td');
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = linea.nombrePv.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                tdPvNombre.textContent = textoConvertido;
+                tdPvNombre.className = 'tdlinea';
+                const tdFirma = document.createElement('td');
+                temporalDiv.innerHTML = linea.firma.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                tdFirma.textContent = textoConvertido;
+                tdFirma.className = 'tdlinea';
+                const tdUsuario = document.createElement('td');
+                if (linea.usuario != 0) {
+                    tdUsuario.textContent = `${linea.nombreUsuario} ${linea.apellidoUsuario}`;
+                } else {
+                    tdUsuario.textContent = 'Sin usuario';
+                }
+                tdUsuario.className = 'tdlinea';
+                const tdInicio = document.createElement('td');
+                tdInicio.textContent = formatearFechaHora(linea.fecha);
+                tdInicio.className = 'tdlinea';
+                const tdAprobo = document.createElement('td');
+                if (linea.usuarioVisible != 0) {
+                    tdAprobo.textContent = `${linea.nombreUsuarioVisible} ${linea.apellidoUsuarioVisible}`;
+                } else {
+                    tdAprobo.textContent = 'Sin usuario';
+                }
+                tdAprobo.className = 'tdlinea';
+                fila.appendChild(estadoVisible);
+                fila.appendChild(tdlinea);
+                fila.appendChild(tdPv);
+                fila.appendChild(tdPvNombre);
+                fila.appendChild(tdFirma);
+                fila.appendChild(tdUsuario);
+                fila.appendChild(tdInicio);
+                fila.appendChild(tdAprobo);
+                fragmento.appendChild(fila);
+            })
+            await Promise.all(promises);
+            const cuerpo = document.getElementById('cuerpoLineasOt');
+            cuerpo.appendChild(fragmento);
+            resolve(true);
+        })
+    }
+
+    async function appOnline() {
+        try {
+            const login = await vLogin();
+            if (!login) {
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+            else {
+                const Arrayusuario = await leerDatos('dosxdos', 'usuario');
+                usuario = Arrayusuario[0];
+                $nombreUsuario.innerHTML = usuario.nombre;
+                if (usuario.imagen != '0') {
+                    $imagenUsuario.src = usuario.imagen;
+                }
+                if (usuario.clase == 'admon') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    $usuarios.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    const editarOt = document.getElementById('editarOt');
+                    editarOt.classList.replace('displayOff', 'displayOn');
+                    const archivarOt = document.getElementById('archivarOt');
+                    archivarOt.classList.replace('displayOff', 'displayOn');
+                    $dm.classList.replace('displayOff', 'displayOn');
+                    $reciclar.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'oficina') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'diseno') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'estudio') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'montador') {
+                    window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                }
+                const editarUsuario = document.getElementById('editarUsuario');
+                editarUsuario.addEventListener('click', e => {
+                    if (navigator.onLine) {
+                        window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                    } else {
+                        mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
+                        alerta(mensaje);
+                        scrollToTop();
+                    }
+                })
+                loaderOff();
+            }
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+            scrollToTop();
+        }
+    }
+
+    /* INICIAR APP OFFLINE */
+
+    async function appOffline() {
+        try {
+            const login = await vLogin();
+            if (!login) {
+                window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+            else {
+                const Arrayusuario = await leerDatos('dosxdos', 'usuario');
+                usuario = Arrayusuario[0];
+                $nombreUsuario.innerHTML = usuario.nombre;
+                if (usuario.clase == 'admon') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    $usuarios.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                    const editarOt = document.getElementById('editarOt');
+                    editarOt.classList.replace('displayOff', 'displayOn');
+                    const archivarOt = document.getElementById('archivarOt');
+                    archivarOt.classList.replace('displayOff', 'displayOn');
+                    $dm.classList.replace('displayOff', 'displayOn');
+                    $reciclar.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'oficina') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'diseno') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'estudio') {
+                    $horarios.classList.replace('displayOff', 'displayOn');
+                    $pv.classList.replace('displayOff', 'displayOn');
+                    const usuariosOficina = document.getElementById('usuariosOficina');
+                    usuariosOficina.classList.replace('displayOff', 'displayOn');
+                    $archivos.classList.replace('displayOff', 'displayOn');
+                    $rutasIcono.classList.replace('displayOff', 'displayOn');
+                    $lineasIcono.classList.replace('displayOff', 'displayOn');
+                    $icLineasOt.classList.replace('displayOff', 'displayOn');
+                }
+                if (usuario.clase == 'montador') {
+                    window.location.href = "https://dosxdos.app.iidos.com/rutas_montador.html";
+                }
+                const editarUsuario = document.getElementById('editarUsuario');
+                editarUsuario.addEventListener('click', e => {
+                    if (navigator.onLine) {
+                        window.location.href = "https://dosxdos.app.iidos.com/dosxdos.php?modulo=editarUsuario&id=" + usuario.id;
+                    } else {
+                        mensaje = 'No es posible acceder a las opciones de edición de usuario sin conexión a internet';
+                        alerta(mensaje);
+                        scrollToTop();
+                    }
+                })
+                mensaje = 'Sin conexión a internet no es posible visualizar los archivos del servidor';
+                alerta(mensaje);
+                scrollToTop();
+                loaderOff();
+            }
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+            scrollToTop();
+        }
+    }
+
+    /* TAREAS AL INICIAR LA PANTALLA CON EL ESTADO DE LA CONEXIÓN */
+
+    if (navigator.onLine) {
+        console.log('La aplicación está en línea.');
+        appOnline();
+    } else {
+        console.log('La aplicación está fuera de línea.');
+        appOffline();
+    }
+
+    window.addEventListener('pageshow', (e) => {
+        console.log('Carga completa de los elementos de la página no fetch');
+        let mensaje = localStorage.getItem('mensaje');
+        if (mensaje && mensaje !== null) {
+            $textoMensaje.innerHTML = mensaje;
+            mensajeOn();
+            localStorage.removeItem('mensaje');
+        }
+        let login = localStorage.getItem('login');
+        if (!login || login === null) {
+            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            loaderOff();
+        }
+    })
+
+    /* TAREAS EN LA INTERMITENCIA DE LA CONEXIÓN */
+
+    window.addEventListener('online', () => {
+        console.log('La conexión a Internet se ha recuperado.');
+        window.location.reload();
+    });
+
+    window.addEventListener('offline', () => {
+        console.log('La conexión a Internet se ha perdido.');
+    });
+
+
+
+</script>
+
+</html>    

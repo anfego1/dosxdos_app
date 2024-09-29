@@ -1,0 +1,29 @@
+POST (Opcionales: apellido, imagen)
+
+{
+    "usuario": "", 
+    "clave": "",
+    "nombre": "",
+    "apellido": "",
+    "movil": "",
+    "imagen": "",
+    "clase": ""
+}
+
+PUT (Obligatorio: UsuarioId y otro campo a actualizar. No es posible cambiar el campo usuario(email))
+
+{
+    "usuarioId": "", 
+    "clave": "",
+    "nombre": "",
+    "apellido": "",
+    "movil": "",
+    "imagen": "",
+    "clase": ""
+}
+
+DELETE
+
+{
+    "usuarioId": ""
+}

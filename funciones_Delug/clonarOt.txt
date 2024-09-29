@@ -1,0 +1,92 @@
+//FECHA Y HORA
+nowFecha = zoho.currenttime;
+dateActual = nowFecha.toDateTime();
+ano = dateActual.getYear();
+mes = dateActual.getMonth();
+if(mes < 10)
+{
+	mes = "0" + mes;
+}
+dia = dateActual.getDay();
+if(dia < 10)
+{
+	dia = "0" + dia;
+}
+hora = dateActual.getHour();
+minutos = dateActual.getMinutes();
+fecha = ano + "-" + mes + "-" + dia;
+//OT
+ot = zoho.crm.getRecordById("Deals",idOt);
+codigoOt = ot.get("C_digo");
+ot.remove("id");
+ot.remove("C_digo");
+ot.remove("Navision");
+ot.remove("Fecha_de_creaci_n");
+ot.remove("Minutos_de_creaci_n");
+ot.remove("Hora_de_creaci_n");
+ot.remove("Stage");
+ot.remove("Fotos_de_la_OT");
+ot.remove("Notion_ID");
+ot.put("Fecha_de_creaci_n",fecha);
+ot.put("Minutos_de_creaci_n",minutos);
+ot.put("Hora_de_creaci_n",hora);
+ot.put("Stage","Nuevo registro");
+response = zoho.crm.createRecord("Deals",ot);
+//info response;
+//LINEAS
+criterio = "(C_digo_de_OT_relacionada:equals:" + codigoOt + ")";
+lineas = zoho.crm.searchRecords("Products",criterio);
+//info lineas;
+//OT NUEVA
+idOtNueva = response.get("id");
+otNueva = zoho.crm.getRecordById("Deals",idOtNueva);
+codigoOtNueva = otNueva.get("C_digo");
+prefijoOtNueva = otNueva.get("Prefijo");
+nombreOtNueva = otNueva.get("Deal_Name");
+//CREACIÓN DE LÍNEAS - CICLO
+contadora = 0;
+for each  linea in lineas
+{
+	pdvOb = linea.get("Punto_de_venta");
+	idPdv = pdvOb.get("id");
+	pdv = zoho.crm.getRecordById("Puntos_de_venta",idPdv);
+	nombrePdv = pdv.get("Name");
+	zonaPdv = pdv.get("Zona");
+	direccionPdv = pdv.get("Direcci_n");
+	nombreLineaNueva = nombrePdv + ", " + prefijoOtNueva + ", " + codigoOtNueva + ", " + zonaPdv + ", " + direccionPdv;
+	linea.remove("id");
+	linea.remove("C_digo_de_OT_relacionada");
+	linea.put("C_digo_de_OT_relacionada",codigoOtNueva);
+	linea.remove("Product_Name");
+	linea.put("Product_Name",nombreLineaNueva);
+	linea.remove("Codigo_de_l_nea");
+	linea.remove("Fotos");
+	linea.remove("Fase");
+	linea.put("Fase","Nuevas");
+	linea.remove("OT_relacionada");
+	nuevaOtRelacionada = {"id":idOtNueva,"Name":nombreOtNueva};
+	linea.put("OT_relacionada",nuevaOtRelacionada);
+	linea.remove("Notion_ID");
+	linea.remove("Fecha_de_creaci_n");
+	linea.remove("Minutos_de_creaci_n");
+	linea.remove("Hora_de_creaci_n");
+	linea.put("Fecha_de_creaci_n",fecha);
+	linea.put("Minutos_de_creaci_n",minutos);
+	linea.put("Hora_de_creaci_n",hora);
+	response = zoho.crm.createRecord("Products",linea);
+	info response;
+	if(response.get("code") != null)
+	{
+		codeResponse = response.get("code");
+		if(codeResponse == "DUPLICATE_DATA")
+		{
+			linea.remove("Product_Name");
+			nombreLineaNueva = nombrePdv + ", " + prefijoOtNueva + ", " + codigoOtNueva + ", " + zonaPdv + ", " + direccionPdv + ", " + ", " + "CD" + contadora;
+			linea.put("Product_Name",nombreLineaNueva);
+			response = zoho.crm.createRecord("Products",linea);
+			contadora = contadora + 1;
+			info response;
+		}
+	}
+	contadora = contadora + 1;
+}

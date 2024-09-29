@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema operativo</title>
+</head>
+
+<body>
+    <h1 id="sistema"></h1>
+</body>
+
+</html>
+<script>
+
+    const sistema = document.getElementById('sistema');
+    const userAgent = navigator.userAgent;
+
+    const isWindows = /windows/i.test(userAgent);
+    const isMacOS = /macintosh|mac os x|mac os/i.test(userAgent);
+    const isLinux = /linux/i.test(userAgent);
+    const isAndroid = /android/i.test(userAgent);
+    const isiOS = /(iphone|ipad|ipod)/i.test(userAgent);
+
+    if (isAndroid) {
+        console.log('El navegador está en un dispositivo Android.');
+        sistema.innerHTML = 'El navegador está en un dispositivo Android.';
+    } else if (isiOS) {
+        console.log('El navegador está en un dispositivo iOS.');
+        sistema.innerHTML = 'El navegador está en un dispositivo iOS.';
+    } else if (isWindows) {
+        console.log('El navegador está en un sistema Windows.');
+        sistema.innerHTML = 'El navegador está en un sistema Windows.';
+    } else if (isMacOS) {
+        console.log('El navegador está en un sistema macOS.');
+        sistema.innerHTML = 'El navegador está en un sistema macOS.';
+    } else if (isLinux) {
+        console.log('El navegador está en un sistema Linux.');
+        sistema.innerHTML = 'El navegador está en un sistema Linux.';
+    } else {
+        console.log('No se pudo detectar el sistema operativo en el que se encuentra el navegador.');
+        sistema.innerHTML = 'No se pudo detectar el sistema operativo en el que se encuentra el navegador.';
+    }
+
+</script>

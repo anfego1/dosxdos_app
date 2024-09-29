@@ -1,0 +1,20 @@
+datosbancariosproveedor {
+    billID = bill.get("bill_id");
+    vendorId = bill.get("vendor_id");
+    organizationID = organization.get("organization_id");
+    searchParam = {"contact_id":vendorId};
+    response = zoho.books.getRecords("vendors",organizationID,searchParam);
+    proveedor = response.get("contacts");
+    proveedor = proveedor.get(0);
+    ibanProveedor = proveedor.get("cf_cuenta_bancaria");
+    actualizarMap = Map();
+    CustomFieldsList = List();
+    field1 = Map();
+    field1.put("customfield_id","521916000000247556");
+    field1.put("value","HolaIban123456789");
+    CustomFieldsList.add(field1);
+    actualizarMap.put("custom_fields",CustomFieldsList);
+    response = zoho.books.updateRecord("bills",organizationID,billID,actualizarMap);
+    info response;
+}
+

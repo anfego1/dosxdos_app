@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* border:1px solid red; */
+            display: flex;
+            flex-direction: column;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .displayOn {
+            display: flex;
+        }
+
+        .displayOff {
+            display: none;
+        }
+
+        /* FUENTES */
+        @font-face {
+            font-family: 'FuturaBold';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'FuturaLight';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+        }
+
+        @font-face {
+            font-family: 'FuturaMedium';
+            src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+        }
+
+        .FuturaBold {
+            font-family: 'FuturaBold';
+        }
+
+        .FuturaMedium {
+            font-family: 'FuturaMedium';
+        }
+
+        .FuturaLight {
+            font-family: 'FuturaLight';
+        }
+
+        /* MOBILE (max-width: 700px)*/
+        :root {
+            --x1: 1vw;
+            --x1_5: 1.5vw;
+            --x2: 2vw;
+            --x2_5: 2.5vw;
+            --x3: 3vw;
+            --x3_5: 3.5vw;
+            --x3_8: 3.8vw;
+            --x4: 4vw;
+            --x4_5: 4.5vw;
+            --x5_5: 5.5vw;
+            --x8_16: 8.16vw;
+            --x7_6: 7.6vw;
+            --x10: 10vw;
+            --x25: 25vw;
+            --x35: 35vw;
+            --x42_16: 42.16vw;
+            --x3_53: 3.53vw;
+            --x1_36: 1.36vw;
+            --x6_8: 6.8vw;
+            --x3_26: 3.26vw;
+            --x2_72: 2.72vw;
+            --x35: 35vw;
+            --x50: 50vw;
+            --x60: 60vw;
+            --x62_5: 62.5vw;
+            --x65: 65vw;
+            --x74: 74vw;
+            --x5_5: 5.5vw;
+            --x12_5: 12.5vw;
+            --x7_5: 7.5vw;
+            --x12: 12vw;
+            --x6_5: 6.5vw;
+            --x6: 6vw;
+            --x9: 9vw;
+            --x13: 13vw;
+            --x150: 150vw;
+            --x16: 16vw;
+        }
+
+        /* LOADING */
+
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            z-index: 3000;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lds-roller {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .lds-roller div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 40px 40px;
+        }
+
+        .lds-roller div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #db0032;
+            margin: -4px 0 0 -4px;
+        }
+
+        .lds-roller div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+
+        .lds-roller div:nth-child(1):after {
+            top: 63px;
+            left: 63px;
+        }
+
+        .lds-roller div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+
+        .lds-roller div:nth-child(2):after {
+            top: 68px;
+            left: 56px;
+        }
+
+        .lds-roller div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+
+        .lds-roller div:nth-child(3):after {
+            top: 71px;
+            left: 48px;
+        }
+
+        .lds-roller div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+
+        .lds-roller div:nth-child(4):after {
+            top: 72px;
+            left: 40px;
+        }
+
+        .lds-roller div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+
+        .lds-roller div:nth-child(5):after {
+            top: 71px;
+            left: 32px;
+        }
+
+        .lds-roller div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+
+        .lds-roller div:nth-child(6):after {
+            top: 68px;
+            left: 24px;
+        }
+
+        .lds-roller div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+
+        .lds-roller div:nth-child(7):after {
+            top: 63px;
+            left: 17px;
+        }
+
+        .lds-roller div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+
+        .lds-roller div:nth-child(8):after {
+            top: 56px;
+            left: 12px;
+        }
+
+        @keyframes lds-roller {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ENCABEZADO */
+
+        #encabezado {
+            /* border: 1px solid green; */
+            display: flex;
+            position: relative;
+            width: 100%;
+            height: 5%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .opciones {
+            /* border: 1px solid red; */
+            position: absolute;
+            top: 1.5vw;
+            right: 2vw;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .opciones img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(128, 128, 128, 0.559);
+            width: var(--x8_16);
+            height: var(--x8_16);
+            border-radius: 50%;
+            margin-left: 1.5vw;
+        }
+
+        .opciones img:hover {
+            cursor: pointer;
+        }
+
+        .opciones img:active {
+            width: var(--x7_6);
+            height: var(--x7_6);
+        }
+
+        #opcionesUsuario {
+            /* border: 1px solid gray; */
+            position: absolute;
+            flex-direction: column;
+            top: var(--x10);
+            right: 2vw;
+            justify-content: space-evenly;
+            align-items: center;
+            width: var(--x42_16);
+            border-radius: 0.7vw;
+            background-color: rgb(245, 245, 245);
+            padding: 0.5vw;
+            flex-wrap: wrap;
+            align-self: flex-end;
+            justify-content: center;
+            text-align: center;
+            z-index: 2000;
+        }
+
+        #opcionesUsuario button {
+            border: none;
+            background-color: transparent;
+            font-size: var(--x3_53);
+            padding: var(--x1_36);
+            font-family: 'FuturaMedium';
+            color: rgba(0, 0, 0, 0.274);
+        }
+
+        #opcionesUsuario button:hover {
+            cursor: pointer;
+            color: rgba(0, 0, 0, 0.509);
+        }
+
+        #opcionesUsuario button:active {
+            color: #db0032;
+        }
+
+        #mensaje {
+            border: 1px solid red;
+            position: absolute;
+            top: 1vw;
+            left: 2vw;
+            width: 76vw;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1500;
+            background-color: white;
+            padding: 0.5vw;
+        }
+
+        #alerta {
+            width: var(--x6_8);
+        }
+
+        #textoMensaje {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+            flex-wrap: wrap;
+            font-family: 'FuturaMedium';
+            color: rgba(128, 128, 128, 0.945);
+            font-size: var(--x2_72);
+            margin-top: var(--x2_72);
+        }
+
+        #imgCerrar {
+            position: absolute;
+            width: var(--x3_26);
+            top: 0.3vw;
+            right: 0.3vw;
+        }
+
+        #imgCerrar:hover {
+            cursor: pointer;
+        }
+
+        .container {
+            /* border: 1px solid blue; */
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 87%;
+        }
+
+        .inclinedParabola {
+            position: relative;
+            background-color: #db0032;
+            width: var(--x60);
+            height: var(--x35);
+            border-top-right-radius: 400px;
+            border-bottom-right-radius: 400px;
+        }
+
+        .insideParabola {
+            /* border: 1.5px solid blue; */
+            position: absolute;
+            top: var(--x16);
+            right: var(--x9);
+        }
+
+        .insideParabola p span {
+            /* border: 1.5px solid blue; */
+            font-size: var(--x3_5);
+            font-family: 'FuturaMedium';
+            color: #fff4f8;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            width: 35vw;
+        }
+
+        .rightContainer {
+            display: flex;
+            flex-direction: column;
+            height: 80%;
+            position: relative;
+            border: 1px solid #db0032;
+            border-right: none;
+            border-top-left-radius: 2.5vw;
+            border-bottom-left-radius: 2.5vw;
+            width: 95vw;
+            margin-left: 5vw;
+            margin-top: 3vw;
+            padding: 3vw 0 0 0;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rightContainer p {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'FuturaMedium';
+            font-size: var(--x4_5);
+            flex-wrap: wrap;
+            margin-bottom: var(--x3);
+            padding: var(--x1);
+        }
+
+        .busquedaContainer {
+            /* border: 1px solid aqua; */
+            width: 50vw;
+            padding: 0 0 0.5vw 0;
+            margin-top: 0.5vw;
+            margin-left: 3vw;
+            height: 10%;
+        }
+
+        .busqueda {
+            /* border: 1px solid blue; */
+            color: #db0032;
+            font-family: 'FuturaMedium';
+            font-size: var(--x3_5);
+            margin-left: 2.5vw;
+            margin-bottom: 1vw;
+        }
+
+        /*#buscador {
+            background-color: #db0032;
+            width: 70vw;
+            height: var(--x6);
+            border-radius: 1.5vw;
+            border: 1px solid #db0032;
+            margin-top: 0.5vw;
+            margin-left: 1vw;
+            margin-bottom: 0.5vw;
+            padding: 1vw;
+            font-family: 'FuturaMedium';
+            font-size: var(--x3_5);
+        }
+
+        #buscador:focus {
+            outline: none;
+
+        }*/
+
+        footer {
+            /* background-color: chartreuse; */
+            display: flex;
+            /* border: 1px solid red; */
+            height: 4%;
+            bottom: 1.5vw;
+            gap: 74vw;
+            padding-top: 3vw;
+            z-index: 2500;
+        }
+
+        footer button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            margin-left: 4vw;
+            margin-top: -1vw;
+        }
+
+        footer button .left-arrow {
+            width: var(--x6_5);
+            margin-top: 1.5vw;
+        }
+
+        footer button .left-arrow:active {
+            width: var(--x6);
+        }
+
+        #logo2 {
+            width: var(--x9);
+            height: var(--x13);
+            transition: opacity 5s;
+            padding-top: 1vw;
+        }
+
+        .resaltado {
+            background-color: rgba(0, 0, 0, 0.970);
+        }
+
+        /* FORMULARIO */
+
+        .formulario {
+            /* border: 1px solid blue; */
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            align-items: center;
+        }
+
+        .formulario div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--x1_5);
+        }
+
+        .formulario label {
+            /* background-color: lightblue; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'FuturaMedium';
+            font-size: var(--x4_5);
+            width: var(--x62_5);
+            margin-bottom: var(--x1);
+        }
+
+        .formulario input:not(.contenedorImagen) {
+            background-color: #c9c9c9;
+            font-family: 'FuturaMedium';
+            font-size: var(--x3_8);
+            width: var(--x65);
+            height: var(--x9);
+            border-radius: var(--x2);
+            padding-left: var(--x2_5);
+            text-align: center;
+        }
+
+        .contenedorImagen input {
+            display: flex;
+            justify-items: center;
+            width: var(--x62_5);
+            height: var(--x9);
+        }
+
+        .formulario input:focus {
+            outline: none;
+        }
+
+        #contProfilePicture {
+            /* border: 1px solid green; */
+            display: flex;
+        }
+
+        #profilePicture {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: var(--x25);
+            height: var(--x25);
+            max-width: var(--x25);
+            max-height: var(--x25);
+            border-radius: 50%;
+        }
+
+        .formulario .botonEditarUsuario {
+            background-color: #db0032;
+            color: white;
+            font-family: 'FuturaMedium';
+            font-size: var(--x3_8);
+            width: var(--x35);
+            height: var(--x9);
+            border-radius: var(--x4);
+            margin-bottom: var(--x2);
+            padding: var(--x1);
+            margin-top: var(--x3_5);
+            cursor: pointer;
+        }
+
+        .formulario .botonEditarUsuario:active {
+            background-color: black;
+        }
+
+        .formulario .botonCancelar {
+            background-color: #db0032;
+            color: white;
+            font-family: 'FuturaMedium';
+            font-size: var(--x3_8);
+            width: var(--x25);
+            height: var(--x9);
+            border-radius: var(--x4);
+            margin-bottom: var(--x2);
+            padding: var(--x1);
+            margin-bottom: var(--x3);
+            cursor: pointer;
+        }
+
+        .formulario .botonCancelar:active {
+            background-color: black;
+        }
+
+        .obligatorio {
+            color: #db0032;
+        }
+
+        /* SMALLER TABLETS = 60% DEL ROOT (REDUCCIÓN DEL 40%) = ROOT * 0.6 */
+        @media screen and (min-width: 500px) and (max-width: 900px) {
+            :root {
+                --x1: 0.6vw;
+                --x1_5: 0.9vw;
+                --x2: 1.2vw;
+                --x2_5: 1.5vw;
+                --x3: 1.8vw;
+                --x3_5: 2.1vw;
+                --x3_8: 2.28vw;
+                --x4: 2.4vw;
+                --x4_5: 2.7vw;
+                --x5_5: 3.3vw;
+                --x8_16: 4.89vw;
+                --x7_6: 4.56vw;
+                --x10: 6vw;
+                --x25: 15vw;
+                --x35: 21vw;
+                --x42_16: 25.29vw;
+                --x3_53: 2.11vw;
+                --x1_36: 0.81vw;
+                --x6_8: 4.8vw;
+                --x3_26: 1.95vw;
+                --x2_72: 1.63vw;
+                --x35: 21vw;
+                --x50: 30vw;
+                --x60: 36vw;
+                --x62_5: 37.5vw;
+                --x65: 39vw;
+                --x74: 44.4vw;
+                --x5_5: 3.3vw;
+                --x12_5: 7.5vw;
+                --x7_5: 4.5vw;
+                --x12: 7.2vw;
+                --x6_5: 3.9vw;
+                --x6: 3.6vw;
+                --x9: 5.4vw;
+                --x13: 7.8vw;
+                --x150: 90vw;
+                --x16: 9.6vw;
+            }
+
+            body {
+                height: auto;
+            }
+
+            .container {
+                height: auto;
+            }
+
+            .inclinedParabola {
+                margin-top: 0;
+            }
+
+            .rightContainer {
+                margin-top: 0.5vw;
+            }
+
+        }
+
+        /* LARGER TABLETS = 40% DEL ROOT (REDUCCIÓN DEL 60%) = ROOT * 0.4 */
+        @media screen and (min-width: 900px) and (max-width: 1200px) {
+            :root {
+                --x1: 0.4vw;
+                --x1_5: 0.6vw;
+                --x2: 0.8vw;
+                --x2_5: 1vw;
+                --x3: 1.2vw;
+                --x3_5: 1.4vw;
+                --x3_8: 1.52vw;
+                --x4: 1.6vw;
+                --x4_5: 1.8vw;
+                --x5_5: 2.2vw;
+                --x8_16: 3.26vw;
+                --x7_6: 3.04vw;
+                --x10: 4vw;
+                --x25: 10vw;
+                --x35: 14vw;
+                --x42_16: 16.86vw;
+                --x3_53: 1.41vw;
+                --x1_36: 0.54vw;
+                --x6_8: 2.72vw;
+                --x3_26: 1.30vw;
+                --x2_72: 1.08vw;
+                --x35: 14vw;
+                --x50: 20vw;
+                --x60: 14.40vw;
+                --x62_5: 25vw;
+                --x65: 26vw;
+                --x74: 29.60vw;
+                --x5_5: 2.2vw;
+                --x12_5: 5vw;
+                --x7_5: 3vw;
+                --x12: 4.8vw;
+                --x6_5: 2.6vw;
+                --x6: 2.4vw;
+                --x9: 3.6vw;
+                --x13: 5.2vw;
+                --x150: 60vw;
+                --x16: 6.4vw;
+            }
+
+            body {
+                height: auto;
+            }
+
+            .container {
+                height: auto;
+            }
+
+            .inclinedParabola {
+                margin-top: 0;
+            }
+
+            .rightContainer {
+                margin-top: 0.5vw;
+            }
+
+            #opcionesUsuario {
+                top: 5vw
+            }
+
+            .inclinedParabola {
+                margin-top: 0;
+            }
+
+            .rightContainer {
+                margin-top: 0.5vw;
+            }
+        }
+
+        /* COMPUTERS, TVS = 35% DEL ROOT (REDUCCIÓN DEL 65%) = ROOT * 0.35 - NOTA: HAY MEDIDAS NO ESCALADAS - RÉPLICA DE LA DISEÑADORA */
+        @media (min-width: 1200px) {
+
+            :root {
+                --x1: 0.35vw;
+                --x1_5: 0.52vw;
+                --x2: 0.7vw;
+                --x2_5: 0.87vw;
+                --x3: 1.05vw;
+                --x3_5: 1.22vw;
+                --x3_8: 1.33vw;
+                --x4: 1.4vw;
+                --x4_5: 1.57vw;
+                --x5_5: 1.92vw;
+                --x8_16: 2.85vw;
+                --x7_6: 2.66vw;
+                --x10: 3.5vw;
+                --x25: 8.75vw;
+                --x35: 12.25vw;
+                --x42_16: 14.75vw;
+                --x3_53: 1.23vw;
+                --x1_36: 0.47vw;
+                --x6_8: 2.38vw;
+                --x3_26: 1.14vw;
+                --x2_72: 0.95vw;
+                --x35: 12.25vw;
+                --x50: 17.50vw;
+                --x60: 21vw;
+                --x62_5: 21.87vw;
+                --x65: 22.75vw;
+                --x74: 25.9vw;
+                --x5_5: 1.92vw;
+                --x12_5: 4.37vw;
+                --x7_5: 2.62vw;
+                --x12: 4.2vw;
+                --x6_5: 2.27vw;
+                --x6: 2.1vw;
+                --x9: 3.15vw;
+                --x13: 4.55vw;
+                --x150: 52.5vw;
+                --x16: 5.6vw;
+            }
+
+            body {
+                overflow: hidden;
+            }
+
+            #encabezado {
+                /* background-color: green; */
+                height: 10%;
+            }
+
+            #opcionesUsuario {
+                top: 4.5vw
+            }
+
+            .container {
+                /* background-color: blueviolet; */
+                /* background-color: blue; */
+                flex-direction: row;
+                padding-top: 2vw;
+                width: 100%;
+                height: 80%;
+                gap: 0.1vw;
+            }
+
+            .inclinedParabola {
+                position: relative;
+                margin-top: 4vw;
+                width: 25vw;
+                height: 27vw;
+                border-top-right-radius: 2000vw;
+                border-bottom-right-radius: 2000vw;
+            }
+
+            .insideParabola {
+                /* border: 1.5px solid; */
+                position: absolute;
+                top: 12vw;
+                right: 4vw;
+            }
+
+            .insideParabola p span {
+                /* border: 1.5px solid blue; */
+                font-size: 1.7vw;
+            }
+
+            .rightContainer {
+                /* background-color: darkgoldenrod; */
+                position: relative;
+                border-top-left-radius: 3vw;
+                border-bottom-left-radius: 3vw;
+                width: 67.7vw;
+                height: 96%;
+                margin: 1.3vw -6vw 6vw 7.2vw;
+                padding: 1.44vw 3.6vw 0 0;
+            }
+
+            .busquedaContainer {
+                /* background-color: aqua; */
+                width: 44vw;
+                height: 4vw;
+                padding: 0 0 0.36vw 0;
+                margin-bottom: -0.6vw;
+            }
+
+            .busqueda {
+                /* border: 1px solid blue; */
+                font-size: 1.2vw;
+                margin-left: 0.72vw;
+                margin-bottom: 0.5vw;
+            }
+
+            /*#buscador {
+                background-color: #db0032;
+                width: 44vw;
+                height: 2.7vw;
+                border-radius: 0.7vw;
+                border: 0.10vw solid #db0032;
+                margin-top: 0.1vw;
+                margin-left: 0;
+                font-size: 1.2vw;
+            }*/
+
+            footer {
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                /* border: 1px solid yellow;
+                background-color: violet; */
+                padding: 0;
+                margin: 0;
+                gap: 88vw;
+                height: 10%;
+            }
+
+            footer button {
+                background-color: transparent;
+                margin-top: 0;
+                height: 100%;
+            }
+
+            footer button .left-arrow {
+                margin: 0;
+                padding: 0;
+                width: 2vw;
+                height: 2vw;
+            }
+
+            #logo2 {
+                margin: 0;
+                padding: 0;
+                width: 3vw;
+                height: 4vw;
+                transition: opacity 5s;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader" class="displayOn">
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <section id="encabezado">
+
+        <div id="opciones" class="opciones displayOn">
+            <img src="https://dosxdos.app.iidos.com/img/botonHome.png" id="botonHome">
+            <img src="https://dosxdos.app.iidos.com/img/usuarioClientes.png" id="imagenUsuario">
+        </div>
+
+        <div id="opcionesUsuario" class="displayOff">
+            <button id="editarUsuarioB">Editar Usuario</button>
+            <button id="cerrarSesionB">Cerrar Sesión</button>
+        </div>
+
+        <div id="mensaje" class="displayOff">
+            <img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+            <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+            <p id="textoMensaje"></p>
+        </div>
+
+    </section>
+
+    <main class="container">
+        <div class="inclinedParabola">
+            <div class="insideParabola">
+                <p>
+                    <span>Editar usuario</span>
+                </p>
+            </div>
+        </div>
+        <div class="rightContainer">
+            <p>Los campos en color negro son opcionales, los rojos son obligatorios:</p>
+            <div class="formulario" id="formulario">
+                <div class="contenedorRepetirContraseña">
+                    <label for="contrasenaActual" class="obligatorio">Contraseña actual</label>
+                    <input type="password" name="contrasenaActual" id="contrasenaActual" maxlength="12"
+                        class="obligatorio">
+                </div>
+                <div class="contenedorUsuario">
+                    <label for="usuario">Nuevo usuario</label>
+                    <input type="text" name="usuario" id="usuario" maxlength="8">
+                </div>
+                <div class="contenedorContraseña">
+                    <label for="contraseña">Nueva contraseña</label>
+                    <input type="password" name="password" id="password" maxlength="12">
+                </div>
+                <div class="contenedorRepetirContraseña">
+                    <label for="repetirContraseña">Repetir nueva contraseña</label>
+                    <input type="password" name="repetirContraseña" id="repetirContrasena" maxlength="12">
+                </div>
+                <div class="contenedorCorreo">
+                    <label for="correo" class="obligatorio">Correo</label>
+                    <input type="email" name="correo" id="correo" class="obligatorio">
+                </div>
+                <div class="contenedorMovil">
+                    <label for="movil" class="obligatorio">Móvil</label>
+                    <input type="tel" name="movil" id="movil" class="obligatorio">
+                </div>
+                <div class="contenedorNombre">
+                    <label for="nombre" class="obligatorio">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" class="obligatorio">
+                </div>
+                <div class="contenedorApellido">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" name="apellido" id="apellido">
+                </div>
+                <div class="contenedorImagen">
+                    <label for="imagen">Imagen</label>
+                    <input type="file" name="archivo[]" id="archivo[]" class="contenedorImagen"></input>
+                </div>
+                <div id="contProfilePicture">
+                    <img id="profilePicture" src="https://dosxdos.app.iidos.com/img/usuarioClientes.png">
+                </div>
+                <button type="button" id="botonEditarUsuario" class="botonEditarUsuario">Editar usuario</button>
+                <button type="button" id="botonCancelar" class="botonCancelar">Cancelar</button>
+            </div>
+    </main>
+    <footer>
+        <button>
+            <img src="https://dosxdos.app.iidos.com/img/flechaIzq.png" class="left-arrow" id="leftArrow">
+        </button>
+        <img src="https://dosxdos.app.iidos.com/img/logo_clientes.png" id="logo2" class="logo2">
+    </footer>
+</body>
+
+</html>
+
+<script>
+
+    /* VARIABLES GLOBALES */
+    let usuario,
+        nuevaImagen,
+        nuevaImagenV = false;
+
+    /* CONSTANTES DEL DOM */
+    const $loader = document.getElementById('loader'),
+        $imagenUsuario = document.getElementById('imagenUsuario'),
+        $opcionesUsuario = document.getElementById('opcionesUsuario'),
+        $mensaje = document.getElementById('mensaje'),
+        $imgCerrar = document.getElementById('imgCerrar'),
+        $textoMensaje = document.getElementById('textoMensaje'),
+        //$buscador = document.getElementById('buscador');
+        $usuario = document.getElementById('usuario'),
+        $password = document.getElementById('password'),
+        $repetirContrasena = document.getElementById('repetirContrasena'),
+        $correo = document.getElementById('correo'),
+        $movil = document.getElementById('movil'),
+        $nombre = document.getElementById('nombre'),
+        $apellido = document.getElementById('apellido'),
+        $profilePicture = document.getElementById('profilePicture'),
+        $archvio = document.getElementById('archivo[]');
+
+    /* VLOGIN */
+
+    function obtenerValorCookie(nombre) {
+        return new Promise((resolve, reject) => {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                while (cookie.charAt(0) == ' ') {
+                    cookie = cookie.substring(1);
+                }
+                if (cookie.indexOf(nombre + '=') == 0) {
+                    var valor = cookie.substring(nombre.length + 1, cookie.length);
+                    resolve(valor);
+                }
+            }
+            resolve(false);
+        })
+    }
+
+    function fetchUsuario(idUsuario) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/usuarios.php?id=' + idUsuario;
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchUsuario'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1][0]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchUsuario: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    function vLogin() {
+        return new Promise(async (resolve, reject) => {
+            loginCookie = await obtenerValorCookie('login');
+            usuarioCookie = await obtenerValorCookie('usuario');
+            if (loginCookie && usuarioCookie) {
+                if (navigator.onLine) {
+                    usuario = await fetchUsuario(usuarioCookie);
+                    //console.log(usuario);
+                    if (!usuario) {
+                        mensaje = 'No se ha podido consultar los datos del usuario en nuestra base de datos, por favor inténtalo nuevamente. Si el error persiste por favor comunícate con nosotros'
+                        localStorage.setItem('mensaje', mensaje);
+                        window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                    } else {
+                        if (usuario.eliminado == '1') {
+                            mensaje = 'El usuario ha sido eliminado, por favor comunícate con nosotros'
+                            localStorage.setItem('mensaje', mensaje);
+                            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                        }
+                        if (usuario.activo == '0') {
+                            mensaje = 'El usuario ha sido inactivado, por favor comunícate con nosotros'
+                            localStorage.setItem('mensaje', mensaje);
+                            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+                        }
+                    }
+                } else {
+                    mensaje = 'No tienes acceso a internet, no es posible navegar en los datos y los archivos de nuestro servidor sin una conexión a internet establecida'
+                    alerta(mensaje);
+                    resolve(true);
+                }
+                resolve(true);
+            }
+        })
+    }
+
+    /* CONSTANTES DE LOCALSTORAGE
+
+    const tipoDeOt = localStorage.getItem('codigoDeOtsCliente');
+    if (tipoDeOt && tipoDeOt !== null) {
+        console.log('Tipo de OT: ' + tipoDeOt);
+        vTipoDeOt = true;
+    }
+    else {
+        mensaje = 'No se han recibido los datos necesarios a través de las variables del localStorage'
+        alerta(mensaje);
+    }
+
+    const descripcionTipoDeOt = localStorage.getItem('DescripcionCodigoDeOtsCliente');
+    if (descripcionTipoDeOt && descripcionTipoDeOt !== null) {
+        console.log('Descripción Tipo de OT: ' + descripcionTipoDeOt);
+        vDescripcionTipoDeOt = true
+    }
+    else {
+        mensaje = 'No se han recibido los datos necesarios a través de las variables del localStorage'
+        alerta(mensaje);
+    } */
+
+    /* LOADER */
+
+    function loaderOn() {
+        scrollToTop();
+        $loader.classList.remove('displayOff');
+        $loader.classList.add('displayOn');
+    }
+
+    function loaderOff() {
+        setTimeout(() => {
+            $loader.classList.remove('displayOn');
+            $loader.classList.add('displayOff')
+        }, 1000)
+    }
+
+    /* MENSAJE */
+
+    function scrollToTop() {
+        // Para navegadores modernos
+        document.documentElement.scrollTop = 0;
+        // Para navegadores antiguos
+        document.body.scrollTop = 0;
+    }
+
+    function mensajeOn() {
+        $mensaje.classList.remove('displayOff');
+        $mensaje.classList.add('displayOn');
+    }
+
+    function mensajeOff() {
+        $mensaje.classList.remove('displayOn');
+        $mensaje.classList.add('displayOff');
+    }
+
+    $imgCerrar.addEventListener('click', e => {
+        mensajeOff();
+    })
+
+    function alerta(men) {
+        $textoMensaje.innerHTML = men;
+        mensajeOn();
+        scrollToTop();
+        loaderOff();
+    }
+
+    /* CERRAR SESIÓN */
+
+    function eliminarCookie(nombre) {
+        const tiempoExpiracion = 1; // Segundo 1 de la Época Unix
+        document.cookie = `${nombre}=; expires=${new Date(tiempoExpiracion * 1000).toUTCString()}; path=/;`;
+    }
+
+    function cerrarSesions() {
+        try {
+            loaderOn();
+            localStorage.removeItem('login');
+            localStorage.removeItem('usuario');
+            eliminarCookie('login');
+            eliminarCookie('usuario');
+            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    /* VALIDACIÓN DE FORMULARIO */
+
+    const expresiones = {
+        usuario: /^(?:[a-zA-Z]+|\d+|[a-zA-Z\d]+){4,8}$/,
+        contrasena: /^(?:[a-zA-Z\d!@#$%^&*()-+=<>?/\|[\]{}:;,.]+){4,12}$/,
+        correo: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        movil: /^[0-9]{9}$/
+    },
+
+        campos = {
+            contrasenaActual: false,
+            usuario: false,
+            contrasena: false,
+            contrasena2: false,
+            correo: false,
+            movil: false,
+            nombre: false,
+        },
+
+        validarCampo = (expresion, input, campo) => {
+            if (expresion.test(input)) {
+                campos[campo] = true;
+            } else {
+                campos[campo] = false;
+            }
+        },
+
+        trim = (cadena) => {
+            if (cadena != null) {
+                return cadena.replace(/\s+/g, '');
+            } else {
+                return '';
+            }
+        },
+
+        validarVacio = (input) => {
+            if (trim(input) != '') {
+                return false;
+            } else {
+                return true;
+            }
+        };
+
+    async function datos() {
+        loaderOn();
+        mensaje = '';
+        campos.contrasenaActual = false;
+        campos.usuario = false;
+        campos.contrasena = false;
+        campos.contrasena2 = false;
+        campos.correo = false;
+        campos.movil = false;
+        campos.nombre = false;
+        const contrasenaActualV = document.getElementById('contrasenaActual').value;
+        const usuarioV = document.getElementById('usuario').value;
+        const contrasenaV = document.getElementById('password').value;
+        const contrasena2V = document.getElementById('repetirContrasena').value;
+        const correoV = document.getElementById('correo').value;
+        const movilV = document.getElementById('movil').value;
+        const nombreV = document.getElementById('nombre').value;
+        const apellidoV = document.getElementById('apellido').value;
+        validarCampo(expresiones.contrasena, contrasenaActualV, 'contrasenaActual');
+        validarCampo(expresiones.correo, correoV, 'correo');
+        validarCampo(expresiones.movil, movilV, 'movil');
+        if (!validarVacio(nombreV)) campos.nombre = true;
+        if (!validarVacio(usuarioV)) {
+            validarCampo(expresiones.usuario, usuarioV, 'usuario');
+        } else {
+            campos.usuario = true;
+        }
+        if (!validarVacio(contrasenaV)) {
+            validarCampo(expresiones.contrasena, contrasenaV, 'contrasena');
+            if (contrasenaV == contrasena2V) {
+                campos.contrasena2 = true;
+            }
+        } else {
+            campos.contrasena = true;
+            if (validarVacio(contrasena2V)) {
+                campos.contrasena2 = true;
+            }
+        }
+        if (!campos.contrasenaActual || !campos.usuario || !campos.contrasena || !campos.contrasena2 || !campos.correo || !campos.movil || !campos.nombre) {
+            if (!campos.contrasenaActual) {
+                mensaje += '-Formato de contraseña actual no válido - tu contraseña actual debe contener letras, dígitos y caracteres especiales (4 a 12 caracteres sin espacios)'
+            }
+            if (!campos.usuario) {
+                mensaje += '-Formato de usuario no válido; en el usuario sólo se permite el uso de letras y dígitos (4 a 8 caracteres sin espacios)-'
+            }
+            if (!campos.contrasena) {
+                mensaje += '-Formato de contraseña no válido; en la contraseña sólo se permite el uso de letras, dígitos y caracteres especiales (4 a 12 caracteres sin espacios)-'
+            }
+            if (!campos.contrasena2) {
+                mensaje += '-Las contraseñas no coinciden-'
+            }
+            if (!campos.correo) {
+                mensaje += '-El formato de correo no es válido-'
+            }
+            if (!campos.movil) {
+                mensaje += '-El formato de móvil no es válido-'
+            }
+            if (!campos.nombre) {
+                mensaje += '-Es necesario ingresar el nombre del usuario para poder identificarlo en la interfaz de la aplicación-'
+            }
+            alerta(mensaje);
+            loaderOff();
+        } else {
+            console.log('SUBMIT');
+            const objetoEditar = {};
+            objetoEditar.usuarioId = usuario.id;
+            objetoEditar.contrasenaActual = contrasenaActualV;
+            if (!validarVacio(usuarioV)) {
+                objetoEditar.usuario = usuarioV;
+            }
+            if (!validarVacio(contrasenaV)) {
+                objetoEditar.contrasena = contrasenaV;
+            }
+            objetoEditar.correo = correoV;
+            objetoEditar.movil = movilV;
+            objetoEditar.nombre = nombreV;
+            if (!validarVacio(apellidoV)) {
+                objetoEditar.apellido = apellidoV;
+            }
+            if (nuevaImagenV) objetoEditar.imagen = nuevaImagen;
+            const jsonEditar = JSON.stringify(objetoEditar)
+            const enviar = await enviarDatos(jsonEditar);
+            if (enviar) {
+                const pAnterior = localStorage.getItem('pAnterior');
+                if (pAnterior && pAnterior !== null) {
+                    window.location.href = pAnterior;
+                } else {
+                    window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+                }
+            } else {
+                loaderOff();
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        document.addEventListener('click', (e) => {
+
+            if (e.target.matches('#imagenUsuario')) {
+                $opcionesUsuario.classList.toggle('displayOff');
+                $opcionesUsuario.classList.toggle('displayOn');
+            } else {
+                if (!e.target.matches('#editarUsuarioB') && !e.target.matches('#cerrarSesionB') && $opcionesUsuario.classList.contains('displayOn')) {
+                    $opcionesUsuario.classList.replace('displayOn', 'displayOff');
+                }
+            }
+
+            if (e.target.matches('#editarUsuarioB')) {
+                window.location.href = "https://dosxdos.app.iidos.com/editar_usuario_cliente.html";
+            }
+
+            if (e.target.matches('#botonCancelar')) {
+                const pAnterior = localStorage.getItem('pAnterior');
+                if (pAnterior && pAnterior !== null) {
+                    window.location.href = pAnterior;
+                } else {
+                    window.location.href = "https://dosxdos.app.iidos.com/clientes.html"
+                }
+            }
+
+            if (e.target.matches('#cerrarSesionB')) {
+                cerrarSesions();
+            }
+
+            if (e.target.classList.contains('otsBoton')) {
+                const objetoOt = e.target.getAttribute('data-objeto');
+                localStorage.setItem('objetoOt', objetoOt);
+                window.location.href = "https://dosxdos.app.iidos.com/clientes_ot.html";
+            }
+
+            if (e.target.matches('#botonHome')) {
+                window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+            }
+
+            if (e.target.matches('#leftArrow')) {
+                const pAnterior = localStorage.getItem('pAnterior');
+                if (pAnterior && pAnterior !== null) {
+                    window.location.href = pAnterior;
+                } else {
+                    window.location.href = "https://dosxdos.app.iidos.com/clientes.html";
+                }
+            }
+
+            if (e.target.matches('#botonEditarUsuario')) {
+                datos();
+            }
+
+        })
+
+        /* BUSCADOR */
+
+        /*$buscador.addEventListener('input', () => {
+            botones = document.querySelectorAll('.otsContainer div button');
+            const valorBusqueda = $buscador.value.toLowerCase();
+            botones.forEach((boton) => {
+                const textoBoton = boton.textContent.toLowerCase();
+                const span = boton.querySelector('span'); // Obtener el elemento <span> dentro del botón
+                if (textoBoton.includes(valorBusqueda)) {
+                    boton.parentElement.classList.replace("displayOff", "displayOn");
+                    // Crear una expresión regular para buscar la coincidencia exacta
+                    const regex = new RegExp(valorBusqueda, 'gi');
+                    const textoResaltado = boton.textContent.replace(regex, '<span class="resaltado">$&</span>');
+                    span.innerHTML = textoResaltado;
+                } else {
+                    boton.parentElement.classList.replace("displayOn", "displayOff");
+                    // Restablecer el texto original sin resaltado
+                    span.textContent = span.textContent;
+                }
+            });
+        });*/
+
+        /* CAMBIO DE IMAGEN */
+        const $inputArchivo = document.getElementById('archivo[]');
+        const cambioImagen = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+        $inputArchivo.addEventListener('change', (e) => {
+            archivo = e.target.files[0];
+            if (archivo) {
+                cambioImagen(archivo)
+                    .then(file => {
+                        nuevaImagenV = true;
+                        nuevaImagen = file;
+                        $profilePicture.src = file;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        mensaje = 'Error, por favor inténtalo nuevamente: ' + error;
+                        alerta(error);
+                    })
+            }
+        })
+
+    })
+
+    /* INICIAR BUSCADOR */
+
+    /*function startBuscador() {
+        if ($buscador.value) {
+            botones = document.querySelectorAll('.otsContainer div button');
+            const valorBusqueda = $buscador.value.toLowerCase();
+            botones.forEach((boton) => {
+                const textoBoton = boton.textContent.toLowerCase();
+                const span = boton.querySelector('span'); // Obtener el elemento <span> dentro del botón
+                if (textoBoton.includes(valorBusqueda)) {
+                    boton.parentElement.classList.replace("displayOff", "displayOn");
+                    // Crear una expresión regular para buscar la coincidencia exacta
+                    const regex = new RegExp(valorBusqueda, 'gi');
+                    const textoResaltado = boton.textContent.replace(regex, '<span class="resaltado">$&</span>');
+                    span.innerHTML = textoResaltado;
+                } else {
+                    boton.parentElement.classList.replace("displayOn", "displayOff");
+                    // Restablecer el texto original sin resaltado
+                    span.textContent = span.textContent;
+                }
+            });
+        }
+    }*/
+
+    /* TIPOS OT */
+
+    function fetchTiposOt(idCliente) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&tiposOt';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchTiposOt'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchTiposOt: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* FETCH OTS */
+
+    function fetchOts(idCliente, codCliente, codOt) {
+        return new Promise((resolve, reject) => {
+            url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&codCliente=' + codCliente + '&codOt=' + codOt + '&clientesOts';
+            fetch(url)
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchOts'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        resolve(res[1]);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en la función fetchOts: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* VOLCAR DATOS */
+
+    async function volcarDatos(ots) {
+        return new Promise(async (resolve, reject) => {
+            const fragmento = document.createDocumentFragment();
+            const promises = ots.map(ot => {
+                const divPadre = document.createElement('div');
+                divPadre.className = 'displayOn';
+                const boton = document.createElement('button');
+                const botonSpan = document.createElement('span');
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.nombre.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertido = textoConvertido.toLowerCase();
+                const nombreOt = textoConvertido;
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.ano.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertido = textoConvertido.toLowerCase();
+                const anoOt = textoConvertido;
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.descripcion.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertido = textoConvertido.toLowerCase();
+                const descripcionOt = textoConvertido;
+                temporalDiv = document.createElement("div");
+                temporalDiv.innerHTML = ot.firma.replace(/\\/g, '');
+                textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+                textoConvertido = textoConvertido.toLowerCase();
+                const firmaOt = textoConvertido;
+                botonSpan.textContent = `${nombreOt} - ${descripcionOt} - ${firmaOt} - ${anoOt}`;
+                const figura = document.createElement('figure');
+                const camara = document.createElement('img');
+                if (ot.fotos == 0) {
+                    camara.src = 'https://dosxdos.app.iidos.com/img/camaraSinFotos.png';
+                } else {
+                    camara.src = 'https://dosxdos.app.iidos.com/img/camaraConFotos.png';
+                    camara.className = 'otsBoton';
+                    const valorfotos = true;
+                    camara.setAttribute('data-fotos', valorfotos);
+                    const objetoOt = JSON.stringify(ot);
+                    camara.setAttribute('data-objeto', objetoOt);
+                }
+                figura.appendChild(camara);
+                boton.appendChild(botonSpan);
+                divPadre.appendChild(boton);
+                divPadre.appendChild(figura);
+                fragmento.appendChild(divPadre);
+            })
+            await Promise.all(promises);
+            const otsContainer = document.getElementById('otsContainer');
+            otsContainer.appendChild(fragmento);
+            resolve(true);
+        })
+    }
+
+    /* ENVIAR DATOS */
+
+    function enviarDatos(json) {
+        return new Promise((resolve, reject) => {
+            fetch("https://dosxdos.app.iidos.com/apirest/usuarios.php",
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-type": "application/json; charset=utf-8"
+                    },
+                    body: json
+                })
+                .then((res) => {
+                    if (res.ok) {
+                        return res.json()
+                    }
+                    else {
+                        mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función enviarDatos'
+                        alerta(mensaje);
+                        resolve(false);
+                    };
+                })
+                .then((res) => {
+                    if (res[0]) {
+                        mensaje = 'Tu usuario ha sido editado exitosamente';
+                        localStorage.setItem('mensaje', mensaje);
+                        resolve(true);
+                    }
+                    else {
+                        mensaje = res[1];
+                        alerta(mensaje);
+                        resolve(false);
+                    }
+                })
+                .catch((error) => {
+                    mensaje = 'Error en el sistema. Causas probables: Tu contraseña actual fue incorrecta, o el correo ingresado ya existe en nuestra base de datos, o el nuevo usuario ya existe en nuestra base de datos. Intenta por favor realizar las correcciones, si el error persiste por favor comunícate con nosotros. Mensaje interno de error: ' + error.message;
+                    console.error(error);
+                    alerta(mensaje);
+                    resolve(false);
+                })
+        })
+    }
+
+    /* INICIAR APP ONLINE */
+
+    async function appOnline() {
+        try {
+            const login = await vLogin();
+            if (usuario.imagen != '0') {
+                $imagenUsuario.src = 'https://dosxdos.app.iidos.com/' + usuario.imagen;
+                $profilePicture.src = 'https://dosxdos.app.iidos.com/' + usuario.imagen;
+            }
+            $correo.value = usuario.correo;
+            $movil.value = usuario.movil;
+            $nombre.value = usuario.nombre;
+            $apellido.value = usuario.apellido;
+            document.title = `${usuario.nombre} ${usuario.apellido} - Editar usuario - dosxdos`;
+            loaderOff();
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    /* INICIAR APP OFFLINE */
+
+    async function appOffline() {
+        try {
+            const login = await vLogin();
+            loaderOff();
+        } catch (error) {
+            mensaje = 'ERROR: ' + error.message;
+            console.error(error);
+            alerta(mensaje);
+        }
+    }
+
+    /* TAREAS AL INICIAR LA PANTALLA CON EL ESTADO DE LA CONEXIÓN */
+
+    if (navigator.onLine) {
+        console.log('La aplicación está en línea.');
+        appOnline();
+    } else {
+        console.log('La aplicación está fuera de línea.');
+        appOffline();
+    }
+
+    /* PAGE SHOW - MENSAJES */
+    window.addEventListener('pageshow', (e) => {
+        let mensaje = localStorage.getItem('mensaje');
+        if (mensaje && mensaje !== null) {
+            alerta(mensaje);
+            localStorage.removeItem('mensaje');
+        }
+    })
+
+    /* TAREAS EN LA INTERMITENCIA DE LA CONEXIÓN */
+
+    window.addEventListener('online', () => {
+        console.log('La conexión a Internet se ha recuperado.');
+        window.location.reload();
+    });
+
+    window.addEventListener('offline', () => {
+        console.log('La conexión a Internet se ha perdido.');
+    });
+
+    loaderOff();
+
+</script>

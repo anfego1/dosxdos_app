@@ -1,0 +1,43 @@
+VECTORES (11)
+
+{
+    usuarioId: "",
+    usuario: "",
+    cod: "",
+    contrasena: "",
+    clase: "",
+    correo: "",
+    movil: "",
+    nombre: "",
+    apellido: "",
+    imagen: "",
+    activo: ""
+}
+
+GET (Se puede usar la variable id)
+
+POST (login se usa como parámetro, enviar como cadena vacía) - (Opcionales: movil, apellido, imagen, activo)
+
+{
+    login: "", 
+    usuario: "",
+    contrasena: ""
+}
+
+{
+    usuario: "",
+    cod: "",
+    contrasena: "",
+    clase: "",
+    correo: "",
+    nombre: ""
+}
+
+PUT (Obligatorio: UsuarioId)
+
+DELETE 
+
+{
+    usuarioId: ""
+}
+

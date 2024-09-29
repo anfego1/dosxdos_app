@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="icon" type="image/png" href="https://dosxdos.app.iidos.com/img/logoPwa256.png">
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* LOADING */
+
+    #loader {
+      width: 100vw;
+      height: 100vh;
+      position: absolute;
+      top: 0;
+      z-index: 2000;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lds-roller {
+      display: inline-block;
+      position: relative;
+      width: 80px;
+      height: 80px;
+    }
+
+    .lds-roller div {
+      animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      transform-origin: 40px 40px;
+    }
+
+    .lds-roller div:after {
+      content: " ";
+      display: block;
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #db0032;
+      margin: -4px 0 0 -4px;
+    }
+
+    .lds-roller div:nth-child(1) {
+      animation-delay: -0.036s;
+    }
+
+    .lds-roller div:nth-child(1):after {
+      top: 63px;
+      left: 63px;
+    }
+
+    .lds-roller div:nth-child(2) {
+      animation-delay: -0.072s;
+    }
+
+    .lds-roller div:nth-child(2):after {
+      top: 68px;
+      left: 56px;
+    }
+
+    .lds-roller div:nth-child(3) {
+      animation-delay: -0.108s;
+    }
+
+    .lds-roller div:nth-child(3):after {
+      top: 71px;
+      left: 48px;
+    }
+
+    .lds-roller div:nth-child(4) {
+      animation-delay: -0.144s;
+    }
+
+    .lds-roller div:nth-child(4):after {
+      top: 72px;
+      left: 40px;
+    }
+
+    .lds-roller div:nth-child(5) {
+      animation-delay: -0.18s;
+    }
+
+    .lds-roller div:nth-child(5):after {
+      top: 71px;
+      left: 32px;
+    }
+
+    .lds-roller div:nth-child(6) {
+      animation-delay: -0.216s;
+    }
+
+    .lds-roller div:nth-child(6):after {
+      top: 68px;
+      left: 24px;
+    }
+
+    .lds-roller div:nth-child(7) {
+      animation-delay: -0.252s;
+    }
+
+    .lds-roller div:nth-child(7):after {
+      top: 63px;
+      left: 17px;
+    }
+
+    .lds-roller div:nth-child(8) {
+      animation-delay: -0.288s;
+    }
+
+    .lds-roller div:nth-child(8):after {
+      top: 56px;
+      left: 12px;
+    }
+
+    @keyframes lds-roller {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ESCRITORIO */
+    :root {
+      --x0_5: 0.5vw;
+      --x0_6: 0.6vw;
+      --x1: 1vw;
+      --x1_2: 1.2vw;
+      --x1_5: 1.5vw;
+      --x2: 2vw;
+      --x2_5: 2.5vw;
+      --x3: 3vw;
+      --x3_5: 3.5vw;
+      --x10: 10vw;
+      --x15_5: 15.5vw;
+      --x16: 16vw;
+      --x20: 20vw;
+      --x22: 22vw;
+      --x25: 25vw;
+      --x30: 30vw;
+      --x4: 4vw;
+      --x2_9: 2.9vw;
+      --x1_3: 1.3vw;
+      --x4_8: 4.8vw;
+    }
+
+    /* FUENTES */
+    @font-face {
+      font-family: 'FuturaBold';
+      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Bold.otf") format("truetype");
+    }
+
+    @font-face {
+      font-family: 'FuturaLight';
+      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Light.otf") format("truetype");
+    }
+
+    @font-face {
+      font-family: 'FuturaMedium';
+      src: url("https://dosxdos.app.iidos.com/css/fuentes/Futura/Futura_Medium.otf") format("truetype");
+    }
+
+    .displayOn {
+      display: flex;
+    }
+
+    .displayOff {
+      display: none;
+    }
+
+    .FuturaBold {
+      font-family: 'FuturaBold';
+    }
+
+    .FuturaMedium {
+      font-family: 'FuturaMedium';
+    }
+
+    .FuturaLight {
+      font-family: 'FuturaLight';
+    }
+
+    /* OPCIONES ENCABEZADO */
+
+    .opciones {
+      /* border: 1px solid red; */
+      position: absolute;
+      top: 1.5vw;
+      right: 2vw;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+
+    .opciones img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(128, 128, 128, 0.559);
+      width: var(--x3);
+      height: var(--x3);
+      border-radius: 50%;
+      margin-left: 1.5vw;
+    }
+
+    .opciones img:hover {
+      cursor: pointer;
+    }
+
+    .opciones img:active {
+      width: var(--x2_9);
+      height: var(--x2_9);
+    }
+
+    .container {
+      /* border: 0.2vw solid green;*/
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* INCLINED PARABOLA */
+    .inclinedParabola {
+      /*border: 1px solid blue;*/
+      position: relative;
+      background-color: #db0032;
+      width: var(--x30);
+      height: var(--x25);
+      border-top-right-radius: 400px;
+      border-bottom-right-radius: 400px;
+    }
+
+    .parrafo {
+      /* border: 0.15vw solid greenyellow; */
+      font-family: 'FuturaMedium';
+      margin-top: 36%;
+      margin-right: 2vw;
+    }
+
+    .p1 {
+      /* background-color: aqua; */
+      font-size: var(--x1_5);
+      color: #fff4f8;
+      height: var(--x2);
+      margin-top: var(--x1);
+      margin-left: var(--x20);
+    }
+
+    .p2 {
+      /* background-color: blue; */
+      font-size: var(--x1_5);
+      color: #fff4f8;
+      margin-top: 0%;
+      margin-left: var(--x15_5);
+    }
+
+    /* ITEMS */
+    .listContainer {
+      /* border: 0.15vw solid pink; */
+      font-size: var(--x1_2);
+      margin-right: var(--x22);
+      margin-top: 8vw;
+      width: var(--x25);
+    }
+
+    .busqueda {
+      color: #db0032;
+      font-family: 'FuturaMedium';
+      font-size: var(--x1_5);
+      margin-bottom: 1.5vw;
+    }
+
+    #listaTiposOt {
+      /* border: 0.15vw solid blue; */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      height: 17vw;
+      overflow-y: scroll;
+    }
+
+    #listaTiposOt .ots:hover {
+      border: 2px solid #db0032;
+      border-radius: var(--x0_6);
+      cursor: pointer;
+    }
+
+    #listaTiposOt .ots:active {
+      color: #db0032;
+    }
+
+    #listaTiposOt .ots {
+      /* border: 1px solid purple; */
+      display: flex;
+      flex-wrap: wrap;
+      font-family: 'FuturaMedium';
+      color: #c9c9c9;
+      padding: var(--x0_5);
+      background-color: transparent;
+      border: none;
+      font-size: var(--x1_5);
+      width: 100%;
+    }
+
+    .logo2 {
+      position: absolute;
+      width: var(--x3_5);
+      bottom: var(--x1);
+      right: var(--x2);
+      /* opacity: 0; */
+      transition: opacity 5s;
+    }
+
+    #opcionesUsuario {
+      /* border: 1px solid gray; */
+      position: absolute;
+      flex-direction: column;
+      top: var(--x4_8);
+      right: 2vw;
+      justify-content: space-evenly;
+      align-items: center;
+      width: var(--x15_5);
+      border-radius: 0.7vw;
+      background-color: rgb(245, 245, 245);
+      padding: 0.5vw;
+      flex-wrap: wrap;
+      align-self: flex-end;
+      justify-content: center;
+      text-align: center;
+      z-index: 2000;
+    }
+
+    #opcionesUsuario button {
+      border: none;
+      background-color: transparent;
+      font-size: var(--x1_3);
+      padding: var(--x0_5);
+      font-family: 'FuturaMedium';
+      color: rgba(0, 0, 0, 0.274);
+    }
+
+    #opcionesUsuario button:hover {
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.509);
+    }
+
+    #opcionesUsuario button:active {
+      color: #db0032;
+    }
+
+    #mensaje {
+      border: 1px solid red;
+      position: absolute;
+      top: 1vw;
+      left: 2vw;
+      width: 80vw;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1500;
+      background-color: white;
+      padding: 0.5vw;
+    }
+
+    #alerta {
+      width: var(--x2_5);
+    }
+
+    #textoMensaje {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: justify;
+      flex-wrap: wrap;
+      font-family: 'FuturaMedium';
+      color: rgba(128, 128, 128, 0.945);
+      font-size: var(--x1);
+      margin-top: var(--x1);
+    }
+
+    #imgCerrar {
+      position: absolute;
+      width: var(--x1_2);
+      top: 0.3vw;
+      right: 0.3vw;
+    }
+
+    #imgCerrar:hover {
+      cursor: pointer;
+    }
+
+    /* BREAK POINTS */
+
+    /* LARGER TABLETS = ROOT + 30% */
+    @media screen and (min-width: 900px) and (max-width: 1200px) {
+      :root {
+        --x3: 3.9vw;
+        --x2_5: 3.25vw;
+        --x2_9: 3.77vw;
+        --x1_3: 1.69vw;
+        --x15_5: 20.15vw;
+        --x4_8: 5.8vw;
+        --x1_2: 1.56vw;
+        --x1: 1.3vw;
+        --x1_5: 1.95vw;
+      }
+
+      .inclinedParabola {
+        /* border: 1px solid blue; */
+        position: relative;
+        width: 40vw;
+        height: 30vw;
+        border-top-right-radius: 400px;
+        border-bottom-right-radius: 400px;
+      }
+
+      .parrafo {
+        /* border: 0.15vw solid greenyellow; */
+        margin-top: 32%;
+        margin-right: 3.8vw;
+      }
+
+      .p1 {
+        /* background-color: aqua; */
+        font-size: 1.95vw;
+        height: 2.6vw;
+        margin-top: 1.3vw;
+        margin-left: 26vw;
+      }
+
+      .p2 {
+        /* background-color: blue; */
+        font-size: 1.95vw;
+        margin-top: 0%;
+        margin-left: 20.15vw;
+      }
+
+      .listContainer {
+        /* border: 0.15vw solid pink; */
+        font-size: 1.95vw;
+        margin-top: 16.9vw;
+        margin-right: 28.6;
+        /* margin-bottom: 10vw; */
+        width: 32.5;
+      }
+
+      .busqueda {
+        font-size: 1.95vw;
+        margin-bottom: 1.95vw;
+      }
+
+      #listaTiposOt {
+        /* border: 0.15vw solid blue; */
+        list-style-type: none;
+        height: 20vw;
+      }
+
+      #listaTiposOt .ots:hover {
+        border-radius: 1vw;
+      }
+    }
+
+    /* SMALLER TABLETS = ROOT + 60% */
+    @media screen and (min-width: 500px) and (max-width: 900px) {
+      :root {
+        --x0_5: 0.8vw;
+        --x0_6: 0.96vw;
+        --x1: 1.6vw;
+        --x1_2: 1.92vw;
+        --x1_5: 2.4vw;
+        --x2: 3.2vw;
+        --x2_5: 4vw;
+        --x3: 4.8vw;
+        --x3_5: 5.6vw;
+        --x10: 16vw;
+        --x15_5: 24.8vw;
+        --x16: 25.6vw;
+        --x20: 32vw;
+        --x22: 35.2vw;
+        --x25: 40vw;
+        --x30: 48vw;
+        --x2_9: 4.64vw;
+        --x1_3: 2.08vw;
+        --x4_8: 7vw;
+      }
+
+      .container {
+        /* border: 0.2vw solid green; */
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .inclinedParabola {
+        /* border: 1px solid blue; */
+        position: relative;
+        background-color: #db0032;
+        width: 40vw;
+        height: 40vw;
+        border-top-right-radius: 400px;
+        border-bottom-right-radius: 400px;
+      }
+
+      .parrafo {
+        /* border: 0.15vw solid greenyellow; */
+        margin-top: 50%;
+        margin-right: 2vw;
+      }
+
+      .p1 {
+        /* background-color: aqua; */
+        font-size: 2.4vw;
+        height: 3.2vw;
+        margin-top: 1.6vw;
+        margin-left: 18.5vw;
+      }
+
+      .p2 {
+        /* background-color: blue; */
+        font-size: 2.4vw;
+        margin-top: 0vw;
+        margin-left: 11vw;
+      }
+
+      /* ITEMS */
+      .listContainer {
+        /* border: 0.15vw solid pink; */
+        font-size: 2.4vw;
+        margin-top: 19vw;
+        margin-right: 15vw;
+        margin-bottom: 12vw;
+        margin-left: 15vw;
+        width: 40vw;
+      }
+
+      .busqueda {
+        font-size: 2.4vw;
+        margin-bottom: 2.4vw;
+      }
+
+      /* ITEMS */
+      #listaTiposOt {
+        /* border: 0.15vw solid blue; */
+        height: 31vw;
+        list-style-type: none;
+      }
+
+      #listaTiposOt .ots:hover {
+        border-radius: 1.5vw;
+      }
+    }
+
+    /* CELL PHONES = ROOT + 172% */
+    @media screen and (max-width: 500px) {
+      :root {
+        --x0_5: 1.36vw;
+        --x0_85: 2.312vw;
+        --x1: 2.72vw;
+        --x1_5: 4.08vw;
+        --x2: 5.44vw;
+        --x2_5: 6.8vw;
+        --x3: 8.16vw;
+        --x3_5: 9.52vw;
+        --x4: 4vw;
+        --x4_5: 4.5vw;
+        --x5: 5vw;
+        --x11: 29.92vw;
+        --x12: 12vw;
+        --x20: 20vw;
+        --x23: 62.56vw;
+        --x25: 68vw;
+        --y25: 25vw;
+        --x30: 81.6vw;
+        --x40: 40vw;
+        --x50: 50vw;
+        --x60: 60vw;
+        --x80: 80vw;
+        --x2_9: 7.88vw;
+        --x1_3: 3.53vw;
+        --x15_5: 42.16vw;
+        --x4_8: 10vw;
+        --x1_2: 3.26vw;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20vw;
+        width: 100%;
+        height: auto;
+      }
+
+      .inclinedParabola {
+        position: relative;
+        align-self: flex-start;
+        width: 70vw;
+        height: 45vw;
+        border-top-right-radius: 250px;
+        border-bottom-right-radius: 250px;
+      }
+
+      .parrafo {
+        /* border: 0.15vw solid greenyellow; */
+        margin-top: 26%;
+        margin-left: 21vw;
+      }
+
+      .p1 {
+        font-size: 4.5vw;
+        margin-bottom: 0;
+        margin-left: 20.5vw;
+      }
+
+      .p2 {
+        font-size: 4.5vw;
+        margin-left: 6.5vw;
+      }
+
+      .listContainer {
+        /* border: 0.15vw solid pink; */
+        font-size: 4.5vw;
+        margin-top: 2vw;
+        margin-right: 15vw;
+        margin-left: 25vw;
+        /* margin-bottom: 10vw; */
+        width: 55vw;
+      }
+
+      .busqueda {
+        font-size: 4.5vw;
+        margin-bottom: 1.5vw;
+      }
+
+      #listaTiposOt {
+        /* border: 0.15vw solid blue; */
+        height: 90vw;
+      }
+
+      #listaTiposOt .ots:hover {
+        border-radius: 3vw;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loader" class="displayOn">
+    <div class="lds-roller">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div id="opciones" class="opciones displayOn">
+    <!-- <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario2">
+    <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario3">
+    <img src="https://dosxdos.app.iidos.com/img/paisaje.jpg" id="imagenUsuario4"> -->
+    <img src="https://dosxdos.app.iidos.com/img/usuarioClientes.png" id="imagenUsuario">
+  </div>
+  <div id="opcionesUsuario" class="displayOff">
+    <button id="editarUsuarioB">Editar Usuario</button>
+    <button id="cerrarSesionB">Cerrar Sesión</button>
+  </div>
+  <div id="mensaje" class="displayOff">
+    <img id="imgCerrar" src="https://dosxdos.app.iidos.com/img/cerrar.png">
+    <img id="alerta" src="https://dosxdos.app.iidos.com/img/alerta.png">
+    <p id="textoMensaje"></p>
+  </div>
+  <div class="container">
+    <div class="inclinedParabola">
+      <div class="parrafo">
+        <p class="p1">¿Sobre qué</p>
+        <p class="p2">te gustaría buscar?</p>
+      </div>
+    </div>
+    <div class="listContainer">
+      <p class="busqueda">Búsqueda:</p>
+      <div id="listaTiposOt"></div>
+    </div>
+  </div>
+  <img src="https://dosxdos.app.iidos.com/img/logo_clientes.png" id="logo2" class="logo2">
+</body>
+
+<script>
+
+  /* VARIABLES GLOBALES */
+  let loginCookie,
+    usuarioCookie,
+    usuario,
+    tiposOt;
+
+  /* VLOGIN */
+
+  function obtenerValorCookie(nombre) {
+    return new Promise((resolve, reject) => {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i];
+        while (cookie.charAt(0) == ' ') {
+          cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(nombre + '=') == 0) {
+          var valor = cookie.substring(nombre.length + 1, cookie.length);
+          resolve(valor);
+        }
+      }
+      resolve(false);
+    })
+  }
+
+  function fetchUsuario(idUsuario) {
+    return new Promise((resolve, reject) => {
+      url = 'https://dosxdos.app.iidos.com/apirest/usuarios.php?id=' + idUsuario;
+      fetch(url)
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+          }
+          else {
+            mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchUsuario'
+            alerta(mensaje);
+            resolve(false);
+          };
+        })
+        .then((res) => {
+          if (res[0]) {
+            resolve(res[1][0]);
+          }
+          else {
+            mensaje = res[1];
+            alerta(mensaje);
+            resolve(false);
+          }
+        })
+        .catch((error) => {
+          mensaje = 'Error en la función fetchUsuario: ' + error.message;
+          console.error(error);
+          alerta(mensaje);
+          resolve(false);
+        })
+    })
+  }
+
+  function vLogin() {
+    return new Promise(async (resolve, reject) => {
+      loginCookie = await obtenerValorCookie('login');
+      usuarioCookie = await obtenerValorCookie('usuario');
+      if (loginCookie && usuarioCookie) {
+        if (navigator.onLine) {
+          usuario = await fetchUsuario(usuarioCookie);
+          //console.log(usuario);
+          if (!usuario) {
+            mensaje = 'No se ha podido consultar los datos del usuario en nuestra base de datos, por favor inténtalo nuevamente. Si el error persiste por favor comunícate con nosotros'
+            localStorage.setItem('mensaje', mensaje);
+            window.location.href = "https://dosxdos.app.iidos.com/index.html";
+          } else {
+            if (usuario.eliminado == '1') {
+              mensaje = 'El usuario ha sido eliminado, por favor comunícate con nosotros'
+              localStorage.setItem('mensaje', mensaje);
+              window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+            if (usuario.activo == '0') {
+              mensaje = 'El usuario ha sido inactivado, por favor comunícate con nosotros'
+              localStorage.setItem('mensaje', mensaje);
+              window.location.href = "https://dosxdos.app.iidos.com/index.html";
+            }
+          }
+        } else {
+          mensaje = 'No tienes acceso a internet, no es posible navegar en los datos y los archivos de nuestro servidor sin una conexión a internet establecida'
+          alerta(mensaje);
+          resolve(true);
+        }
+        resolve(true);
+      }
+    })
+  }
+
+  /* CONSTANTES DEL DOM */
+  const $loader = document.getElementById('loader'),
+    $imagenUsuario = document.getElementById('imagenUsuario'),
+    $opcionesUsuario = document.getElementById('opcionesUsuario'),
+    $mensaje = document.getElementById('mensaje'),
+    $imgCerrar = document.getElementById('imgCerrar'),
+    $textoMensaje = document.getElementById('textoMensaje');
+
+  /* LOADER */
+
+  function loaderOn() {
+    scrollToTop();
+    $loader.classList.remove('displayOff');
+    $loader.classList.add('displayOn');
+  }
+
+  function loaderOff() {
+    setTimeout(() => {
+      $loader.classList.remove('displayOn');
+      $loader.classList.add('displayOff')
+    }, 1000)
+  }
+
+  /* MENSAJE */
+
+  function scrollToTop() {
+    // Para navegadores modernos
+    document.documentElement.scrollTop = 0;
+    // Para navegadores antiguos
+    document.body.scrollTop = 0;
+  }
+
+  function mensajeOn() {
+    $mensaje.classList.remove('displayOff');
+    $mensaje.classList.add('displayOn');
+  }
+
+  function mensajeOff() {
+    $mensaje.classList.remove('displayOn');
+    $mensaje.classList.add('displayOff');
+  }
+
+  $imgCerrar.addEventListener('click', e => {
+    mensajeOff();
+  })
+
+  function alerta(men) {
+    $textoMensaje.innerHTML = men;
+    mensajeOn();
+    scrollToTop();
+    loaderOff();
+  }
+
+  /* CERRAR SESIÓN */
+
+  function eliminarCookie(nombre) {
+    const tiempoExpiracion = 1; // Segundo 1 de la Época Unix
+    document.cookie = `${nombre}=; expires=${new Date(tiempoExpiracion * 1000).toUTCString()}; path=/;`;
+  }
+
+  function cerrarSesions() {
+    try {
+      loaderOn();
+      localStorage.removeItem('login');
+      localStorage.removeItem('usuario');
+      eliminarCookie('login');
+      eliminarCookie('usuario');
+      window.location.href = "https://dosxdos.app.iidos.com/index.html";
+    } catch (error) {
+      mensaje = 'ERROR: ' + error.message;
+      console.error(error);
+      alerta(mensaje);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', (e) => {
+
+      if (e.target.matches('#imagenUsuario')) {
+        $opcionesUsuario.classList.toggle('displayOff');
+        $opcionesUsuario.classList.toggle('displayOn');
+      } else {
+        if (!e.target.matches('#editarUsuarioB') && !e.target.matches('#cerrarSesionB') && $opcionesUsuario.classList.contains('displayOn')) {
+          $opcionesUsuario.classList.replace('displayOn', 'displayOff');
+        }
+      }
+
+      if (e.target.matches('#editarUsuarioB')) {
+        const pAnterior = "https://dosxdos.app.iidos.com/clientes.html";
+        localStorage.setItem('pAnterior', pAnterior);
+        window.location.href = "https://dosxdos.app.iidos.com/editar_usuario_cliente.html";
+      }
+
+      if (e.target.matches('#cerrarSesionB')) {
+        cerrarSesions();
+      }
+
+      if (e.target.classList.contains('ots')) {
+        const codigo = e.target.getAttribute('data-cod');
+        localStorage.setItem('codigoDeOtsCliente', codigo);
+        const descripcion = e.target.getAttribute('data-descripcion');
+        localStorage.setItem('DescripcionCodigoDeOtsCliente', descripcion);
+        window.location.href = "https://dosxdos.app.iidos.com/clientes_ots.html";
+      }
+
+    })
+  })
+
+  /* TIPOS OT */
+
+  function fetchTiposOt(idCliente) {
+    return new Promise((resolve, reject) => {
+      url = 'https://dosxdos.app.iidos.com/apirest/clientes.php?idCliente=' + idCliente + '&tiposOt';
+      fetch(url)
+        .then((res) => {
+          if (res.ok) {
+            return res.json()
+          }
+          else {
+            mensaje = 'Error: no se pudo recibir una respuesta de la api intermedia en la función fetchTiposOt'
+            alerta(mensaje);
+            resolve(false);
+          };
+        })
+        .then((res) => {
+          if (res[0]) {
+            resolve(res[1]);
+          }
+          else {
+            mensaje = res[1];
+            alerta(mensaje);
+            resolve(false);
+          }
+        })
+        .catch((error) => {
+          mensaje = 'Error en la función fetchTiposOt: ' + error.message;
+          console.error(error);
+          alerta(mensaje);
+          resolve(false);
+        })
+    })
+  }
+
+  /* VOLCAR DATOS */
+
+  async function volcarDatos(types) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const fragmento = document.createDocumentFragment();
+        for (const [tipo, descripcion] of Object.entries(types)) {
+          const botonTipo = document.createElement('button');
+          botonTipo.className = 'ots';
+          temporalDiv = document.createElement("div");
+          temporalDiv.innerHTML = descripcion.replace(/\\/g, '');
+          textoConvertido = temporalDiv.textContent || temporalDiv.innerText;
+          botonTipo.textContent = textoConvertido;
+          botonTipo.setAttribute('data-cod', tipo);
+          botonTipo.setAttribute('data-descripcion', textoConvertido);
+          fragmento.appendChild(botonTipo);
+        }
+        const listaTiposOt = document.getElementById('listaTiposOt');
+        listaTiposOt.appendChild(fragmento);
+        resolve(true);
+      } catch (error) {
+        console.error(error);
+        mensaje = 'Error: ' + error.message;
+        alerta(mensaje);
+        resolve(false);
+      }
+    })
+  }
+
+  /* INICIAR APP ONLINE */
+
+  async function appOnline() {
+    try {
+      const login = await vLogin();
+      document.title = `${usuario.nombre} ${usuario.apellido} - dosxdos`;
+      if (usuario.imagen != '0') {
+        $imagenUsuario.src = 'https://dosxdos.app.iidos.com/' + usuario.imagen
+      }
+      tiposOt = await fetchTiposOt(usuario.id);
+      //console.log(tiposOt);
+      const volcar = await volcarDatos(tiposOt);
+      loaderOff();
+    } catch (error) {
+      mensaje = 'ERROR: ' + error.message;
+      console.error(error);
+      alerta(mensaje);
+    }
+  }
+
+  /* INICIAR APP OFFLINE */
+
+  async function appOffline() {
+    try {
+      const login = await vLogin();
+      loaderOff();
+    } catch (error) {
+      mensaje = 'ERROR: ' + error.message;
+      console.error(error);
+      alerta(mensaje);
+    }
+  }
+
+  /* TAREAS AL INICIAR LA PANTALLA CON EL ESTADO DE LA CONEXIÓN */
+
+  if (navigator.onLine) {
+    console.log('La aplicación está en línea.');
+    appOnline();
+  } else {
+    console.log('La aplicación está fuera de línea.');
+    appOffline();
+  }
+
+  /* PAGE SHOW - MENSAJES */
+  window.addEventListener('pageshow', (e) => {
+    let mensaje = localStorage.getItem('mensaje');
+    if (mensaje && mensaje !== null) {
+      alerta(mensaje);
+      localStorage.removeItem('mensaje');
+    }
+  })
+
+  /* TAREAS EN LA INTERMITENCIA DE LA CONEXIÓN */
+
+  window.addEventListener('online', () => {
+    console.log('La conexión a Internet se ha recuperado.');
+    window.location.reload();
+  });
+
+  window.addEventListener('offline', () => {
+    console.log('La conexión a Internet se ha perdido.');
+  });
+
+</script>
+
+</html>

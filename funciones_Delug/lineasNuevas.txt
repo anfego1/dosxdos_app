@@ -1,0 +1,16 @@
+//OBTENER DATOS DE OT
+ot = zoho.crm.getRecordById("Deals",idOt);
+codigoOt = ot.get("C_digo");
+//OBTENER DATOS DE LAS LÍNEAS DE OT
+criterio = "(C_digo_de_OT_relacionada:equals:" + codigoOt + ")";
+lineas = zoho.crm.searchRecords("Products",criterio);
+//ACTUALIZAR CADA LÍNEA
+updateList = List();
+for each  linea in lineas
+{
+	idLinea = linea.get("id");
+	nuevaFase = {"id":idLinea,"Fase":"Nuevas"};
+	updateList.add(nuevaFase);
+}
+lineasInfo = zoho.crm.bulkUpdate("Products",updateList);
+//info lineasInfo;
